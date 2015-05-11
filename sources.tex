@@ -1,0 +1,885 @@
+\documentclass[11pt]{article}
+\usepackage[french]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{graphicx}  		% \includegraphics[scale=0.6]{image.png}\\
+\usepackage{color}                    % \textcolor{declared-color}{text}
+\usepackage{mdframed}            % Cadres de couleurs \begin{mdframed}[linecolor=...] \end{mdframed}
+\usepackage{amsfonts} % Pour écrire les ensembles IR, IK etc "\mathbb  "
+\usepackage{amsmath} % Utilisation de \underset
+\usepackage{amssymb} % Utilisation de \underset
+\usepackage{hyperref} % Mettre le lien vers la page de google drive
+
+
+\begin{document}
+\title{Résumé cours de Maths - 2eme Session\\{\bf Algèbre Linéaire}}
+\author{Loan Sens du cours de Mr Anciaux}
+\date{\today}
+\maketitle
+\tableofcontents
+\pagebreak
+\noindent {\bf Contacts:\\
+ Henri Anciaux}\\
+Mail : \textcolor{blue}{henri.anciaux@gmail.com}\\ % Les liens hyper-textes se font automatiquement
+Site: \textcolor{blue}{http://homepages.ulb.ac.be/hanciaux/MATHF112.html}\\
+Bureau : P.O.7.110\\
+\\
+Lien de partage (Google Drive) des scans du cours théorique :\\
+\urlstyle{same}
+\textcolor{blue}{
+\href{https://drive.google.com/open?id=0B11b8daV9oclfllIMjFsNktRblMzdFdXM3cxazVtUGpqYlY2VHFvaV8tQWlRZEM4VDc2MG8&authuser=0}{LIEN - Cours théorique}}\\
+
+\pagebreak
+\section{Introduction à l'algèbre linéaire:}
+On retrouve l'algèbre linéaire aussi nombreux que varié dans les mathématiques. Et elle nous permet de pouvoir {\bf simplifier les choses}.\\
+\includegraphics[scale=0.6]{graphiques-fonctions.png}\\
+$f(x+h)\approx f(x)+h*f'(x)$ (linéaire)\\ \\
+Par exemple le Polynôme de Taylor (qui est un cas d'algèbre linéaire) nous permet de simplifier des expressions mathématiques et donc de pouvoir résoudre certains calculs irrésolvable sans.\\
+Comme la formule d'oscillation du pendule: $y''+\sin (y)=0$ qui est une équation différentielle du second ordre impossible à résoudre, peut être simplifiée en $y''+y=0$.\\
+Elle est aussi utile dans les nuages de points, pour calculer une matrice puissance $n$, approximer des fonctions...
+
+\section{Vecteurs:}
+\subsection{Espace vectoriel:}  % Espace vectoriel
+\begin{mdframed}[linecolor=magenta]
+ \noindent \textcolor{magenta}{{\bf Notation:}} 
+ $\mathbb K = \mathbb R, \mathbb C$ ou $\{ 0;1\}$  ou n'importe quel "corps"
+\end{mdframed}
+
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Définition:}}\\
+Un {\bf espace vectoriel} sur $\mathbb K$ (="$\mathbb K$ espace vectoriel") est un ensemble {\tt E} muni de 2 opérations:
+\begin{itemize}
+  \item {\bf Somme} : + : {\tt E} + {\tt E} $\to$ {\tt E}, telle que:
+   \begin{enumerate}
+    \item + est {\bf commutative} $\longrightarrow \vec{v}+\vec{w}=\vec{w}+\vec{v}$
+    \item + est {\bf associative} $\longrightarrow \vec{u}+(\vec{v}+\vec{w})=(\vec{u}+\vec{v})+\vec{w}$
+    \item + admet un {\bf élément neutre} noté $\overrightarrow{0_E}$ ou 0 $\longrightarrow \overrightarrow{0_E}+\vec{v}=\vec{v}$
+    \item + admet un {\bf opposé} noté $-\vec{v} \longrightarrow \vec{v}+(-\vec{v})=\overrightarrow{0_E}$
+   \end{enumerate}
+  
+  \item {\bf Multiplication externe}: $\cdot$: $\mathbb K$ $\times $ {\tt E}$\to$ {\tt E}, telle que:
+   \begin{enumerate}
+    \item $\cdot$ est {\bf doublement distributive} $\longrightarrow \lambda \cdot (\vec{v}+\vec{w})=\ \lambda \cdot \vec{v}+\lambda \cdot \vec{w}$
+    \item $\cdot$ est {\bf associative} $\longrightarrow \lambda \cdot (\mu \cdot \vec{v})=(\lambda \cdot \mu) \cdot \vec{v}$
+    \item $\cdot$ admet un {\bf élément neutre} $\longrightarrow 1 \cdot \vec{v}=\vec{v}$
+   \end{enumerate}
+\end{itemize}
+Les éléments de {\tt E} sont appelés vecteurs. Les 2 opérations + et $\cdot$ constituent une structure vectorielle.
+\end{mdframed}
+
+\begin{mdframed}[linecolor=cyan]
+\textcolor{cyan}{{\bf Remarque:}}\\
+Si {\tt E} est un e.v. ( = Espace Vectoriel):\\
+\[ \left \{
+   \begin{array}{l}
+      0\cdot \vec{v} = \overrightarrow{0_E} \\
+      (-1)\cdot\vec{v}=-\vec{v}\
+   \end{array}
+\right .\]
+\end{mdframed}
+
+\begin{mdframed}[linecolor=magenta]
+\textcolor{magenta}{{\bf Notation:}}\\
+On apellera {\bf scalaires} les éléments de $\mathbb K$
+\end{mdframed}
+
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+ $\mathbb K^n$ est un  $\mathbb K$ e.v. (par exemple $\mathbb R^n$ ou  $\mathbb C^n$)
+\end{mdframed}
+\bigskip
+3 concepts fondamentaux:
+\begin{enumerate}
+\item {\bf Applications linéaires}
+\item {\bf Sous-espaces vectoriels}
+\item {\bf Base et dimensions}
+\end{enumerate}
+
+
+\subsection{Applications linéaires:}  % Applications linéaires
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Définition:}}\\
+Soient {\tt E} et {\tt F} 2 e.v. sur le même corps $\mathbb K$.\\
+Une application $u$ : {\tt E} $\to$ {\tt F} est {\bf linéaire} si elle préserve les structures vectorielles, c'est a dire les propriétés suivantes:
+\[ \left \{
+   \begin{array}{l}
+      u(x+y)=u(x)+u(y) \qquad \forall x,y \in {\tt E}\\
+      u(\lambda\cdot x) = \lambda \cdot u(x) \qquad \forall \lambda \in \mathbb K,\forall x \in {\tt E}
+   \end{array}
+\right .\]
+\end{mdframed}
+
+\begin{mdframed}[linecolor=green]
+\textcolor{green}{{\bf Exemple:}}\\
+Les application suivantes sont elles linéaires?
+\begin{itemize}
+ \item {\tt A} : $(x;y) \longmapsto (y;x)$ 
+ \item {\tt B} : $(x;y) \longmapsto (\sin(x);y)$\\
+\end{itemize}
+1) Si {\tt A} est linéaire elle doit respecter les 2 propriétés énoncés plus haut.\\
+Vérifions la première: ${\tt A}(x+y)\stackrel{?}{=}{\tt A}(x)+{\tt A}(y)$\\
+Considérons $(x,y)$ et $(v;w)$ 2 doublets de points applications de {\tt A}. Pour vérifier la première propriété il faut que {\tt A}((x;y)+(v;w))={\tt A}(x;y)+{\tt A}(v;w).\\
+Développons des 2 côtés:\\
+(Gauche) $ {\tt A}((x;y)+(v;w)) = {\tt A}(x+v;y+w)$\\
+Maintenant on applique l'application de {\tt A} (qui va changer la place de $x$ (qui est ici $x+v$) avec celle du $y$ (ici $y+w$)\\
+$ {\tt A}(x+v;y+w)=(y+w;x+v)$\\
+(Droite) ${\tt A}(x;y)+{\tt A}(v;w)=(y;x)+(w;v)=(y+w;x+v)$\\
+Le coté gauche de l'équation est égale au coté droit, donc la première propriété est démontrée.\\ Maintenant il nous faut démontrer la seconde : ${\tt A}(\lambda\cdot x) \stackrel{?}{=} \lambda\cdot {\tt A}(x)$\\On choisi un doublet $(x;y)$ application de {\tt A}.\\ Une fois encore on vérifie en développant des 2 côtés et l'on regarde s'ils sont égaux, donc que ${\tt A}(\lambda\cdot (x;y))= \lambda\cdot{\tt A}(x;y)$\\
+(Gauche) : ${\tt A}(\lambda\cdot (x;y))={\tt A}(\lambda x;\lambda y)=(\lambda y;\lambda x)$\\
+(Droite): $\lambda\cdot{\tt A}(x;y) = \lambda \cdot (y;x) = (\lambda y;\lambda x)$\\
+Le côté gauche et droits sont égaux, la seconde propriétée est donc respectée.\\
+Comme les 2 propriétés ont étaient vérifier et approuver, A est {\bf linéaire}.\\\\
+2) (Même principe que plus haut, donc voir {\tt A} pour les détails) 
+Si {\tt B} est linéaire elle doit respecter les 2 propriétés énoncés plus haut.\\
+Vérifions la première: ${\tt B}(x+y)\stackrel{?}{=}{\tt B}(x)+{\tt B}(y)$\\
+et donc $ {\tt B}((x;y)+(v;w))={\tt B}(x;y)+{\tt B}(v;w)$\\
+(G) : ${\tt B}((x;y)+(v;w))={\tt B}(x+v;y+w)=(\sin(x+v);y+w)$\\
+(D) : ${\tt B}(x;y)+{\tt B}(v;w)= (\sin(x);y)+(\sin(v);w)= (\sin(x)+\sin(v);y+w)$\\
+Or, $\sin(x+v) \neq \sin(x)+\sin(v)$, donc le coté gauche et droite sont différent.\\ 
+Comme nous avons une contradiction il n'est pas utile de vérifier la seconde propriété.\\
+{\tt B} n'est {\bf pas linéaire}\\\\
+Il suffit de trouver un {\bf contre-exemple}, pour prouver qu'une hypothèse est fausse. Si l'on en trouve pas, il faut démontrer que les propriétés marchent dans notre cas.\\
+(Voir première séance d'exercice pour plus d'exercice sur les applications linéaires)
+\end{mdframed}
+
+\begin{mdframed}[linecolor=cyan]
+\textcolor{cyan}{{\bf Remarque:}}\\
+Si $u$ est linéaire, alors $u(\overrightarrow{0_E})=\overrightarrow{0_F}$ (dans les exemples: {\tt A,B}).\\
+Autrement dit, si l'application ne contient pas l'élément neutre, alors elle est d'office pas linéaire ({\bf Attention} si elle le contient, elle n'est pas forcément linéaire).
+\end{mdframed}
+
+\bigskip
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+\noindent Soit {\tt A} un ensemble (pas forcément e.v.)\\
+Soit {\tt E} un e.v. sur $\mathbb K$\\
+{\tt E$^{\tt A}$} = \{application {\tt f} : {\tt A} $\to$ {\tt E}\}\\
+{\tt E$^{\tt A}$} à une structure d'espace vectoriel sur $\mathbb K$
+\end{mdframed}
+
+\bigskip
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Définition:}}\\
+Une application linéaire qui est bijective (injective et surjective) est appelée {\bf isomorphisme}
+\begin{itemize}
+ \item Injective: Il n'existe pas 2 points qui ont la même image.\\
+ Ex: ( $f(x)=x^2$ n'est pas injective sur $\mathbb R$ car pour $f(x)=1 \Leftrightarrow x^2 = 1 \Leftrightarrow x=±1$, mais elle l'est injective sur $\mathbb R^+$)
+ \item Surjective: Si tout les points de l'ensemble images existent. \\
+ Ex: ( $f(x)=x^2$ n'est pas surjective sur l'ensemble image $\mathbb R$ car pour $f(x)=-1 \Leftrightarrow x^2 = -1 \Leftrightarrow S=\emptyset$, mais elle l'est surjective sur l'ensemble image $\mathbb R^+$)
+ \item Bijective: Si l'application est à la fois injective ET surjective.\\
+ Par exemple $x^3$ sur $\mathbb R$ et $\mathbb R$ comme domaine image.
+\end{itemize}
+Avec un schéma:\\
+\includegraphics[scale=0.475]{bijection.png}
+\end{mdframed}
+
+\begin{mdframed}[linecolor=green]
+\textcolor{green}{{\bf Exemple:}}\\
+Comment prouver qu'une application est bijective?\\
+$u:\mathbb R^3 \to \mathbb R^3$\\
+$u(x;y;z) : (x+y-z;x-y;z)$\\
+Si $u(x;y;z)$ est bijective, alors il existe un unique élément $(x;y;z)$ de $\mathbb R^3$ tel que $u(x;y;z)=(a;b;c) \to$ système d'équations ! 
+\[ \left \{
+   \begin{array}{l}
+     x+y-z=a \\
+     x-y=b\\
+     x=c
+   \end{array}
+\right .\]
+\[ \left \{
+   \begin{array}{l}
+     x=c \\
+     y=-b+c\\
+     z=-a-b+2c
+   \end{array}
+\right .\]
+Il existe donc qu'une et une seule solution au système, la fonction est bijective. Si elle est également linéaire, alors elle est isomorphe.
+\end{mdframed}
+
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+$\mathbb K^{\{ 0;1\}} \sim \mathbb K^2 $ ( $\sim$ = est la même chose que), c'est-à-dire qu'il existe un {\bf isomorphisme canonique} : $\phi:\mathbb K^{\{ 0;1\}} \to \mathbb K^2$ \\\\
+Soit $A$ un ensemble fini: \#$A$ = $n$ \quad(\# = cardinal = nombre d'éléments)\\
+$\mathbb K^A \sim \mathbb K^n \longrightarrow$ ils sont canoniquement isomorphes
+\end{mdframed}
+
+
+\subsection{Sous-espaces vectoriels}  % Sous-espaces
+
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Définition:}}\\
+Soit {\tt E} un e.v. sur $\mathbb K$ et {\tt F} $\subset$ {\tt E}  un sous-ensemble de {\tt E}, on dira que {\tt F} est un {\bf sous-espace vectoriel} de {\tt E}, si :\\
+\[ \left \{
+   \begin{array}{l}
+      v+w\in{\tt F}  \qquad \forall v,w \in {\tt F}, v+w\in {\tt F} \\
+      \lambda \cdot v \in {\tt F} \qquad \forall \lambda \in \mathbb K, \forall v \in {\tt F} 
+   \end{array}
+\right .\]
+\end{mdframed}
+
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+Soit $v  \neq 0_E: \{ v \}$ n'est PAS un e.v ; $v+v = 2v \neq v$, alors:\\
+{\tt F} $= \{ \lambda \cdot v \quad \lambda \in \mathbb K \}$ est sous-e.v. de {\tt E}.
+\end{mdframed}
+
+\begin{mdframed}[linecolor=magenta]
+\textcolor{magenta}{{\bf Notation:}}\\
+On notera $= \{ \lambda \cdot v \quad \lambda \in \mathbb K \} : v \cdot \mathbb K$, appellé la {\bf droite vectorielle} engendrée pas $v$.
+\end{mdframed}
+
+\begin{mdframed}[linecolor=green]
+\textcolor{green}{{\bf Exemple:}}\\
+Pour {\tt E} $= \mathbb R^2$, les sous-ensembles $F$ ci dessous sont-ils des sous-espaces vectoriels de {\tt E} ?
+\begin{itemize}
+ \item $F_1 = \{ (x,y) \in \mathbb R^2 \quad 3x+2y=0 \}$
+ \item $F_2 = \{ (x,y) \in \mathbb R^2 \quad x^2+y^2=1 \}$
+ \item $F_2 = \{ (x,y) \in \mathbb R^2 \quad 3x+2y=1 \}$
+\end{itemize}
+Sur un graphique: \\
+\includegraphics[scale=0.5]{fonctions.png}\\\\
+1) $F_1$ est-il un sous-e.v. ?\\
+\begin{itemize}
+ \item Soit $(x;y)$ et $(x';y')$ dans $F_1$, est-ce que : $(x;y)+(x';y') \in F_1$ ?\\
+$(x;y)+(x';y') = 3\cdot (x+x')+2\cdot(y+y')=3x+3x'+2y+2y' = (3x+2y)+(3x'+2y')= 0 + 0 =0 \in F_1 \qquad$ Car $3x+2y=0$ est notre "équation" de départ (voir énoncé)\\ 
+La première propriété pour que $F_1$ soit un sous-e.v. de {\tt E} est donc vérifiée.
+ \item Soit $(x;y)$ dans $F_1$ et $\lambda \in \mathbb R$, est-ce que : $\lambda\cdot(x;y)\in F_1$?\\
+ $\lambda\cdot(x;y) = 3\cdot(\lambda x)+2\cdot(\lambda y) = \lambda\cdot(3x+2y) = \lambda\cdot 0 = 0\in F_1$\\
+ La seconde propriété est vérifiée également, donc $F_1$ est un sous-e.v. de {\tt E}. Nous pouvons aussi dire que $3x+2y=0$ est une droite vectorielle de {\tt E}\\
+\end{itemize}
+2) Prenons les points $(1;0)$ et $(0;1) \in F_2$\\
+$(1;0)+(0;1) = (1;1) \notin F_2$, car $1^2 +1^2 = 2 \neq 1$\\
+Donc grace à un contre-exemple, nous pouvons affirmer que $F_2$ n'est pas un sous-e.v de {\tt E}.\\\\
+3) Idem que pour le 2) avec les points $(1;-1)$ et $(3;-4)$
+\end{mdframed}
+
+\begin{mdframed}[linecolor=cyan]
+\textcolor{cyan}{{\bf Remarque:}}\\
+Si {\tt F} est un sous-ensemble de {\tt E}, alors $0_E \in {\tt F}$.\\
+Autrement dit, si l'ensemble ne contient pas l'élément neutre de l'espace duquel il engendre, alors il n'est pas un sous e.v de cet ensemble.\\
+(Cette remarque aurai pu permettre de résoudre le 2) et 3) de l'exemple juste au dessus)
+\end{mdframed}
+
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+Si $F_1$ et $F_2$ sont sous-e.v. de {\tt E}, alors $F_1 \cap F_2$ est un sous-e.v., mais pas $F_1 \cup F_2$
+\end{mdframed}
+
+\begin{mdframed}[linecolor=green]
+\textcolor{green}{{\bf Exemple:}}\\
+$F_1 = \{ (x,y) \in \mathbb R^2 \quad x=0 \}$ et $F_2 = \{ (x,y) \in \mathbb R^2 \quad y=0 \}$\\
+\includegraphics[scale=0.6]{vecteurs.png}\\
+$F_1 \cap F_2$ est ici l'intersection des droites $x=0$ et $y=0$ qui est le singleton (= point si on est dans le plan) $(0;0)$.\\
+L'union ($\cup$) est par exemple la somme du vecteur $\vec v (1;0)$ et $\vec w (0;1)$\\
+$\vec v + \vec w = (1;1) \notin F_1$ ni $F_2$. Ca n'est donc pas un sous-e.v
+\end{mdframed}
+
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+Si $({\tt F}_i )_{i \in {\tt I}}$ ({\tt I} = n'importe quel ensemble) est une famille quelconque de sous-e.v. 
+$\underset{i \in I}{\cap} {\tt F}_i$ est un sous-e.v.\\Autrement dit, l'intersection de tout les ${\tt F}_i = \sum\limits_{i=1}^n x_i$.
+\end{mdframed}
+
+\bigskip
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+Il y a t'il une relation entre sous-espace vectoriel et application linéaire? \\
+$u : {\tt E}_1 \to {\tt E}_2$ linéaire
+\begin{itemize}
+ \item Soit {\tt F}$_1$ un sous-e.v de {\tt E}$_1$, alors je dis que:\\
+ $u({\tt F}_1) = \{ u(v) \quad v \in {\tt F}_1 \} (c {\tt E_2})$ est un sous-e.v. de ${\tt E}_2$ % DEMANDER AU PROF D'OU SORT LE c 
+\item Soit {\tt F}$_2$ un sous-e.v de {\tt E}$_2$, alors je dis que:\\
+ $u^{-1}({\tt F}_2) = \{ v \in {\tt E} \quad u(v) \in {\tt F}_2 \}$ est sous-e.v de {\tt E}$_1$
+\end{itemize}
+\end{mdframed}
+
+\subsubsection{Noyau et image:}
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Définition:}}\\
+L'on définit {\bf Ker $u$} et {\bf Im $u$}, comme:\\
+Ker $u = u^{-1} ( \{ 0_{E_2} \} )$ le noyau de $u$ (sous-e.v. de {\tt E}$_1$)\\
+Im $u = u(E_1)$ l'image de $u$ (sous-e.v. de {\tt E}$_2$)\\\\
+Autrement dit:\\
+Soit $f$ : {\tt E}$_1 \to {\tt E}_2$:\\
+Ker $f$ = \{ $\vec v \in {\tt E}_1$ tel que $f(\vec v)=\vec 0$ \} se qui signifie concrètement : l'ensemble des éléments qui sont envoyé sur l'élément neutre de l'ensemble d'arrivé.\\
+Im $f$ = \{ $\vec v \in {\tt E}_2 , \exists \vec u \in {\tt E}_1$ tel que $f(u)=\vec v$ \} C'est donc le sous-ensemble de {\tt E}$_2$ contenant toutes les images de tous les éléments de {\tt E}$_1$ et uniquement ces images.
+\end{mdframed}
+
+\begin{mdframed}[linecolor=green]
+\textcolor{green}{{\bf Exemple:}}\\
+(Ex 2 fiche 2):\\
+On fixe un vecteur $\vec v_0$ de l'espace tri-dimensionnel. On définit l'application $\Phi_1$ de l'espace des vecteurs de l'espace dans lui-même par $\Phi_1(\vec v) = \vec v \times \vec v_0$. Déterminer le noyau Ker et l'image Im de $\Phi _1$.\\
+2 méthodes possibles:\\
+1) Par calculs:\\
+Soit $ v_0 = (v_{0_x},v_{0_y},v_{0_z} )$ fixé\\
+$\Phi_1 : \mathbb R^3 \to \mathbb R^3: v \mapsto v \times v_0$ produit de 2 vecteurs = produit vectoriel : \\
+\[v \otimes v_0  = \left ( 
+\left| \begin{array}{cc}
+v_y & v_{0_y} \\
+v_z & v_{0_z} \\
+\end{array} \right| 
+,-
+\left| \begin{array}{cc}
+v_x & v_{0_x} \\
+v_z & v_{0_z} \\
+\end{array} \right| 
+,
+\left| \begin{array}{cc}
+v_x & v_{0_x} \\
+v_y & v_{0_y} \\
+\end{array} \right| 
+\right ).\]
+= $(v_y \cdot v_{0_z} - v_z \cdot v_{0_y} ; -(v_x \cdot v_{0_z} - v_z \cdot v_{0_x} ); v_x \cdot v_{0_y} - v_y \cdot v_{0_x} ) $
+$\Leftrightarrow$ \[ \left \{
+\begin{array}{l}
+v_y \cdot v_{0_z} - v_z \cdot v_{0_y} = 0 \\
+v_z \cdot v_{0_x} - v_x \cdot v_{0_z} = 0 \\
+v_x \cdot v_{0_y} - v_y \cdot v_{0_x} = 0 \\
+\end{array} \right .
+\Leftrightarrow
+\left \{
+\begin{array}{l}
+v_x =  v_z \cdot \frac{v_{0_x}}{v_{0_z} } \\
+v_y =  v_z \cdot \frac{v_{0_y}}{v_{0_z} } \\
+0 = 0 \\
+\end{array} \right .
+\]
+Nous n'avons donc pas de contraintes pour $v_z$, il vaut donc la valeur qu'on veut (degré de liberté).\\
+$ {\tt S} = \{ z \cdot \frac{v_{0_x}}{v_{0_z} } ; z \cdot \frac{v_{0_y}}{v_{0_z} } ; z \} = z \cdot \{ \frac{v_{0_x}}{v_{0_z} } ;\frac{v_{0_y}}{v_{0_z} } ; 1 \}$\\
+Ker $\Phi_1 = \mathbb R \{ \frac{v_{0_x}}{v_{0_z} } ;\frac{v_{0_y}}{v_{0_z} } ; 1 \} = \frac {\mathbb R}{v_{0_z}} \{v_{0_x} ;v_{0_y} ; v_{0_z} \}$ qui est une droite vectorielle contenant $v_0$.\\ \\
+2) En utilisant la définition:\\
+Ker $\Phi _1 = \{ \vec v \in \mathbb R^3 | \Phi _1(\vec v) = \vec v \times \vec v_0 = \vec 0 \} = \{ \vec v \in \mathbb R^3 | \vec v = \lambda \cdot \vec v_0 \quad \forall v \in \mathbb R \}$\\ 
+$\vec v = \lambda \cdot \vec v_0$ est une droite vectorielle contenant $\vec v_0$\\ \\
+Im $\Phi_1 = \{ \vec w \in \mathbb R^3 , \exists \vec v \in \mathbb R^3 | \vec w = \vec v \cdot \vec v_0 \}$\\
+$= \{ \vec w \in \mathbb R^3 | \vec w \perp \vec v , \vec w \perp \vec v_0 \}$ ce qui est le plan perpendiculaire à $\vec v_0$.\\
+Oui si : 
+\[ \left \{
+\begin{array}{l}
+x = a+2b\\
+y = 2a+3b\\
+\end{array}
+\right .
+\Leftrightarrow
+\left \{
+\begin{array}{l}
+a = 2x-y\\
+b = -3x+2y\\
+\end{array}
+\right .
+\]
+possible $\forall(x;y)$
+\end{mdframed}
+
+\subsubsection{Combinaison linéaire:}
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Définition:}}\\
+Soit : $v_1,\ldots ,v_n \in {\tt E}$ (vecteurs)\\
+et :  $\lambda_1, \ldots ,\lambda_n \in \mathbb K$ (scalaires)\\
+On dit que $\sum\limits_{i=1}^n \lambda_i v_i = \lambda_1v_1 + \ldots + \lambda_iv_i $ est une {\bf combinaison linéaire} (c.l.) des vecteurs  $v_1, \ldots ,v_n$\\
+\end{mdframed}
+
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+$u: {\tt E}_1 \to {\tt E}_2$ est linéaire, se qui est signifie que pour toute c.l. $\sum\limits_{i=1}^n \lambda_i v_i  : u\bigg( \sum\limits_{i=1}^n \lambda_i v_i \bigg) = \sum\limits_{i=1}^n \lambda_i \ u(v_i)$\\\\
+{\tt F} $\subset$ {\tt E} (avec {\tt E} e.v. et {\tt F} sous-e.v), signifie que toute c.l. de {\tt F}  est dans $(\ v_1-v_n \in {\tt F}_1 \ \lambda_1-\lambda_n \in \mathbb K$, alors $\sum\limits_{i=1}^n \lambda_i v_i  \in $ {\tt F} )
+\end{mdframed}
+
+\bigskip
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Définition:}}\\
+Soit {\tt F} sous e.v.\\
+Vect A (aussi noté $<$A$>$) = $\underset{A\subset {\tt F}}{\cap} F \overset{lemme}{=} \sum\limits^n_{i=1} \lambda_i v_i ;v_1,\cdots,v_n \in A ; \lambda_1,\cdots,\lambda_n \in \mathbb K$ toutes les c.l de A.\\
+Autremend dit: Vect A est l'ensemble des c.l. de vecteurs de A. $\vec v$ appartient à Vect A si et seulement s'il existe une famille finie de scalaires $\lambda_i$ et telle que $\vec v = \sum\limits_{a\in A} \lambda_a \cdot a$\\
+Vect A est sous e.v. de E, on l'appelle l'{\bf espace vectoriel engendré} par A. \\
+Soit A et B 2 sous-ensembles de {\tt E}. A = B $\Leftrightarrow$ A $\subset$ B et B $\subset$ A
+\end{mdframed}
+
+\subsubsection{Famille génératrice:} % Famille génératrice
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Définition:}}\\
+Soit A $\subset$ {\tt E}, on dit que A est une {\bf famille génératrice} (ou partie génératrice) si Vect A = E.\\
+Autrement dit, $\forall v \in {\tt E}, \exists $ une c.l. (finies) de vecteurs de A tels que $v = \sum\limits_{i=1}^n \lambda_i v_i , v_1; \cdots ; v_n \in$ A
+\end{mdframed}
+
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Lemmes:}}
+\begin{itemize}
+ \item Si A est génératrice et A $\subset$ B, alors B est génératrice.
+ \item Soit A une famille génératrice et $v \in$ A, alors A$\setminus \{ v \}$ est génératrice si et seulement si $v$ est une c.l. de vecteurs de A$\setminus \{ v \}$
+\end{itemize}
+\end{mdframed}
+
+\begin{mdframed}[linecolor=green]
+\textcolor{green}{{\bf Exemple:}}\\
+Soit {\tt E} = $\mathbb R^3$\\
+La famille {\tt A} = $\{ (0;1;0);(0;0;1);(1;1;1) \}$ est elle génératrice?\\
+Soit un vecteur quelconque $(a;b;c)$, existe t'il une solution telle que : \\
+$(a;b;c) \stackrel{?}{=} x\cdot(0;1;0) + y\cdot(0;0;1)+z\cdot(1;1;1)$ \\
+Ce qui est équivalent à trouver une solution au système: \\
+\[ \left \{
+\begin{array}{l}
+z = a\\
+x+z = b\\
+y+z = c\\
+\end{array}
+\right .
+\Leftrightarrow
+\left \{
+\begin{array}{l}
+x = b-a\\
+y = c-a\\
+z = a\\
+\end{array}
+\right .
+\]
+L'on remarque qu'il manque à {\tt A} le vecteur canonique $(1;0;0)$ pour qu'elle soit une famille génératrice. Mais peut-être que ce vecteur manquant peut s'écrire comme combinaison linéaire des autres (et du coup {\tt A} serai une famille génératrice). Et donc : \\
+$(1;0;0) \stackrel{?}{=} x\cdot(0;1;0) + y\cdot(0;0;1)+z\cdot(1;1;1)$\\ et en reprenant le système  au-dessus et en remplaçant $a,$ $b$ et $c$ par 1, 0 et 0, on trouve:\\
+\[ \left \{
+\begin{array}{l}
+x = 0-1\\
+y = 0-1\\
+z = 1\\
+\end{array}
+\right .
+\Leftrightarrow
+\left \{
+\begin{array}{l}
+x = -1\\
+y = -1\\
+z = 1\\
+\end{array}
+\right .
+\]
+Donc d'après le 2eme lemme {\tt A} est une famille génératrice.\\
+Remarque: si l'on remplace dans l'égalité les résultats de $x$, $y$ et $z$ trouvé dans le système, on retrouve le vecteur manquant.\\
+$(1;0;0) \stackrel{?}{=} x\cdot(0;1;0) + y\cdot(0;0;1)+z\cdot(1;1;1)$\\
+$(1;0;0) \stackrel{?}{=} (-1)\cdot(0;1;0) + (-1)\cdot(0;0;1)+1\cdot(1;1;1)$\\
+$(1;0;0) \stackrel{?}{=} (0;-1;0) + (0;0;-1)+(1;1;1)$\\
+$(1;0;0) \stackrel{?}{=} (1;0;0)$
+\end{mdframed}
+
+\subsubsection{Famille libre/liée:} % Famille génératrice
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Définition:}}\\
+Soit {\tt A} $\subset$ {\tt E} sous-ensemble de {\tt E}\\
+On dit que {\tt A} est {\bf libre} si la seule c.l. de vecteurs de {\tt A} égale à $\overrightarrow{0_E}$ est la c.l. triviale.\\
+C'est à dire si $\sum\limits_{i=1}^n \lambda_i v_i = \overrightarrow{0_E}, v_1; ... ; v_n \in {\tt A}\Rightarrow \lambda_1 = 0;...; \lambda_n = 0$\\
+Si elle n'est pas libre, elle est {\bf liée}.
+\end{mdframed}
+
+\begin{mdframed}[linecolor=green]
+\textcolor{green}{{\bf Exemple:}}
+\begin{enumerate}
+ \item {\tt E} = $\mathbb R^2$, {\tt A} = \{ (-2;3) ; (2;-3) \}\\
+ 	 {\tt A} est liée car $1\cdot\vec v_1 + 1\cdot\vec v_2 = 1\cdot(-2;3) + 1\cdot(2;-3) = (-2;3)+(2;-3) =  	 (0;0) = \overrightarrow{0_E}$\\
+	 {\tt A} est donc liée car on a trouvé $\lambda_1 = \lambda_2 = 1 \neq 0$
+\item {\tt E} = $\mathbb R^3$, {\tt A'} = \{ (1;1;3) ; (5;2;-1) ; (4;1;-4) \}\\
+	 {\tt A'} est liée aussi car  $\vec v_1 - \vec v_2 + \vec v_3 = \overrightarrow{0_E}$\\
+	 {\tt A'} est donc liée car on a trouvé $\lambda_1 = \lambda_3 = 1 \neq 0$ et $\lambda_2 = -1 \neq 0$
+\item {\tt E} = $\mathbb R^3$, {\tt A''} = \{ (1;1;3) ; (5;2;-1) \}\\
+	A vu d'oeil on ne sait pas dire donc on résout le systèmes, il faut donc essayer de trouver une c.l. des éléments de {\tt A''} pour trouver le $\overrightarrow{0_E}$. C'est à dire:\\
+	$\lambda_1\cdot(1;1;3) + \lambda_2\cdot(5;2;-1) = \overrightarrow{0_E}$ = (0;0;0)\\
+	Ce qui revient à résoudre le système:
+	\[ \left \{
+	\begin{array}{l}
+	\lambda_1 + 5\cdot\lambda_2 = 0\\
+	\lambda_1 + 2\cdot\lambda_2 = 0\\
+	3\cdot\lambda_1 - \lambda_2 = 0\\
+	\end{array}
+	\right .
+	\Leftrightarrow
+	\left \{
+	\begin{array}{l}
+	\lambda_1 = -5\cdot\lambda_2\\
+	\lambda_1 = -2\cdot\lambda_2\\
+	\lambda_1 = \frac{\lambda_2}{3}\\
+	\end{array}
+	\right .
+	\Leftrightarrow
+	\lambda_1 = \lambda_2 = 0\\
+	\]
+	Donc {\tt A''} est libre!
+\end{enumerate}
+Si on avait essayé de résoudre le système du 2. on aurait obtenu le calcul suivant:\\
+\[ \left \{
+\begin{array}{l}
+\lambda_1 + 5\cdot\lambda_2 + 4\cdot\lambda_3= 0\\
+\lambda_1 + 2\cdot\lambda_2 + \lambda_3= 0\\
+3\cdot\lambda_1 - \lambda_2 - 4\cdot\lambda_3= 0\\
+\end{array}
+\right .
+\Leftrightarrow
+\left \{
+\begin{array}{l}
+\lambda_1 = \lambda_3\\
+\lambda_2 = -\lambda_3\\
+\end{array}
+\right .
+\Leftrightarrow
+\lambda_1 = -\lambda_2 = \lambda_3\\
+\]
+Donc $\forall \lambda, \lambda\cdot \vec v_1- \lambda\cdot\vec v_2 + \lambda\cdot\vec v_3 = \overrightarrow{0_E}$\\
+La réponse (contrexemple) que nous avions trouvé : $\vec v_1 - \vec v_2 + \vec v_3 = \overrightarrow{0_E}$ correspondant au vecteur (1;-1;1) et correspond donc bien à une de nos réponses aux systèmes (avec $\lambda$ = 1)
+\end{mdframed}
+
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Définition:}}\\
+Si {\tt A} est libre, on dira que les vecteurs de {\tt A} sont {\bf linéairement indépendant} (l.i),
+si {\tt A} n'est pas libre (liée), alors on dira que ses vecteurs sont {\bf linéairement dépendant} (l.d.)
+\end{mdframed}
+
+\begin{mdframed}[linecolor=cyan]
+\textcolor{cyan}{{\bf Remarque:}}\\
+Si $\overrightarrow{0_E} \in {\tt A}$, {\tt A} ne peux pas être libre (donc elle est d'office liée).\\
+Car $\lambda\cdot\overrightarrow{0_E}=\overrightarrow{0_E} \qquad \forall \lambda \neq 0$
+\end{mdframed}
+
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Lemme:}}\\
+Soit {\tt A} partie de {\tt E}:
+\begin{itemize}
+ \item {\tt A} est liée, {\tt A} $\subset$ {\tt B}, {\tt B} est liée
+ \item {\tt A} est libre, {\tt B} $\subset$ {\tt A}, {\tt B} est libre
+ \item {\tt A} est libre, $v \in$ vect({\tt A}), alors il existe une unique c.l.de vecteurs de {\tt A} égale à $v$.
+ 		  Autrement dit: $\exists (v_1;...;v_n) \in {\tt A}, v = \sum\limits_{i=1}^n \lambda_i v_i$
+ \item {\tt A} est libre, $v \in$ {\tt E}, alors {\tt A} $\cup \{ v\}$ est libre $\Leftrightarrow v \in$ vect({\tt A})
+\end{itemize}
+\end{mdframed}
+
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+\[ \mathrm{Si\ {\tt A}\  est\  libre:}
+\left \{
+   \begin{array}{l}
+      \mathrm{Si \ } v \in {\tt A},\  {\tt A}\setminus \{ v \} \mathrm{\ est\ libre} \\
+      \mathrm{Si \ } v \notin {\tt A},\  {\tt A}\cup \{ v \} \mathrm{\ est\ libre} \Leftrightarrow v \notin \mathrm{vect({\tt A})} \\
+   \end{array}
+\right .\]
+\[ \mathrm{Si\ {\tt A}\  est\  generatrice:}
+\left \{
+   \begin{array}{l}
+      \mathrm{Si \ } v \notin {\tt A},\  {\tt A}\cup \{ v \} \mathrm{\ est\ generatrice} \\
+      \mathrm{Si \ } v \in {\tt A},\  {\tt A}\setminus \{ v \} \mathrm{\ est\ generatrice} \Leftrightarrow v \in \mathrm{vect({\tt A})} \\
+   \end{array}
+\right .\]
+$v \in$ vect({\tt A}) : autrement dit : s'il existe dans {\tt A} une c.l. de $v$ qui ne soit pas $v$
+
+\end{mdframed}
+
+\subsubsection{Bases et dimensions}  % Bases & dimensions 
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Définition:}}\\
+Soit {\tt B} $\subset$ {\tt E} une partie de {\tt E}.\\
+Si {\tt B} est libre et génératrice on dit que {\tt B} est une {\bf base}.\\
+Soit {\tt E} un e.v. alors {\tt E} admet une base (et en fait beaucoup).\\
+Toutes les bases de {\tt E} ont le même nombre d'éléments. C'est la {\bf dimension} de {\tt E}
+\end{mdframed}
+
+\begin{mdframed}[linecolor=green]
+\textcolor{green}{{\bf Exemple:}}
+\begin{itemize}
+ \item dim($\mathbb R^n$) = $n$
+ \item dim($\mathbb R^\mathbb N$) = $\infty$ (car $\mathbb N$ à une infinité d'éléments)
+ \item $v \in {\tt E}, v \neq 0 $ dim($\mathbb K_v$) = dim(vect(\{$v$\})) = 1  (que $\vec v$)
+ \item dim(\{ $\overrightarrow{0_E}$ \}) = 0 (par convention)
+\end{itemize}
+\end{mdframed}
+
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+Si {\tt A} est libre, il existe {\tt B} telle que {\tt A} $\subset$ {\tt B}, avec {\tt B} une base.\\
+Inversement, si {\tt A} est génératrice, il existe une base {\tt B} contenue dans {\tt A}.\\
+Autrement dit une famille qui serai libre/génératrice mais qui ne serai pas génératrice/libre, peux devenir une base (donc libre et génératrice), à condition qu'on rajoute/enlève des vecteurs correctement.
+\end{mdframed}
+
+\begin{mdframed}[linecolor=green]
+\textcolor{green}{{\bf Exemple:}}\\
+{\tt A} = \{(1 ; 0 ; 0)\} $\rightarrow$ est libre (mais pas génératrice, on va donc essayé de rajouter des vecteur dans {\tt A} pour que ca devienne générateur (en restant libre))\\
+{\tt A}' = \{(1 ; 0 ; 0) ; (1 ; 5 ; 3)\} $\rightarrow$ est encore libre (mais toujours pas génératrice)\\
+{\tt A}''= \{(1 ; 0 ; 0) ; (1 ; 5 ; 3) ; (2 ; 5 ; 3)\} $\rightarrow$ n'est plus libre (il existe une c.l : $v_3 = v_1 + v_2$). Il faut donc faire attention au vecteurs que l'on rajoute, car même si la famillle était génératrice, elle ne serai pas une base car {\tt A}'' n'est plus libre\\ \\
+{\tt A} = \{(1 ; 0 ; 0) ; (0 ; 1 ; 0) ; (0 ; 0 ; 1) ; (1 ; 1 ; 1) ; (4 ;  3 ; 21)\} $\rightarrow$ est génératrice (mais pas libre par ex: $v_4 = v_1 + v_2 + v_3$), on va donc essayer d'enlever des vecteurs de {\tt A} pour que cela devienne libre, tout en restant génératrice.\\
+{\tt A}' = \{(1 ; 0 ; 0) ; (0 ; 1 ; 0) ; (0 ; 0 ; 1) ; (1 ; 1 ; 1)\} $\rightarrow$ est encore génératrice (mais toujours pas libre)\\
+{\tt A}'' = \{(1 ; 0 ; 0) ; (0 ; 1 ; 0) ; (0 ; 0 ; 1)\} $\rightarrow$ est génératrice et libre, c'est donc une base.
+\end{mdframed}
+
+\subsubsection{Relation d'équivalence} % Petite parenthèse sur la théorie des ensembles - Relation d'équivalence
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Définition:}}\\
+Une {\bf relation d'équivalence} dans un ensemble {\tt A} (quelconque) est une {\bf relation binaire} (relation entre paires d'éléments) de {\tt A}, notée $\sim$.\\
+Elle est :
+\begin{enumerate}
+ \item {\bf Réfléxive} : $ x \sim x \quad \forall x \in {\tt A}$\\
+ {\it(tout le monde est ami avec soi-même)}
+ \item {\bf Symétrique} : si $ x \sim y$ alors $ y \sim x \quad \forall x,y \in {\tt A}$\\
+ {\it(si je suis ami avec A, alors A est ami avec moi aussi)}
+ \item {\bf Transitive} : si $x \sim y$ et $y \sim z$ alors $x \sim z \quad \forall x,y,z \in {\tt A}$\\
+ {\it(les amis de mes amis, sont mes amis)}
+\end{enumerate}
+\begin{center}
+\includegraphics[scale = 0.66]{equiv.png}
+\end{center}
+\end{mdframed}
+
+\begin{mdframed}[linecolor=magenta]
+\textcolor{magenta}{{\bf Notation:}}\\
+$x \sim_p y$ s'écrit aussi communément $x \equiv y[p]$
+\end{mdframed}
+
+\begin{mdframed}[linecolor=green]
+\textcolor{green}{{\bf Exemple:}}\\
+La relation "être parallèle" (//) est une relation d'équivalence pour l'ensemble {\tt E} des droites du plans.
+\begin{enumerate}
+  \item Réflexivité : Toutes les droites sont parallèles à elle-même
+  \item Symétrie : Si D // D' alors D' // D
+  \item Transitivité : Si D // D' et que D' // D'' alors D // D''
+\end{enumerate}
+
+Soit $p \in \mathbb N^*$. On dira que deux nombres entiers relatifs $x$ et $y$ sont congrus modulo $p$ et on notera: $x \equiv y[p]$ si $x-y$ est un multiple de $p$. Prouver qu'il s'agit d'une relation d'équivalence et qu'il y a exactement $p$ classes d'équivalences. \\
+\\
+$x \equiv y[p]$ si $x-y$ est un multiple de $p$. Revient au même que : si $p$ divise $x-y$\\
+Si c'est une classe d'équivalences, alors elle respecte les 3 propriétés:
+\begin{enumerate}
+  \item Réflexivité : $x \sim x$\\
+  $x \stackrel{?}{\equiv}  x[p] \rightarrow x-x = 0$ (qui est bien un multiple de $p$)
+  \item Symétrie : $x \sim y \Rightarrow y \sim x $\\
+  $x \equiv y[p] \stackrel{?}{\Rightarrow} y \equiv x[p]$\\
+  $x \equiv y[p] \rightarrow x-y$ multiple de p\\
+  $y \equiv x[p] \rightarrow y-x$ multiple de p ? $y-x = -1\cdot(x-y)$ qui sont tout 2 multiple de $p$ OU si $p$ divise $x-y$ alors $p$ divise aussi $y-x$
+  \item Transitivité : $x \sim y$ et $y \sim z \Rightarrow x \sim z$\\
+   $x \sim y \rightarrow p$ divise $x-y \rightarrow x-y = q_1\cdot p \quad q_1 \in \mathbb Z$\\ 
+   $y \sim z \rightarrow p$ divise $y-z \rightarrow y-z = q_2\cdot p \quad q_2 \in \mathbb Z$\\
+   En sommant les 2 équations :\\
+   $(x-y)+(y-z) = (q_1\cdot p) + (q_2 \cdot p) \Leftrightarrow x-z = p\cdot(q_1 + q_2)$\\
+   Or $x \sim z \rightarrow x-z = p \cdot q_3 \rightarrow q_3 = (q_1+q_2)$ qui est multiple de $p$\\
+\end{enumerate}
+Il s'agit donc bien d'une relation d'équivalence
+\end{mdframed}
+
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Définition:}}\\
+Soit {\tt A} muni d'une {\bf classe d'équivalence} $\sim$.\\
+La classe d'un élément $x\in{\tt A}$ est le sous-ensemble de {\tt A} défini par : $[x]_N = \{ y \in {\tt A} \ | \  x \sim y \}$\\
+\begin{center}
+\includegraphics[scale = 0.66]{equiv2.png}
+\end{center}
+\end{mdframed}
+
+\begin{mdframed}[linecolor=green]
+\textcolor{green}{{\bf Exemple:}}\\
+(Classes d'équivalences des exemple précédent)\\
+Le parallélisme, sur l'ensemble des droites du plan à comme classe les directions.\\
+\\
+Sur l'ensemble $\mathbb Z$ des entiers relatifs, la congruence modulo $n$ (pour un entier $n$ fixé) est une relation d'équivalence, dont les classes forment le groupe cyclique $\mathbb Z/n\mathbb Z$. Qui correspond à : \\
+\{ $x+p\ ;\ x + 2p\ ;\ ...\ ;\ x - p\ ;\ x - 2p\ ;\ ... \} = \{ x+kp\ |\  k\in \mathbb Z \} = x + p\mathbb Z $
+\end{mdframed}
+
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+L'ensemble des classes d'équivalences de $\sim$ forme une partition de {\tt E}.\\
+({\tt A}$_i)_{i \in I}$ famille de partie de {\tt E} : $\forall i \in I ,{\tt A}_i \subset {\tt E}$.\\
+On dira que ({\tt A}$_i)_{ \in I}$ est une partition de {\tt E} si:
+\begin{itemize}
+  \item ${\tt A}_i \cap {\tt A}_j = \emptyset \quad$ si $i \neq j$ (pas d'intersection entre les familles) 
+  \item $\underset{i\in {\tt I}}{\cup} {\tt A}_i = {\tt E}$ (l'union de toute les familles forme l'ensemble)
+\end{itemize}
+\begin{center}
+\includegraphics[scale = 0.7]{partition.png}
+\end{center}
+\end{mdframed}
+
+\begin{mdframed}[linecolor=magenta]
+\textcolor{blue}{{\bf Définition:}}\\
+\{ $[x], x \in {\tt A} \} = {\tt A}/\sim $ et est appelé "quotient de {\tt A} par $\sim$"
+\end{mdframed}
+
+\begin{mdframed}[linecolor=green]
+\textcolor{green}{{\bf Exemple:}}\\
+(Avec le modulo de l'exemple précédent)\\
+$\mathbb Z/\sim_p = p$ éléments $:= \mathbb Z / p\mathbb Z$\\
+Pour $p = 2$ on à :  $\mathbb Z / 2\mathbb Z \approx$ \{[0];[1]\} = \{\{ "pairs" (multiples de 2)\ ;\  "impairs"\}\}\\
+Pour $p = 3$ on a donc : \{\{"nombre \% 3 = 0"\ ;\ "nombre \% 3 = 1"\ ;\ "nombre \% 3 = 2 "\}\} (\% est considéré comme le symbole du modulo comme en Python)
+\end{mdframed}
+
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+{\tt E}/{\tt F} (l'ensemble des classes d'équivalences) à une structure vectorielle canonique ( {\tt E}/{\tt F} est un e.v. sur $\mathbb K$)
+\end{mdframed}
+
+\begin{mdframed}[linecolor=cyan]
+\textcolor{cyan}{{\bf Remarque:}}\\
+Une autre relation d'équivalence:\\
+Soient {\tt A} et {\tt B} 2 ensembles, on dira que {\tt A} et {\tt B} ont "le même cardinal" s'il existe une bijection $f:{\tt A}\rightarrow {\tt B}$ noté: \#{\tt A} = \#{\tt B} (et revient en gros au nombres d'éléments de l'ensemble).
+ \end{mdframed}
+
+\begin{mdframed}[linecolor=magenta]
+\textcolor{magenta}{{\bf Notation:}}\\
+Si \#{\tt A} = \#\{1 ; ... ; $n$\} on dira que A est fini et on notera \#{\tt A} = $n$
+\end{mdframed}
+
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+On dira que \#{\tt A} $\leq$ \#{\tt B} s'il existe une injection $f : {\tt A} \to {\tt B}$\\
+Contor-Bernstein : Si \#{\tt A} $\leq$ \#{\tt B} et \#{\tt B} $\leq$ \#{\tt A} alors \#{\tt A} = \#{\tt B}
+\end{mdframed}
+
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Définition:}}\\
+Si \#{\tt A} = \#$\mathbb N$, on dit que {\tt A} est {\bf dénombrable}\\
+Si \#{\tt A} = \#$\mathbb R$, on dit que {\tt A} à la puissance du continu
+\end{mdframed}
+
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Propriétés:}}
+\begin{itemize}
+ \item Si \#{\tt A} $\leq \#\mathbb N$, soit {\tt A} est fini, soit {\tt A} est dénombrable
+ \item Si \#{\tt A} = $n$, \#(P({\tt A})) = $2^n$ \ \ (P({\tt A}) = \{ sous-ensemble de {\tt A} \})
+ \item Si \#{\tt A} = $n$ et \#{\tt B} = $m$, \#({\tt B}$^{\tt A}) = m^n = \#{\tt B}^{\#{\tt A}} \quad ({\tt B}^{\tt A} = \{ f : {\tt A} \to {\tt B} \})$
+ \item $\# \mathbb Z = \# \mathbb N$ (en pouvant, par exemple, associé les éléments pairs des éléments de $\mathbb N$ aux éléments positifs de $\mathbb Z$ et ls impaires aux négatifs (Voir scan théorique page 17 pour détails)), du coup $\mathbb Z$ est dénombrable, $\mathbb N^2$ aussi et également $\mathbb Q$.
+ \item Mais $\mathbb R$ n'est pas dénombrable, autrement dit : il n'existe pas de bijection : $f : \mathbb N \to \{0\ ;\ ...\ ;\ 9\}^\mathbb N \Rightarrow \#\{0\ ;\ ...\ ;\ 9\}^\mathbb N > \#\mathbb N$
+ \end{itemize}
+\end{mdframed}
+
+\subsubsection{Retour sur Bases et dimensions}
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Rappel:}}\\
+Soit {\tt E} un e.v sur $\mathbb K$. Alors il existe de(s) base(s) noté $B$, $B'$, $B''$, ... .\\
+\#$B$ est appelé dimension de {\tt E}\\
+S'il existe une famille génératrice finie dans {\tt E}, on dit que {\tt E} est de {\bf dimension finie}
+\end{mdframed}
+
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+Si j'ai 2 bases $B$ et $B'$ de {\tt E}, alors \#$B$ = \#$B'$.
+\end{mdframed}
+
+\bigskip
+
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Rappel:}}\\
+Soit {\tt E}$_2$ un e.v sur $\mathbb K$.\\ 
+{\tt E}$_2^{{\tt E}_1} = \{ f : {\tt E}_1 \rightarrow {\tt E}_2 \}$ est un e.v. sur $\mathbb K$ on suppose de plus que {\tt E}$_1$ est un e.v. sur  $\mathbb K$.
+\end{mdframed}
+
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Définition:}}\\
+L({\tt E}$_1, {\tt E}_2) \subset  {\tt E}_2^{{\tt E}_1}$, L({\tt E}$_1, {\tt E}_2) = \{ u : {\tt E}_1 \rightarrow {\tt E}_2 | u $ linéaire, c'est à dire: $u(\lambda\cdot v + w) = \lambda u(v) + u(w) \}$
+\end{mdframed}
+
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorèmes:}}\\
+\begin{itemize}
+ \item L({\tt E}$_1$, {\tt E}$_2$) est un sous e.v. de {\tt E}$_2^{{\tt E}_1}$
+ \item Si dim({\tt E}$_1) <  +\infty$ et dim({\tt E}$_2) <  +\infty$, dim(L({\tt E}$_1, {\tt E}_2$)) = dim({\tt E}$_1) \times$ dim({\tt E}$_2$)
+ \item Si \#{\tt A} $< +\infty$ et {\tt E} un e.v. de dimension finie: dim({\tt E}$^{\tt A}$) = (dim({\tt E}))$^{\#{\tt A}}$
+\end{itemize}
+\end{mdframed}
+
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+Soit {\tt E} un e.v. sur $\mathbb K$, $B=\{ e_1\ ;\ ...\ ;\  e_n\}$ base de {\tt E}, dim({\tt E}) = $n$\\
+$\phi: \mathbb K^n \rightarrow {\tt E}$\\
+$(\lambda_1 \  ;\  ...\ ;\ \lambda_n) \mapsto \sum\limits_{i=1}^n \lambda_i e_i$ alors $\phi$ est un isomorphisme
+\end{mdframed}
+
+
+\subsection{Matrices:} % MATRICES
+
+\begin{mdframed}[linecolor=blue]
+\textcolor{blue}{{\bf Définition:}}\\
+Soit $u: {\tt E} \rightarrow {\tt E}' \quad$ avec {\tt E} et {\tt E}' 2 e.v sur $\mathbb K$ avec \\
+$B = \{ e_1\ ;\ ...\ ;\ e_n\}$ base de {\tt E}\\
+$B' = \{ e'_1\ ;\ ...\ ;\ e'_n\}$ base de {\tt E}'\\ \\
+$u(\phi(\lambda_1\ ;\ ...\ ;\ \lambda_n)) = \sum\limits_{i, j=1}^{n,m} \lambda_i\ a_{j, i}\ e'_j$ (voir théorème précédent)\\
+On dira que la matrice $M=[a_{j,i}]_{\substack{1 \leq i \leq m \\ 1 \leq j \leq n}} = 
+\begin{pmatrix}
+  a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+  a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  a_{m,1} & a_{m,2} & \cdots & a_{m,n}
+ \end{pmatrix}$\\
+ est la matrice associée à $u$ dans les bases $B$ et $B'$.
+\end{mdframed}
+
+\begin{mdframed}[linecolor=green]
+\textcolor{green}{{\bf Exemple:}}\\
+Soit $u: \mathbb R^3 \to \mathbb R^2 \\
+u(x,y,z) = (x+3y-z,y+2z)$\\
+Trouver la matrice associée à $u$.\\ \\
+La base canonique de $\mathbb R^3$ est : \{$e_1, e_2, e_3$\} = \{(1;0;0), (0;1;0), (0;0;1)\}\\
+La base canonique de $\mathbb R^2$ est : \{$e'_1, e'_2$\} = \{(1;0),(0;1)\}\\
+Nous allons trouver les vecteurs de la base canonique de départ, associé à $u$:\\
+$u(e_1) = u((1;0;0)) = (1+3\cdot 0; 0 + 2\cdot 0) =(1;0) = e'_1 \\
+u(e_2) = u((0;1;0)) = (3;1) = 3\cdot e'_1+ e'_2 \\
+u(e_3) = u((0;0;1)) = (-1;2) = -e'_1+2\cdot e'_2 \\$
+La matrice associée à $u$ est les résultats précédents mis en colonnes:\\
+Matrice associée à $u = 
+\bordermatrix{& u(e_1) & u(e_2) & u(e_3) \cr
+		     & 1 & 3 & -1 \cr
+                      & 0 & 1 & 2 \cr} =
+\begin{pmatrix}
+  1 & 3 & -1 \\
+  0 & 1 & 2 
+ \end{pmatrix}$\\ \\ \\
+ Si l'on vérifie dans l'autre sens en utilisant la définition au dessus:
+ $u(\lambda_1\ ;\ \lambda_2\ ;\ \lambda_3) = \sum\limits_{i=1}^3 \sum\limits_{j=1}^2 \lambda_i \ a_{j,i}\ e'_j $ qui peut etre interprété (pour les BG informaticiens :D ) comme un {\tt for} imbriqué en {\tt Python}.\\
+Si l'on décompose:
+\renewcommand{\labelitemi}{$\bullet$}
+
+\begin{itemize}
+ \item $i =1:$
+ \begin{itemize}
+  \item $j = 1: \lambda_1\cdot a_{1,1}\cdot e'_1 = \lambda_1\cdot1\cdot(1;0) = (\lambda_1;0)$
+  \item $j = 2:  \lambda_1\cdot a_{2,1}\cdot e'_2 = \lambda_1\cdot0\cdot(0;1) = 0$
+ \end{itemize}
+ \item $i =2:$
+ \begin{itemize}
+  \item $j = 1: \lambda_2\cdot a_{1,2}\cdot e'_1 = \lambda_2\cdot3\cdot(1;0) = (3\lambda_2;0)$
+  \item $j = 2:  \lambda_2\cdot a_{2,2}\cdot e'_2 = \lambda_2\cdot1\cdot(0;1) = (0;\lambda_2)$
+ \end{itemize}
+ \item $i=3:$
+\begin{itemize}
+  \item $j = 1: \lambda_3\cdot a_{1,3}\cdot e'_1 = \lambda_2\cdot(-1)\cdot(1;0) = (-\lambda_3;0)$
+  \item $j = 2:  \lambda_3\cdot a_{2,3}\cdot e'_2 = \lambda_2\cdot2\cdot(0;1) = (0;2\lambda_3)$
+ \end{itemize}
+\end{itemize}
+La somme des 6 lignes donne: $(\lambda_1+3\lambda_2-\lambda_3;\lambda_2+2\lambda_3)\\
+u(\lambda_1\ ;\ \lambda_2\ ;\ \lambda_3) = (\lambda_1+3\lambda_2-\lambda_3;\lambda_2+2\lambda_3)$
+Ce qui est bien se qu'on avait au départ (en remplaçant les $\lambda$ par $x$, $y$ et $z$)
+\end{mdframed}
+
+\begin{mdframed}[linecolor=magenta]
+\textcolor{magenta}{{\bf Notation:}}\\
+Les matrices sont aussi notée Mat$_\mathbb K(m,n)$ avec:\\
+$m$ = nombre de colonnes\\
+$n$ = nombre de lignes
+\end{mdframed}
+
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+Les matrices Mat$_\mathbb K(m,n)$ sont des e.v. sur $\mathbb K$.\\
+Chaque matrice à sa "propre" application linéaire qui lui est assciée.
+\end{mdframed}
+
+\bigskip
+\begin{mdframed}[linecolor=red]
+\textcolor{red}{{\bf Théorème:}}\\
+Soit $u: {\tt E} \rightarrow {\tt E}'$ et $u': {\tt E}' \rightarrow {\tt E}''$ avec {\tt E}, {\tt E}' et {\tt E}'' e.v. sur $\mathbb K$.\\
+Si $u \in L({\tt E},{\tt E}')$ et $u' \in L({\tt E}',{\tt E}'')$, alors $u' \circ u \in L({\tt E},{\tt E}')$\\
+Soit:\\
+$B = \{ e_1\ ;\ ...\ ;\ e_n\}$ base de {\tt E}\\
+$B' = \{ e'_1\ ;\ ...\ ;\ e'_n\}$ base de {\tt E}'\\
+$B'' = \{ e''_1\ ;\ ...\ ;\ e''_n\}$ base de {\tt E}''\\
+$[a_{i,j}]$ matrice de $u$\\
+$[b_{j,k}]$ matrice de $u'$\\
+$[c_{i,k}]$ matrice de $u' \circ u$\\
+$(u' \circ u)(e_i) = ... = \sum\limits_{k=1}^p (\sum\limits_{j=1}^m \underbrace{a_{i,j}\cdot b_{j,k}}_{c_{i,k}})e''_k$
+
+
+\end{mdframed}
+
+
+
+
+
+
+\end{document}
+
