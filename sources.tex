@@ -11,6 +11,11 @@
 \usepackage{times}
 \usepackage{fullpage}
 
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\ImAppli}{Im}
+
+\DeclareMathOperator{\R}{\mathbb R}
+
 \title{Résumé cours de Maths - 2eme Session\\ \textbf{Algèbre Linéaire}}
 
 \pagestyle{plain}
@@ -55,7 +60,7 @@
         
             \begin{mdframed}[linecolor=magenta]
                 \textcolor{magenta}{\textbf{Notation :}} \\
-                $\mathbb K = \mathbb R, \mathbb C$, $\{0, 1\}$ ou n'importe quel "corps".
+                $\mathbb K = \R, \mathbb C$, $\{0, 1\}$ ou n'importe quel "corps".
             \end{mdframed}
 
             \begin{mdframed}[linecolor=blue]
@@ -110,7 +115,7 @@
 
             \begin{mdframed}[linecolor=red]
                 \textcolor{red}{\textbf{Théorème :}}\\
-                 $\mathbb K^n$ est un $\mathbb K$-e.v. (par exemple $\mathbb R^n$ ou $\mathbb C^n$)
+                 $\mathbb K^n$ est un $\mathbb K$-e.v. (par exemple $\R^n$ ou $\mathbb C^n$)
             \end{mdframed}
             
             \bigskip
@@ -147,8 +152,8 @@
                 Les application suivantes sont elles linéaires?
                 
                 \begin{itemize}
-                    \item $a : \mathbb R^2 \rightarrow \mathbb R^2 : (x, y) \mapsto (y, x)$ 
-                    \item $b : \mathbb R^2 \rightarrow \mathbb R^2 : (x, y) \mapsto (\sin(x), y)$
+                    \item $a : \R^2 \rightarrow \R^2 : (x, y) \mapsto (y, x)$ 
+                    \item $b : \R^2 \rightarrow \R^2 : (x, y) \mapsto (\sin(x), y)$
                 \end{itemize}
                 
                 1) Si $a$ est linéaire, elle doit respecter les 2 propriétés énoncées plus haut.
@@ -191,7 +196,7 @@
                 
                 (Droite) : $b(x, y) + b(v, w) = (\sin(x), y) + (\sin(v), w) = (\sin(x) + \sin(v), y + w)$
                 
-                Or, $\sin(x + v) \neq \sin(x) + \sin(v) \forall x, v \in \mathbb R$,
+                Or, $\sin(x + v) \neq \sin(x) + \sin(v) \forall x, v \in \R$,
                 donc l'égalité est fausse. Comme nous avons une contradiction
                 il n'est pas utile de vérifier la seconde propriété. $b$ n'est
                 pas linéaire. Il suffit de trouver un \textbf{contre-exemple}
@@ -228,18 +233,18 @@
                 \begin{itemize}
                     \item f est injective $\Leftrightarrow$ il n'existe pas 2 points qui ont la même image.
                           Autrement dit, $f(v) = f(w) \Rightarrow v = w$. \\
-                          ex : $f : \mathbb R \rightarrow \mathbb R : x \mapsto x^2$
-                          n'est pas injective sur $\mathbb R$ car pour $f(x) = 1$, on a
+                          ex : $f : \R \rightarrow \R : x \mapsto x^2$
+                          n'est pas injective sur $\R$ car pour $f(x) = 1$, on a
                           $x^2 = 1 \Leftrightarrow x \in \{-1, 1\}$,
-                          mais elle est injective sur $\mathbb R^+$ ;
+                          mais elle est injective sur $\R^+$ ;
                     \item f est surjective $\Leftrightarrow$ tout les points de l'ensemble des images sont atteints.
                           Autrement dit, $\forall w \in F, \exists v \in E t.q. \; f(v) = w$. \\
-                          ex : $f: \mathbb R \rightarrow \mathbb R : x \mapsto  x^2$
-                          n'est pas surjective sur l'ensemble image $\mathbb R$ car
+                          ex : $f: \R \rightarrow \R : x \mapsto  x^2$
+                          n'est pas surjective sur l'ensemble image $\R$ car
                           $\nexists x t.q. \; f^2 = -1$. Mais elle est surjective
-                          sur l'ensemble des images $\mathbb R^+$ ;
+                          sur l'ensemble des images $\R^+$ ;
                     \item f est bijective $\Leftrightarrow$ l'application est à la fois injective et surjective.
-                          ex : $f : \mathbb \rightarrow \mathbb R : x \mapsto x^3$.
+                          ex : $f : \mathbb \rightarrow \R : x \mapsto x^3$.
                 \end{itemize}
                 
                 Avec un schéma: \\
@@ -250,10 +255,10 @@
                 \textcolor{green}{\textbf{Exemple :}} \\
                 Comment prouver qu'une application est bijective?
                 
-                $u :\mathbb R^3 \to \mathbb R^3 : (x, y, z)\mapsto: (x+y-z, x-y, z)$
+                $u :\R^3 \to \R^3 : (x, y, z)\mapsto: (x+y-z, x-y, z)$
                 
                 Si $u$ est bijective, alors pour $(a, b, c)$ fixé, il existe un
-                unique élément $(x, y, z) \in \mathbb R^3$ tel que $u(x, y, z) = (a, b, c)$.
+                unique élément $(x, y, z) \in \R^3$ tel que $u(x, y, z) = (a, b, c)$.
                 Nous avons donc un système d'équations !
                 
                 \[
@@ -322,12 +327,12 @@
 
             \begin{mdframed}[linecolor=green]
                 \textcolor{green}{\textbf{Exemple :}} \\
-                Pour $E = \mathbb R^2$, les sous-ensembles $F_i$ ci dessous
+                Pour $E = \R^2$, les sous-ensembles $F_i$ ci dessous
                 sont-ils des sous-espaces vectoriels de $E$ ?
                 \begin{itemize}
-                    \item $F_1 = \{(x, y) \in \mathbb R^2 \quad t.q. \; 3x+2y=0\}$
-                    \item $F_2 = \{(x, y) \in \mathbb R^2 \quad t.q. \; x^2+y^2=1\}$
-                    \item $F_2 = \{(x, y) \in \mathbb R^2 \quad t.q. \; 3x+2y=1\}$
+                    \item $F_1 = \{(x, y) \in \R^2 \quad t.q. \; 3x+2y=0\}$
+                    \item $F_2 = \{(x, y) \in \R^2 \quad t.q. \; x^2+y^2=1\}$
+                    \item $F_2 = \{(x, y) \in \R^2 \quad t.q. \; 3x+2y=1\}$
                 \end{itemize}
                 
                 Sur un graphique: \\
@@ -339,7 +344,7 @@
                           $(x, y) + (x', y') \in F_1$ ? $(x, y) + (x', y') = 3(x + x') + 2(y+y') = 3x + 3x' + 2y + 2y' = (3x + 2y) + (3x' + 2y') = 0 + 0 = 0 \in F_1$
                           étant donné que $3x + 2y = 0$ est notre "équation" de départ (voir énoncé).
                           La première propriété pour que $F_1$ soit un sous-e.v. de $E$ est donc vérifiée ;
-                    \item soit $(x, y) \in F_1$ et $\lambda \in \mathbb R$, est-ce que
+                    \item soit $(x, y) \in F_1$ et $\lambda \in \R$, est-ce que
                           $\lambda(x, y) \in F_1$? $\lambda(x, y) = 3(\lambda x) + 2(\lambda y) = \lambda(3x + 2y) = \lambda 0 = 0 \in F_1$.
                           La seconde propriété est vérifiée également, donc $F_1$ est un sous-e.v. de $E$.
                           Nous pouvons aussi dire que $3x + 2y = 0$ est une droite vectorielle de E.
@@ -368,12 +373,12 @@
 
             \begin{mdframed}[linecolor=green]
                 \textcolor{green}{\textbf{Exemple :}}\\
-                Soient $F_1 = \{(x, y) \in \mathbb R^2 \quad t.q. \; x = 0 \}$ et
-                $F_2 = \{(x,y) \in \mathbb R^2 \quad t.q. \; y = 0 \}$. \\
+                Soient $F_1 = \{(x, y) \in \R^2 \quad t.q. \; x = 0 \}$ et
+                $F_2 = \{(x,y) \in \R^2 \quad t.q. \; y = 0 \}$. \\
                 \includegraphics[scale=0.6]{figures/vecteurs.png}\\
                 $F_1 \cap F_2$ est ici l'intersection des droites $x = 0$ et $y = 0$ qui est le singleton (ensemble de cardinal = 1)
                 $(0;0)$. L'union ($\cup$) est par exemple la somme du vecteur $v (1, 0)$ et $w (0, 1)$.
-                $v + w = (1, 1) \notin F_1$ ni $F_2$. Ce n'est donc pas un sous-e.v. de $\mathbb R$.
+                $v + w = (1, 1) \notin F_1$ ni $F_2$. Ce n'est donc pas un sous-e.v. de $\R$.
             \end{mdframed}
 
             \begin{mdframed}[linecolor=red]
@@ -398,82 +403,95 @@
                 \end{itemize}
             \end{mdframed}
 
-            \subsubsection{Noyau et image:}
-            \begin{mdframed}[linecolor=blue]
-            \textcolor{blue}{\textbf{Définition:}}\\
-            L'on définit \textbf{Ker $u$} et \textbf{Im $u$}, comme:\\
-            Ker $u = u^{-1} ( \{ 0_{E_2} \} )$ le noyau de $u$ (sous-e.v. de E$_1$)\\
-            Im $u = u(E_1)$ l'image de $u$ (sous-e.v. de E$_2$)\\\\
-            Autrement dit:\\
-            Soit $f$ : E$_1 \to E_2$:\\
-            Ker $f$ = \{ $\vec v \in E_1$ tel que $f(\vec v)=\vec 0$ \} se qui signifie concrètement : l'ensemble des éléments qui sont envoyé sur l'élément neutre de l'ensemble d'arrivé.\\
-            Im $f$ = \{ $\vec v \in E_2 , \exists \vec u \in E_1$ tel que $f(u)=\vec v$ \} C'est donc le sous-ensemble de E$_2$ contenant toutes les images de tous les éléments de E$_1$ et uniquement ces images.
-            \end{mdframed}
+            \subsubsection{Noyau et image}
+                \begin{mdframed}[linecolor=blue]
+                \textcolor{blue}{\textbf{Définition :}}\\
+                    Pour toute application linéaire $u : E_1 \rightarrow E_2$,
+                    on définit $\Ker u$ et $\ImAppli u$, tels que \\
+                    $\Ker u = u^{-1}(\{0_{E_2}\})$ est le \textit {noyau} de $u$ (sous-e.v. de E$_1$), \\
+                    $\ImAppli u = u(E_1)$ est  l'\textit{image} de $u$ (sous-e.v. de E$_2$).
+                    
+                    Autrement dit, $\Ker u = \{v \in E_1 t.q. u(v) = 0_{E_2}\}$, ce qui signifie concrètement :
+                    \textit{l'ensemble des éléments qui sont envoyé sur l'élément neutre de l'ensemble d'arrivée}.\\
+                    $\ImAppli u = \{v \in E_2, \exists w \in E_1 t.q. u(w) = v\}$.
+                    C'est donc le sous-ensemble de $E_2$ contenant les images de tous
+                    les éléments de $E_1$.
+                \end{mdframed}
 
-            \begin{mdframed}[linecolor=green]
-            \textcolor{green}{\textbf{Exemple:}}\\
-            (Ex 2 fiche 2):\\
-            On fixe un vecteur $\vec v_0$ de l'espace tri-dimensionnel. On définit l'application $\Phi_1$ de l'espace des vecteurs de l'espace dans lui-même par $\Phi_1(\vec v) = \vec v \times \vec v_0$. Déterminer le noyau Ker et l'image Im de $\Phi _1$.\\
-            2 méthodes possibles:\\
-            1) Par calculs:\\
-            Soit $ v_0 = (v_{0_x},v_{0_y},v_{0_z} )$ fixé\\
-            $\Phi_1 : \mathbb R^3 \to \mathbb R^3: v \mapsto v \times v_0$ produit de 2 vecteurs = produit vectoriel : \\
-            \[v \otimes v_0  = \left ( 
-            \left| \begin{array}{cc}
-            v_y & v_{0_y} \\
-            v_z & v_{0_z} \\
-            \end{array} \right| 
-            ,-
-            \left| \begin{array}{cc}
-            v_x & v_{0_x} \\
-            v_z & v_{0_z} \\
-            \end{array} \right| 
-            ,
-            \left| \begin{array}{cc}
-            v_x & v_{0_x} \\
-            v_y & v_{0_y} \\
-            \end{array} \right| 
-            \right ).\]
-            = $(v_y \cdot v_{0_z} - v_z \cdot v_{0_y} ; -(v_x \cdot v_{0_z} - v_z \cdot v_{0_x} ); v_x \cdot v_{0_y} - v_y \cdot v_{0_x} ) $
-            $\Leftrightarrow$ \[ \left \{
-            \begin{array}{l}
-            v_y \cdot v_{0_z} - v_z \cdot v_{0_y} = 0 \\
-            v_z \cdot v_{0_x} - v_x \cdot v_{0_z} = 0 \\
-            v_x \cdot v_{0_y} - v_y \cdot v_{0_x} = 0 \\
-            \end{array} \right .
-            \Leftrightarrow
-            \left \{
-            \begin{array}{l}
-            v_x =  v_z \cdot \frac{v_{0_x}}{v_{0_z} } \\
-            v_y =  v_z \cdot \frac{v_{0_y}}{v_{0_z} } \\
-            0 = 0 \\
-            \end{array} \right .
-            \]
-            Nous n'avons donc pas de contraintes pour $v_z$, il vaut donc la valeur qu'on veut (degré de liberté).\\
-            $ \texttt{S} = \{ z \cdot \frac{v_{0_x}}{v_{0_z} } ; z \cdot \frac{v_{0_y}}{v_{0_z} } ; z \} = z \cdot \{ \frac{v_{0_x}}{v_{0_z} } ;\frac{v_{0_y}}{v_{0_z} } ; 1 \}$\\
-            Ker $\Phi_1 = \mathbb R \{ \frac{v_{0_x}}{v_{0_z} } ;\frac{v_{0_y}}{v_{0_z} } ; 1 \} = \frac {\mathbb R}{v_{0_z}} \{v_{0_x} ;v_{0_y} ; v_{0_z} \}$ qui est une droite vectorielle contenant $v_0$.\\ \\
-            2) En utilisant la définition:\\
-            Ker $\Phi _1 = \{ \vec v \in \mathbb R^3 | \Phi _1(\vec v) = \vec v \times \vec v_0 = \vec 0 \} = \{ \vec v \in \mathbb R^3 | \vec v = \lambda \cdot \vec v_0 \quad \forall v \in \mathbb R \}$\\ 
-            $\vec v = \lambda \cdot \vec v_0$ est une droite vectorielle contenant $\vec v_0$\\ \\
-            Im $\Phi_1 = \{ \vec w \in \mathbb R^3 , \exists \vec v \in \mathbb R^3 | \vec w = \vec v \cdot \vec v_0 \}$\\
-            $= \{ \vec w \in \mathbb R^3 | \vec w \perp \vec v , \vec w \perp \vec v_0 \}$ ce qui est le plan perpendiculaire à $\vec v_0$.\\
-            Oui si : 
-            \[ \left \{
-            \begin{array}{l}
-            x = a+2b\\
-            y = 2a+3b\\
-            \end{array}
-            \right .
-            \Leftrightarrow
-            \left \{
-            \begin{array}{l}
-            a = 2x-y\\
-            b = -3x+2y\\
-            \end{array}
-            \right .
-            \]
-            possible $\forall(x;y)$
-            \end{mdframed}
+                \begin{mdframed}[linecolor=green]
+                    \textcolor{green}{\textbf{Exemple :}} (Ex 2 fiche 2) \\
+                    On fixe un vecteur $v_0 \in \R^3$. On définit l'application
+                    $\Phi_1 : \R^3 \to \R^3 : v \mapsto v \times v_0$.
+                    Déterminer le noyau $\Ker$ et l'image $\ImAppli$ de $\Phi _1$.
+                    
+                    2 méthodes sont possibles : 
+                    
+                    \begin{enumerate}
+                    \item Par calculs :
+                    
+                    Soit $v_0 = (v_{0_x},v_{0_y},v_{0_z} )$ fixé.
+                    
+                    $\Phi_1$ est le produit vectoriel de 2 vecteurs. Son noyau est
+                    donc l'ensemble des vecteurs $v \in \R^3$ tels que $v \times v_0 = (0, 0, 0)$. \\
+                    Or $v \times v_0  = (v_y v_{0_z} - v_{0_y} v_z, v_z v_{0_x} - v_x v_{0_z}, v_x v_{0_y} - v_y v_{0_x})$.
+                    
+                    \[
+                        v \times v_0  = (0, 0, 0) \\
+                        \Leftrightarrow
+                        \left \{
+                            \begin{aligned}
+                                v_y v_{0_z} - v_z v_{0_y} &= 0 \\
+                                v_z v_{0_x} - v_x v_{0_z} &= 0 \\
+                                v_x v_{0_y} - v_y v_{0_x} &= 0 \\
+                            \end{aligned}
+                        \right .
+                        \Leftrightarrow
+                        \left \{
+                            \begin{aligned}
+                                v_x =  v_z \frac{v_{0_x}}{v_{0_z} } \\
+                                v_y =  v_z \frac{v_{0_y}}{v_{0_z} } \\
+                                0 = 0 \\
+                            \end{aligned}
+                        \right .
+                    \]
+                    
+                    Nous n'avons donc pas de contrainte pour $v_z$, il est donc
+                    toujours bon, peu importe sa valeur. (degré de liberté).
+                    
+                    $S = \{z \frac{v_{0_x}}{v_{0_z}}, z \frac{v_{0_y}}{v_{0_z}}, z\} = z \{\frac{v_{0_x}}{v_{0_z}}, \frac{v_{0_y}}{v_{0_z}}, 1\}$.
+                    
+                    $\Ker \Phi_1 = \R \{\frac{v_{0_x}}{v_{0_z}}, \frac{v_{0_y}}{v_{0_z}}, 1\} = \R \frac 1{v_{0_z}} \{v_{0_x}, v_{0_y}, v_{0_z}\}$
+                    qui est la droite vectorielle de $\R$ engendrée par $v_0$.
+                    
+                    \item En utilisant la définition du produit vectoriel (rappel : $v \times w = 0_{\R^3} \Leftrightarrow v = \lambda w$):
+                    
+                    $\Ker \Phi _1 = \{v \in \R^3 | \Phi _1(v) = v \times v_0 = 0_{\R^3}\} = \{v \in \R^3 | v = \lambda v_0\} = \{\lambda v_0 \quad \forall \lambda \in \R\} = \R v_0$
+                    $\R v_0$ est la droite vectorielle de $\R$ engendrée par  $v_0$.
+                    
+                    $\ImAppli \Phi_1 = \{w \in \R^3 \text{pour lesquels} \, \exists v \in \R^3 | w = v \times v_0\} = \{ w \in \R^3 | (w \perp v) \land (w \perp v_0)\}$,
+                    ce qui est le plan perpendiculaire à $v_0$.
+                    
+                    
+                    %DAFUQ ?
+                    
+                    % Oui si : 
+                    % \[ \left \{
+                    % \begin{array}{l}
+                    % x = a+2b\\
+                    % y = 2a+3b\\
+                    % \end{array}
+                    % \right .
+                    % \Leftrightarrow
+                    % \left \{
+                    % \begin{array}{l}
+                    % a = 2x-y\\
+                    % b = -3x+2y\\
+                    % \end{array}
+                    % \right .
+                    % \]
+                    % possible $\forall(x;y)$
+                    \end{enumerate}
+                \end{mdframed}
 
             \subsubsection{Combinaison linéaire:}
             \begin{mdframed}[linecolor=blue]
@@ -516,7 +534,7 @@
 
             \begin{mdframed}[linecolor=green]
             \textcolor{green}{\textbf{Exemple:}}\\
-            Soit E = $\mathbb R^3$\\
+            Soit E = $\R^3$\\
             La famille a = $\{ (0;1;0);(0;0;1);(1;1;1) \}$ est elle génératrice?\\
             Soit un vecteur quelconque $(a;b;c)$, existe t'il une solution telle que : \\
             $(a;b;c) \stackrel{?}{=} x\cdot(0;1;0) + y\cdot(0;0;1)+z\cdot(1;1;1)$ \\
@@ -575,13 +593,13 @@
             \begin{mdframed}[linecolor=green]
             \textcolor{green}{\textbf{Exemple:}}
             \begin{enumerate}
-             \item E = $\mathbb R^2$, a = \{ (-2;3) ; (2;-3) \}\\
+             \item E = $\R^2$, a = \{ (-2;3) ; (2;-3) \}\\
                  a est liée car $1\cdot\vec v_1 + 1\cdot\vec v_2 = 1\cdot(-2;3) + 1\cdot(2;-3) = (-2;3)+(2;-3) =  	 (0;0) = \overrightarrow{0_E}$\\
                  a est donc liée car on a trouvé $\lambda_1 = \lambda_2 = 1 \neq 0$
-            \item E = $\mathbb R^3$, \texttt{A'} = \{ (1;1;3) ; (5;2;-1) ; (4;1;-4) \}\\
+            \item E = $\R^3$, \texttt{A'} = \{ (1;1;3) ; (5;2;-1) ; (4;1;-4) \}\\
                  \texttt{A'} est liée aussi car  $\vec v_1 - \vec v_2 + \vec v_3 = \overrightarrow{0_E}$\\
                  \texttt{A'} est donc liée car on a trouvé $\lambda_1 = \lambda_3 = 1 \neq 0$ et $\lambda_2 = -1 \neq 0$
-            \item E = $\mathbb R^3$, \texttt{A''} = \{ (1;1;3) ; (5;2;-1) \}\\
+            \item E = $\R^3$, \texttt{A''} = \{ (1;1;3) ; (5;2;-1) \}\\
                 A vu d'oeil on ne sait pas dire donc on résout le systèmes, il faut donc essayer de trouver une c.l. des éléments de \texttt{A''} pour trouver le $\overrightarrow{0_E}$. C'est à dire:\\
                 $\lambda_1\cdot(1;1;3) + \lambda_2\cdot(5;2;-1) = \overrightarrow{0_E}$ = (0;0;0)\\
                 Ce qui revient à résoudre le système:
@@ -683,8 +701,8 @@
             \begin{mdframed}[linecolor=green]
             \textcolor{green}{\textbf{Exemple:}}
             \begin{itemize}
-             \item dim($\mathbb R^n$) = $n$
-             \item dim($\mathbb R^\mathbb N$) = $\infty$ (car $\mathbb N$ à une infinité d'éléments)
+             \item dim($\R^n$) = $n$
+             \item dim($\R^\mathbb N$) = $\infty$ (car $\mathbb N$ à une infinité d'éléments)
              \item $v \in E, v \neq 0 $ dim($\mathbb K_v$) = dim(vect(\{$v$\})) = 1  (que $\vec v$)
              \item dim(\{ $\overrightarrow{0_E}$ \}) = 0 (par convention)
             \end{itemize}
@@ -830,7 +848,7 @@
             \begin{mdframed}[linecolor=blue]
             \textcolor{blue}{\textbf{Définition:}}\\
             Si \#a = \#$\mathbb N$, on dit que a est \textbf{dénombrable}\\
-            Si \#a = \#$\mathbb R$, on dit que a à la puissance du continu
+            Si \#a = \#$\R$, on dit que a à la puissance du continu
             \end{mdframed}
 
             \begin{mdframed}[linecolor=red]
@@ -840,7 +858,7 @@
              \item Si \#a = $n$, \#(P(a)) = $2^n$ \ \ (P(a) = \{ sous-ensemble de a \})
              \item Si \#a = $n$ et \#\texttt{B} = $m$, \#(\texttt{B}$^a) = m^n = \#\texttt{B}^{\#a} \quad (\texttt{B}^a = \{ f : a \to \texttt{B} \})$
              \item $\# \mathbb Z = \# \mathbb N$ (en pouvant, par exemple, associé les éléments pairs des éléments de $\mathbb N$ aux éléments positifs de $\mathbb Z$ et ls impaires aux négatifs (Voir scan théorique page 17 pour détails)), du coup $\mathbb Z$ est dénombrable, $\mathbb N^2$ aussi et également $\mathbb Q$.
-             \item Mais $\mathbb R$ n'est pas dénombrable, autrement dit : il n'existe pas de bijection : $f : \mathbb N \to \{0\ ;\ ...\ ;\ 9\}^\mathbb N \Rightarrow \#\{0\ ;\ ...\ ;\ 9\}^\mathbb N > \#\mathbb N$
+             \item Mais $\R$ n'est pas dénombrable, autrement dit : il n'existe pas de bijection : $f : \mathbb N \to \{0\ ;\ ...\ ;\ 9\}^\mathbb N \Rightarrow \#\{0\ ;\ ...\ ;\ 9\}^\mathbb N > \#\mathbb N$
              \end{itemize}
             \end{mdframed}
 
@@ -907,11 +925,11 @@
 
         \begin{mdframed}[linecolor=green]
         \textcolor{green}{\textbf{Exemple:}}\\
-        Soit $u: \mathbb R^3 \to \mathbb R^2 \\
+        Soit $u: \R^3 \to \R^2 \\
         u(x,y,z) = (x+3y-z,y+2z)$\\
         Trouver la matrice associée à $u$.\\ \\
-        La base canonique de $\mathbb R^3$ est : \{$e_1, e_2, e_3$\} = \{(1;0;0), (0;1;0), (0;0;1)\}\\
-        La base canonique de $\mathbb R^2$ est : \{$e'_1, e'_2$\} = \{(1;0),(0;1)\}\\
+        La base canonique de $\R^3$ est : \{$e_1, e_2, e_3$\} = \{(1;0;0), (0;1;0), (0;0;1)\}\\
+        La base canonique de $\R^2$ est : \{$e'_1, e'_2$\} = \{(1;0),(0;1)\}\\
         Nous allons trouver les vecteurs de la base canonique de départ, associé à $u$:\\
         $u(e_1) = u((1;0;0)) = (1+3\cdot 0; 0 + 2\cdot 0) =(1;0) = e'_1 \\
         u(e_2) = u((0;1;0)) = (3;1) = 3\cdot e'_1+ e'_2 \\
