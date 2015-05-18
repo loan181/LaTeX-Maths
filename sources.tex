@@ -449,8 +449,8 @@
                         \Leftrightarrow
                         \left \{
                             \begin{aligned}
-                                v_x =  v_z \frac{v_{0_x}}{v_{0_z} } \\
-                                v_y =  v_z \frac{v_{0_y}}{v_{0_z} } \\
+                                v_x &= v_z \frac{v_{0_x}}{v_{0_z} } \\
+                                v_y &= v_z \frac{v_{0_y}}{v_{0_z} } \\
                                 0 = 0 \\
                             \end{aligned}
                         \right .
@@ -494,7 +494,7 @@
                     \end{enumerate}
                 \end{mdframed}
 
-            \subsubsection{Combinaison linéaire:}
+            \subsubsection{Combinaison linéaire}
                 \begin{mdframed}[linecolor=blue]
                     \textcolor{blue}{\textbf{Définition :}}\\
                     Soient $v_1, \ldots ,v_n \in E$ (vecteurs) et $\lambda_1, \ldots ,\lambda_n \in \mathbb K$ (scalaires).
@@ -532,177 +532,163 @@
                     Rappel : soient $A$ et $B$, 2 sous-ensembles de E. $A = B \Leftrightarrow (A \subset B) \land (B \subset A)$.
                 \end{mdframed}
 
-            \subsubsection{Famille génératrice:} % Famille génératrice
-            \begin{mdframed}[linecolor=blue]
-            \textcolor{blue}{\textbf{Définition:}}\\
-            Soit A $\subset$ E, on dit que A est une \textbf{famille génératrice} (ou partie génératrice) si Vect A = E.\\
-            Autrement dit, $\forall v \in E, \exists $ une c.l. (finies) de vecteurs de A tels que $v = \displaystyle \sum_{i=1}^n \lambda_i v_i , v_1; \cdots ; v_n \in$ A
-            \end{mdframed}
+            \subsubsection{Famille génératrice}
+                \begin{mdframed}[linecolor=blue]
+                    \textcolor{blue}{\textbf{Définition :}}\\
+                    Soit $A \subset E$, on dit que $A$ est une \textbf{famille génératrice}
+                    (ou partie génératrice) si $\Vect A = E$. Autrement dit,
+                    $\forall v \in E, \exists \lambda_1, \ldots, \lambda_n \in \mathbb K, v_1, \ldots, v_n \in A \quad | \quad v = \displaystyle \sum_{i=1}^n \lambda_i v_i$
+                \end{mdframed}
 
-            \begin{mdframed}[linecolor=blue]
-            \textcolor{blue}{\textbf{Lemmes:}}
-            \begin{itemize}
-             \item Si A est génératrice et A $\subset$ B, alors B est génératrice.
-             \item Soit A une famille génératrice et $v \in$ A, alors A$\setminus \{ v \}$ est génératrice si et seulement si $v$ est une c.l. de vecteurs de A$\setminus \{ v \}$
-            \end{itemize}
-            \end{mdframed}
+                \begin{mdframed}[linecolor=blue]
+                    \textcolor{blue}{\textbf{Lemmes :}}
+                    \begin{itemize}
+                        \item Si $A$ est génératrice et $A \subset B$, alors $B$ est génératrice.
+                        \item Soit $A$, une famille génératrice et $v \in A$, alors $A \setminus \{v\}$ est génératrice si et seulement si $v$ est une c.l. de vecteurs de $A \setminus \{v\}$
+                    \end{itemize}
+                \end{mdframed}
 
-            \begin{mdframed}[linecolor=green]
-            \textcolor{green}{\textbf{Exemple:}}\\
-            Soit E = $\R^3$\\
-            La famille a = $\{ (0;1;0);(0;0;1);(1;1;1) \}$ est elle génératrice?\\
-            Soit un vecteur quelconque $(a;b;c)$, existe t'il une solution telle que : \\
-            $(a;b;c) \stackrel{?}{=} x\cdot(0;1;0) + y\cdot(0;0;1)+z\cdot(1;1;1)$ \\
-            Ce qui est équivalent à trouver une solution au système: \\
-            \[ \left \{
-            \begin{array}{l}
-            z = a\\
-            x+z = b\\
-            y+z = c\\
-            \end{array}
-            \right .
-            \Leftrightarrow
-            \left \{
-            \begin{array}{l}
-            x = b-a\\
-            y = c-a\\
-            z = a\\
-            \end{array}
-            \right .
-            \]
-            L'on remarque qu'il manque à a le vecteur canonique $(1;0;0)$ pour qu'elle soit une famille génératrice. Mais peut-être que ce vecteur manquant peut s'écrire comme combinaison linéaire des autres (et du coup a serai une famille génératrice). Et donc : \\
-            $(1;0;0) \stackrel{?}{=} x\cdot(0;1;0) + y\cdot(0;0;1)+z\cdot(1;1;1)$\\ et en reprenant le système  au-dessus et en remplaçant $a,$ $b$ et $c$ par 1, 0 et 0, on trouve:\\
-            \[ \left \{
-            \begin{array}{l}
-            x = 0-1\\
-            y = 0-1\\
-            z = 1\\
-            \end{array}
-            \right .
-            \Leftrightarrow
-            \left \{
-            \begin{array}{l}
-            x = -1\\
-            y = -1\\
-            z = 1\\
-            \end{array}
-            \right .
-            \]
-            Donc d'après le 2eme lemme a est une famille génératrice.\\
-            Remarque: si l'on remplace dans l'égalité les résultats de $x$, $y$ et $z$ trouvé dans le système, on retrouve le vecteur manquant.\\
-            $(1;0;0) \stackrel{?}{=} x\cdot(0;1;0) + y\cdot(0;0;1)+z\cdot(1;1;1)$\\
-            $(1;0;0) \stackrel{?}{=} (-1)\cdot(0;1;0) + (-1)\cdot(0;0;1)+1\cdot(1;1;1)$\\
-            $(1;0;0) \stackrel{?}{=} (0;-1;0) + (0;0;-1)+(1;1;1)$\\
-            $(1;0;0) \stackrel{?}{=} (1;0;0)$
-            \end{mdframed}
+                \begin{mdframed}[linecolor=green]
+                    \textcolor{green}{\textbf{Exemple :}}\\
+                    Prenons $E = \R^3$. La famille $A = \{(0, 1, 0), (0, 0, 1), (1, 1, 1)\} \subset \R^3$ est-elle génératrice?
 
-            \subsubsection{Famille libre/liée:} % Famille génératrice
-            \begin{mdframed}[linecolor=blue]
-            \textcolor{blue}{\textbf{Définition:}}\\
-            Soit a $\subset$ E sous-ensemble de E\\
-            On dit que a est \textbf{libre} si la seule c.l. de vecteurs de a égale à $\overrightarrow{0_E}$ est la c.l. triviale.\\
-            C'est à dire si $\displaystyle \sum_{i=1}^n \lambda_i v_i = \overrightarrow{0_E}, v_1; ... ; v_n \in a\Rightarrow \lambda_1 = 0;...; \lambda_n = 0$\\
-            Si elle n'est pas libre, elle est \textbf{liée}.
-            \end{mdframed}
+                    Soit un vecteur quelconque $(a, b, c)$, $\exists ? (x, y, z)$ tel que
+                    $(a, b, c) \stackrel{?}{=} x(0, 1, 0) + y(0, 0, 1)+z(1, 1, 1)$ ?
 
-            \begin{mdframed}[linecolor=green]
-            \textcolor{green}{\textbf{Exemple:}}
-            \begin{enumerate}
-             \item E = $\R^2$, a = \{ (-2;3) ; (2;-3) \}\\
-                 a est liée car $1\cdot\vec v_1 + 1\cdot\vec v_2 = 1\cdot(-2;3) + 1\cdot(2;-3) = (-2;3)+(2;-3) =  	 (0;0) = \overrightarrow{0_E}$\\
-                 a est donc liée car on a trouvé $\lambda_1 = \lambda_2 = 1 \neq 0$
-            \item E = $\R^3$, \texttt{A'} = \{ (1;1;3) ; (5;2;-1) ; (4;1;-4) \}\\
-                 \texttt{A'} est liée aussi car  $\vec v_1 - \vec v_2 + \vec v_3 = \overrightarrow{0_E}$\\
-                 \texttt{A'} est donc liée car on a trouvé $\lambda_1 = \lambda_3 = 1 \neq 0$ et $\lambda_2 = -1 \neq 0$
-            \item E = $\R^3$, \texttt{A''} = \{ (1;1;3) ; (5;2;-1) \}\\
-                A vu d'oeil on ne sait pas dire donc on résout le systèmes, il faut donc essayer de trouver une c.l. des éléments de \texttt{A''} pour trouver le $\overrightarrow{0_E}$. C'est à dire:\\
-                $\lambda_1\cdot(1;1;3) + \lambda_2\cdot(5;2;-1) = \overrightarrow{0_E}$ = (0;0;0)\\
-                Ce qui revient à résoudre le système:
-                \[ \left \{
-                \begin{array}{l}
-                \lambda_1 + 5\cdot\lambda_2 = 0\\
-                \lambda_1 + 2\cdot\lambda_2 = 0\\
-                3\cdot\lambda_1 - \lambda_2 = 0\\
-                \end{array}
-                \right .
-                \Leftrightarrow
-                \left \{
-                \begin{array}{l}
-                \lambda_1 = -5\cdot\lambda_2\\
-                \lambda_1 = -2\cdot\lambda_2\\
-                \lambda_1 = \frac{\lambda_2}{3}\\
-                \end{array}
-                \right .
-                \Leftrightarrow
-                \lambda_1 = \lambda_2 = 0\\
-                \]
-                Donc \texttt{A''} est libre!
-            \end{enumerate}
-            Si on avait essayé de résoudre le système du 2. on aurait obtenu le calcul suivant:\\
-            \[ \left \{
-            \begin{array}{l}
-            \lambda_1 + 5\cdot\lambda_2 + 4\cdot\lambda_3= 0\\
-            \lambda_1 + 2\cdot\lambda_2 + \lambda_3= 0\\
-            3\cdot\lambda_1 - \lambda_2 - 4\cdot\lambda_3= 0\\
-            \end{array}
-            \right .
-            \Leftrightarrow
-            \left \{
-            \begin{array}{l}
-            \lambda_1 = \lambda_3\\
-            \lambda_2 = -\lambda_3\\
-            \end{array}
-            \right .
-            \Leftrightarrow
-            \lambda_1 = -\lambda_2 = \lambda_3\\
-            \]
-            Donc $\forall \lambda, \lambda\cdot \vec v_1- \lambda\cdot\vec v_2 + \lambda\cdot\vec v_3 = \overrightarrow{0_E}$\\
-            La réponse (contrexemple) que nous avions trouvé : $\vec v_1 - \vec v_2 + \vec v_3 = \overrightarrow{0_E}$ correspondant au vecteur (1;-1;1) et correspond donc bien à une de nos réponses aux systèmes (avec $\lambda$ = 1)
-            \end{mdframed}
+                    Ceci est équivalent à trouver une solution au système suivant :
+                    
+                    \[
+                        \left \{
+                            \begin{aligned}
+                                z &= a \\
+                                x+z &= b \\
+                                y+z &= c \\
+                            \end{aligned}
+                        \right.
+                        \Leftrightarrow
+                        \left \{
+                            \begin{aligned}
+                            x &= b-a \\
+                            y &= c-a \\
+                            z &= a \\
+                            \end{aligned}
+                        \right.
+                    \]
 
-            \begin{mdframed}[linecolor=blue]
-            \textcolor{blue}{\textbf{Définition:}}\\
-            Si a est libre, on dira que les vecteurs de a sont \textbf{linéairement indépendant} (l.i),
-            si a n'est pas libre (liée), alors on dira que ses vecteurs sont \textbf{linéairement dépendant} (l.d.)
-            \end{mdframed}
+                    Étant donné que pour tout vecteur $(a, b, c)$, $\exists x, y, z \in \R \quad | \quad (a, b, c) = x(0, 1, 0) + y(0, 0, 1)+z(1, 1, 1)$,
+                    on peut affirmer que $A$ est génératrice.
+                \end{mdframed}
 
-            \begin{mdframed}[linecolor=cyan]
-            \textcolor{cyan}{\textbf{Remarque:}}\\
-            Si $\overrightarrow{0_E} \in a$, a ne peux pas être libre (donc elle est d'office liée).\\
-            Car $\lambda\cdot\overrightarrow{0_E}=\overrightarrow{0_E} \qquad \forall \lambda \neq 0$
-            \end{mdframed}
+            \subsubsection{Famille libre/liée}
+                \begin{mdframed}[linecolor=blue]
+                    \textcolor{blue}{\textbf{Définition :}}\\
+                    Soit $A \subset E$, un sous-ensemble de E qulconque, on dit que $A$
+                    est \textbf{libre} si la seule c.l. de vecteurs $\in A$ égale à $0_E$ est la c.l. nulle triviale.
+                    C'est à dire si $\displaystyle \sum_{i=1}^n \lambda_i v_i = 0_E$, avec $v_1, \ldots, v_n \in A \Rightarrow \lambda_1 = \lambda_2 = \ldots =  0$
 
-            \begin{mdframed}[linecolor=blue]
-            \textcolor{blue}{\textbf{Lemme:}}\\
-            Soit a partie de E:
-            \begin{itemize}
-             \item a est liée, a $\subset$ \texttt{B}, \texttt{B} est liée
-             \item a est libre, \texttt{B} $\subset$ a, \texttt{B} est libre
-             \item a est libre, $v \in$ vect(a), alors il existe une unique c.l.de vecteurs de a égale à $v$.
-                      Autrement dit: $\exists (v_1;...;v_n) \in a, v = \displaystyle \sum_{i=1}^n \lambda_i v_i$
-             \item a est libre, $v \in$ E, alors a $\cup \{ v\}$ est libre $\Leftrightarrow v \in$ vect(a)
-            \end{itemize}
-            \end{mdframed}
+                    Si une famille n'est pas libre, elle est \textbf{liée}.
+                \end{mdframed}
 
-            \begin{mdframed}[linecolor=red]
-            \textcolor{red}{\textbf{Théorème:}}\\
-            \[ \mathrm{Si\ a\  est\  libre:}
-            \left \{
-               \begin{array}{l}
-                  \mathrm{Si \ } v \in a,\  a\setminus \{ v \} \mathrm{\ est\ libre} \\
-                  \mathrm{Si \ } v \notin a,\  a\cup \{ v \} \mathrm{\ est\ libre} \Leftrightarrow v \notin \mathrm{vect(a)} \\
-               \end{array}
-            \right .\]
-            \[ \mathrm{Si\ a\  est\  generatrice:}
-            \left \{
-               \begin{array}{l}
-                  \mathrm{Si \ } v \notin a,\  a\cup \{ v \} \mathrm{\ est\ generatrice} \\
-                  \mathrm{Si \ } v \in a,\  a\setminus \{ v \} \mathrm{\ est\ generatrice} \Leftrightarrow v \in \mathrm{vect(a)} \\
-               \end{array}
-            \right .\]
-            $v \in$ vect(a) : autrement dit : s'il existe dans a une c.l. de $v$ qui ne soit pas $v$
+                \begin{mdframed}[linecolor=green]
+                    \textcolor{green}{\textbf{Exemple :}}
+                    \begin{enumerate}
+                        \item Prenons $E = \R^2, A = \{(-2, 3), (2, -3)\}$. A est liée car
+                              $v_1 + v_2 = (-2, 3) + (2, -3) = (-2, 3) + (2, -3) = (0, 0) = 0_E$. \\
+                              A est donc liée car on a trouvé $\lambda_1 = \lambda_2 = 1 \neq 0$
+                        \item Prenons $E = \R^3, A' = \{(1, 1, 3),  (5, 2, -1), (4, 1, -4)\}$.
+                              $A'$ est liée aussi car  $v_1 - v_2 + v_3 = 0_E$. \\
+                              $A'$ est donc liée car on a trouvé $(\lambda_1, \lambda_2, \lambda_3) = (1, -1, 1) \neq (0, 0, 0)$
+                        \item Prenons $E = \R^3, A'' = \{(1, 1, 3), (5, 2, -1)\}$.
+                              À vu d'\oe{}il on ne sait pas dire si $A''$ est libre ou liée.
+                              Donc on résout le système, il faut donc essayer de trouver une c.l.
+                              des éléments de $A''$ égale à $0_E$.
+                              C'est à dire : $\lambda_1(1, 1, 3) + \lambda_2(5, 2, -1) = 0_E = (0, 0, 0)$
+                              
+                              Ce qui revient à résoudre le système:
+                              \[
+                                \left \{
+                                    \begin{aligned}
+                                        \lambda_1 + 5\lambda_2 &= 0 \\
+                                        \lambda_1 + 2\lambda_2 &= 0 \\
+                                        3\lambda_1 - \lambda_2 &= 0 \\
+                                    \end{aligned}
+                                \right .
+                                \Leftrightarrow
+                                \left \{
+                                    \begin{aligned}
+                                        \lambda_1 &= -5\lambda_2 \\
+                                        \lambda_1 &= -2\lambda_2 \\
+                                        \lambda_1 &= \frac{\lambda_2}{3} \\
+                                    \end{aligned}
+                                \right .
+                                \Leftrightarrow
+                                \lambda_1 = \lambda_2 = 0
+                              \]
+                              Donc $A''$ est libre!
+                    \end{enumerate}
+                    
+                    Si on avait essayé de résoudre le système du 2, on aurait obtenu le calcul suivant :
+                    
+                    \[
+                        \left \{
+                            \begin{aligned}
+                                \lambda_1 + 5\lambda_2 + 4\lambda_3 &= 0 \\
+                                \lambda_1 + 2\lambda_2 + \lambda_3 &= 0 \\
+                                3\lambda_1 - \lambda_2 - 4\lambda_3 &= 0 \\
+                            \end{aligned}
+                        \right .
+                        \Leftrightarrow
+                        \left \{
+                            \begin{aligned}
+                                \lambda_1 &= \lambda_3 \\
+                                \lambda_2 &= -\lambda_3 \\
+                            \end{aligned}
+                        \right .
+                        \Leftrightarrow
+                        \lambda_1 = -\lambda_2 = \lambda_3
+                    \]
+                    
+                    Donc $\forall \lambda, \lambda v_1 - \lambda v_2 + \lambda v_3 = 0_E$.
+                    La réponse (contrexemple) que nous avions trouvée :
+                    $v_1 - v_2 + v_3 = 0_E$ correspondant au vecteur (1, -1, 1)
+                    et correspond donc bien à une de nos réponses du système (avec $\lambda = 1$).
+                \end{mdframed}
 
-            \end{mdframed}
+                \begin{mdframed}[linecolor=blue]
+                    \textcolor{blue}{\textbf{Définition :}}\\
+                    Si $A$ est libre, on dit que les vecteurs $\in A$ sont
+                    \textbf{linéairement indépendant} (l.i), et si $A$ est liée,
+                    alors on dit que ses vecteurs sont \textbf{linéairement dépendant} (l.d.).
+                \end{mdframed}
+
+                \begin{mdframed}[linecolor=cyan]
+                    \textcolor{cyan}{\textbf{Remarque :}}\\
+                    Si $0_E \in A$, $A$ ne peux pas être libre (donc elle est d'office liée) car
+                    $\lambda 0_E = 0_E \qquad \forall \lambda$.
+                \end{mdframed}
+
+                \begin{mdframed}[linecolor=blue]
+                \textcolor{blue}{\textbf{Lemme :}}\\
+                    Soit $A$, une famille de E.
+                    
+                    \begin{itemize}
+                        \item $A \subset B$ est liée $\Rightarrow B$ est liée ;
+                        \item $A \supset B$ est libre $\Rightarrow B$ est libre ;
+                        \item $A$ est libre et $v \in \Vect A \Rightarrow \exists! (\lambda_1, \ldots, \lambda_n) \in \mathbb K^n \quad | \quad v = \displaystyle \sum_{i=1}^n \lambda_i v_i$
+                        avec $v_1, \ldots, v_n \in A$ ;
+                        \item $A$ est libre et $v \in E \setminus {A} \Rightarrow A \cup \{v\}$ libre.
+                    \end{itemize}
+                \end{mdframed}
+
+                \begin{mdframed}[linecolor=red]
+                    \textcolor{red}{\textbf{Théorème :}}\\
+                    
+                    Si $A \subset E$ est libre, alors $v \in A \Rightarrow A \setminus \{v\}$ est libre et
+                    $(v \notin A) \land (A \cup \{v\}$ est libre$) \Leftrightarrow v \notin \Vect A$.
+                    
+                    Si $A \subset E$ est génératrice, alors $(v \in A) \land (A \setminus \{v\}$ est génératrice$) \Leftrightarrow v \in \Vect A \setminus \{v\}$ et
+                    $v \notin A \Rightarrow A \cup \{v\}$ est génératrice.
+                \end{mdframed}
 
             \subsubsection{Bases et dimensions}  % Bases & dimensions 
             \begin{mdframed}[linecolor=blue]
