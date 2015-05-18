@@ -691,40 +691,59 @@
                 \end{mdframed}
 
             \subsubsection{Bases et dimensions}  % Bases & dimensions 
-            \begin{mdframed}[linecolor=blue]
-            \textcolor{blue}{\textbf{Définition:}}\\
-            Soit \texttt{B} $\subset$ E une partie de E.\\
-            Si \texttt{B} est libre et génératrice on dit que \texttt{B} est une \textbf{base}.\\
-            Soit E un e.v. alors E admet une base (et en fait beaucoup).\\
-            Toutes les bases de E ont le même nombre d'éléments. C'est la \textbf{dimension} de E
-            \end{mdframed}
+                \begin{mdframed}[linecolor=blue]
+                    \textcolor{blue}{\textbf{Définition :}}\\
+                    Soit $B \subset E$, une partie de $E$. Si $B$ est libre et génératrice,
+                    on dit que $B$ est une \textbf{base} de $e$.
+                    
+                    Soit $E$, un $\mathbb K$-e.v. alors $E$ admet une base (voire même plusieurs).
+                    Toutes les bases de E ont le même nombre d'éléments.
+                    C'est ainsi que l'on définit la dimension d'un espace vectoriel : $\dim E = \# B$.
+                \end{mdframed}
 
-            \begin{mdframed}[linecolor=green]
-            \textcolor{green}{\textbf{Exemple:}}
-            \begin{itemize}
-             \item dim($\R^n$) = $n$
-             \item dim($\R^\mathbb N$) = $\infty$ (car $\mathbb N$ à une infinité d'éléments)
-             \item $v \in E, v \neq 0 $ dim($\mathbb K_v$) = dim(vect(\{$v$\})) = 1  (que $\vec v$)
-             \item dim(\{ $\overrightarrow{0_E}$ \}) = 0 (par convention)
-            \end{itemize}
-            \end{mdframed}
+                \begin{mdframed}[linecolor=green]
+                    \textcolor{green}{\textbf{Exemple :}}
+                    
+                    \begin{itemize}
+                        \item $\dim \R^n = n$ ;
+                        \item $\dim \R^\mathbb N = \infty$ (car $\# \mathbb N = \infty$) ;
+                        \item $v \neq 0 \in E \Rightarrow \dim v\mathbb K = \dim \Vect \{v\} = 1$ ;
+                        \item $\dim \{0_E\} = 0$ (par convention).
+                    \end{itemize}
+                \end{mdframed}
 
-            \begin{mdframed}[linecolor=red]
-            \textcolor{red}{\textbf{Théorème:}}\\
-            Si a est libre, il existe \texttt{B} telle que a $\subset$ \texttt{B}, avec \texttt{B} une base.\\
-            Inversement, si a est génératrice, il existe une base \texttt{B} contenue dans a.\\
-            Autrement dit une famille qui serai libre/génératrice mais qui ne serai pas génératrice/libre, peux devenir une base (donc libre et génératrice), à condition qu'on rajoute/enlève des vecteurs correctement.
-            \end{mdframed}
+                \begin{mdframed}[linecolor=red]
+                    \textcolor{red}{\textbf{Théorème :}}
+                    
+                    Si $A \subset E$ est libre, $\exists B \supset A$, une base de $E$.
+                    Inversement, si $A \subset E$ est génératrice, $\exists B \subset A$, une base de $E$.
+                    Autrement dit, une famille qui est libre/génératrice mais qui n'est pas génératrice/libre
+                    peut devenir une base (donc libre et génératrice) à condition que l'on rajoute/enlève
+                    des vecteurs correctement.
+                \end{mdframed}
 
-            \begin{mdframed}[linecolor=green]
-            \textcolor{green}{\textbf{Exemple:}}\\
-            a = \{(1 ; 0 ; 0)\} $\rightarrow$ est libre (mais pas génératrice, on va donc essayé de rajouter des vecteur dans a pour que ca devienne générateur (en restant libre))\\
-            a' = \{(1 ; 0 ; 0) ; (1 ; 5 ; 3)\} $\rightarrow$ est encore libre (mais toujours pas génératrice)\\
-            a''= \{(1 ; 0 ; 0) ; (1 ; 5 ; 3) ; (2 ; 5 ; 3)\} $\rightarrow$ n'est plus libre (il existe une c.l : $v_3 = v_1 + v_2$). Il faut donc faire attention au vecteurs que l'on rajoute, car même si la famillle était génératrice, elle ne serai pas une base car a'' n'est plus libre\\ \\
-            a = \{(1 ; 0 ; 0) ; (0 ; 1 ; 0) ; (0 ; 0 ; 1) ; (1 ; 1 ; 1) ; (4 ;  3 ; 21)\} $\rightarrow$ est génératrice (mais pas libre par ex: $v_4 = v_1 + v_2 + v_3$), on va donc essayer d'enlever des vecteurs de a pour que cela devienne libre, tout en restant génératrice.\\
-            a' = \{(1 ; 0 ; 0) ; (0 ; 1 ; 0) ; (0 ; 0 ; 1) ; (1 ; 1 ; 1)\} $\rightarrow$ est encore génératrice (mais toujours pas libre)\\
-            a'' = \{(1 ; 0 ; 0) ; (0 ; 1 ; 0) ; (0 ; 0 ; 1)\} $\rightarrow$ est génératrice et libre, c'est donc une base.
-            \end{mdframed}
+                \begin{mdframed}[linecolor=green]
+                \textcolor{green}{\textbf{Exemple :}}
+
+                    $A = \{(1, 0, 0)\}$ est libre mais pas génératrice. Donc on va essayer
+                    de rajouter des vecteurs dans $A$ pour la rendre génératrice, en restant libre.
+
+                    $A' = \{(1, 0, 0), (1, 5, 3)\}$ est toujours libre et toujours pas génératrice.
+
+                    $A''= \{(1, 0, 0), (1, 5, 3), (2, 5, 3)\}$ n'est plus libre
+                    car $\exists$ une c.l nulle non triviale : $v_3 - v_1 - v_2 = 0$.
+                    Il faut donc faire attention aux vecteurs que l'on ajoute,
+                    car même si la famille était génératrice, elle ne peut pas être une base
+                    car $A''$ n'est plus libre.
+
+                    $A = \{(1, 0, 0), (0, 1, 0), (0, 0, 1), (1, 1, 1), (4, 3, 21)\}$ est génératrice
+                    mais pas libre. On va donc essayer d'enlever des vecteurs de $A$
+                    pour qu'elle devienne libre, tout en restant génératrice.
+
+                    $A' = \{(1, 0, 0), (0, 1, 0), (0, 0, 1), (1, 1, 1)\}$ est toujours génératrice et toujours pas libre
+
+                    $A'' = \{(1, 0, 0), (0, 1, 0), (0, 0, 1)\}$ est génératrice et libre, c'est donc une base.
+                \end{mdframed}
 
             \subsubsection{Relation d'équivalence} % Petite parenthèse sur la théorie des ensembles - Relation d'équivalence
             \begin{mdframed}[linecolor=blue]
@@ -832,7 +851,7 @@
             \begin{mdframed}[linecolor=cyan]
             \textcolor{cyan}{\textbf{Remarque:}}\\
             Une autre relation d'équivalence:\\
-            Soient a et \texttt{B} 2 ensembles, on dira que a et \texttt{B} ont "le même cardinal" s'il existe une bijection $f:a\rightarrow \texttt{B}$ noté: \#a = \#\texttt{B} (et revient en gros au nombres d'éléments de l'ensemble).
+            Soient a et B 2 ensembles, on dira que a et B ont "le même cardinal" s'il existe une bijection $f:a\rightarrow B$ noté: \#a = \#B (et revient en gros au nombres d'éléments de l'ensemble).
              \end{mdframed}
 
             \begin{mdframed}[linecolor=magenta]
@@ -842,8 +861,8 @@
 
             \begin{mdframed}[linecolor=red]
             \textcolor{red}{\textbf{Théorème:}}\\
-            On dira que \#a $\leq$ \#\texttt{B} s'il existe une injection $f : a \to \texttt{B}$\\
-            Contor-Bernstein : Si \#a $\leq$ \#\texttt{B} et \#\texttt{B} $\leq$ \#a alors \#a = \#\texttt{B}
+            On dira que \#a $\leq$ \#B s'il existe une injection $f : a \to B$\\
+            Contor-Bernstein : Si \#a $\leq$ \#B et \#B $\leq$ \#a alors \#a = \#B
             \end{mdframed}
 
             \begin{mdframed}[linecolor=blue]
@@ -857,7 +876,7 @@
             \begin{itemize}
              \item Si \#a $\leq \#\mathbb N$, soit a est fini, soit a est dénombrable
              \item Si \#a = $n$, \#(P(a)) = $2^n$ \ \ (P(a) = \{ sous-ensemble de a \})
-             \item Si \#a = $n$ et \#\texttt{B} = $m$, \#(\texttt{B}$^a) = m^n = \#\texttt{B}^{\#a} \quad (\texttt{B}^a = \{ f : a \to \texttt{B} \})$
+             \item Si \#a = $n$ et \#B = $m$, \#(B$^a) = m^n = \#B^{\#a} \quad (B^a = \{ f : a \to B \})$
              \item $\# \mathbb Z = \# \mathbb N$ (en pouvant, par exemple, associé les éléments pairs des éléments de $\mathbb N$ aux éléments positifs de $\mathbb Z$ et ls impaires aux négatifs (Voir scan théorique page 17 pour détails)), du coup $\mathbb Z$ est dénombrable, $\mathbb N^2$ aussi et également $\mathbb Q$.
              \item Mais $\R$ n'est pas dénombrable, autrement dit : il n'existe pas de bijection : $f : \mathbb N \to \{0\ ;\ ...\ ;\ 9\}^\mathbb N \Rightarrow \#\{0\ ;\ ...\ ;\ 9\}^\mathbb N > \#\mathbb N$
              \end{itemize}
