@@ -21,7 +21,7 @@
 \DeclareMathOperator{\Mat}{Mat}
 
 \title{Résumé cours de Maths - 2eme Session\\ \textbf{Algèbre Linéaire}}
-\date{version du 18 mai (22h10)}
+\date{version du 20 mai (11h56)}
 
 \pagestyle{plain}
 
@@ -529,7 +529,9 @@
                     \textcolor{blue}{\textbf{Lemmes :}}
                     \begin{itemize}
                         \item Si $A$ est génératrice et $A \subset B$, alors $B$ est génératrice.
-                        \item Soit $A$, une famille génératrice et $v \in A$, alors $A \setminus \{v\}$ est génératrice si et seulement si $v$ est une c.l. de vecteurs de $A \setminus \{v\}$
+                        \item Soit $A$, une famille génératrice et $v \in A$,
+                              alors $A \setminus \{v\}$ est génératrice si et seulement
+                              si $v \in \Vect A \setminus \{v\}$
                     \end{itemize}
                 \end{mdframed}
 
@@ -653,15 +655,16 @@
                 \end{mdframed}
 
                 \begin{mdframed}[linecolor=blue]
-                \textcolor{blue}{\textbf{Lemme :}}\\
+                \textcolor{blue}{\textbf{Lemmes :}}\\
                     Soit $A$, une famille de E.
                     
                     \begin{itemize}
                         \item $A \subset B$ est liée $\Rightarrow B$ est liée ;
                         \item $A \supset B$ est libre $\Rightarrow B$ est libre ;
                         \item $A$ est libre et $v \in \Vect A \Rightarrow \exists! (\lambda_1, \ldots, \lambda_n) \in \mathbb K^n \ | \  v = \displaystyle \sum_{i=1}^n \lambda_i v_i$
-                        avec $v_1, \ldots, v_n \in A$ ;
-                        \item $A$ est libre et $v \in E \setminus {A} \Rightarrow A \cup \{v\}$ libre.
+                              avec $v_1, \ldots, v_n \in A$ ;
+                        \item si $A$ est libre et $v \in E \setminus {A}$, alors $A \cup \{v\}$
+                              est libre si et seulement si $v \notin \Vect A$.
                     \end{itemize}
                 \end{mdframed}
 
