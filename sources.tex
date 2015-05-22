@@ -11,6 +11,8 @@
 \usepackage{hyperref}  % Mettre le lien vers la page de google drive
 \usepackage{times}
 \usepackage{fullpage}
+\usepackage{tikz} % Pour Sarrus
+\usetikzlibrary{calc,matrix}
 
 \renewcommand{\parallel}{\mathbin{/\negthickspace/}}
 
@@ -46,7 +48,7 @@
     \pagebreak
 
     \section{Introduction à l'algèbre linéaire}
-        On retrouve l'algèbre linéaire aussi nombreux que varié dans les mathématiques.
+        On retrouve l'algèbre linéaire dans des domaines aussi nombreux que varié dans les mathématiques.
         Et elle nous permet de pouvoir \textbf{simplifier les choses}.
         
         \includegraphics[scale=0.6]{figures/graphiques-fonctions.png}
@@ -135,7 +137,7 @@
         \subsection{Sous-espace vectoriel}
             \begin{mdframed}[linecolor=blue]
                 \textcolor{blue}{\textbf{Définition :}} \\
-                Soit $E$ un $\mathbb K$-e.v. et $F \subset E$, un sous-ensemble de E.
+                Soit $E$ un $\mathbb K$-e.v. et $F \subset de$, un sous-ensemble de E.
                 On dit que $F$ est un \textbf{sous-espace vectoriel} de E si et seulement si :
                 
                 \[
@@ -941,112 +943,722 @@
         \end{mdframed}
     
     \section{Applications et Matrices}
+    	\subsection{Généralité sur les matrices}
 
-        \begin{mdframed}[linecolor=blue]
-            \textcolor{blue}{\textbf{Définition :}}\\
-            Soient $u: E \rightarrow E' \quad$ avec E et E', 2 $\mathbb K$-e.v.,
-            $B = \{e_1, \ldots, e_n\}$, une base de E,
-            $B' = \{e'_1, \ldots, e'_m\}$, une base de E'.
+            \begin{mdframed}[linecolor=blue]
+                \textcolor{blue}{\textbf{Définition :}}\\
+                Soient $u: E \rightarrow E' \quad$ avec E et E', 2 $\mathbb K$-e.v.,
+                $B = \{e_1, \ldots, e_n\}$, une base de E,
+                $B' = \{e'_1, \ldots, e'_m\}$, une base de E'.
+    
+                $u(\phi(\lambda_1, \ldots, \lambda_n)) = \displaystyle \sum_{i, j=1}^{n,m} \lambda_i\ a_{j, i}\ e'_j$ (voir théorème précédent)
+    
+                On définit $M = [a_{j,i}]_{\substack{1 \leq i \leq m \\ 1 \leq j \leq n}} = 
+                \begin{pmatrix}
+                  a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+                  a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+                  \vdots  & \vdots  & \ddots & \vdots  \\
+                  a_{m,1} & a_{m,2} & \cdots & a_{m,n}
+                 \end{pmatrix}$
+                 
+                 $M$ est la matrice associée à $u$ dans les bases $B$ et $B'$.
+            \end{mdframed}
+    
+            \begin{mdframed}[linecolor=green]
+                \textcolor{green}{\textbf{Exemple:}}\\
+                Soit $u: \R^3 \to \R^2 : u(x,y,z) = (x+3y-z,y+2z)$
+                
+                Trouver la matrice associée à $u$ dans les bases canoniques.
+                
+                La base canonique de $\R^3$ est \{$e_1, e_2, e_3$\} = \{(1, 0, 0), (0, 1, 0), (0, 0, 1)\}
+                
+                La base canonique de $\R^2$ est \{$e'_1, e'_2$\} = \{(1, 0), (0, 1)\}
+                
+                Trouvons les images associées aux vecteurs de la base canonique de départ.
+                \[
+                    \begin{aligned}
+                        u(e_1) = u(1, 0, 0) &= (1 + 3 \times 0, 0 + 2 \times 0) = (1, 0) = e'_1 \\
+                        u(e_2) = u(0, 1, 0) &= (3, 1) = 3 \times e'_1 + e'_2 \\
+                        u(e_3) = u(0, 0, 1) &= (-1, 2) = -e'_1 + 2 \times e'_2
+                    \end{aligned}
+                \]
+                
+                La matrice associée à $u$ est l'ensemble des résultats précédents mis en colonnes :
+                
+                $M_u = 
+                \bordermatrix{& u(e_1) & u(e_2) & u(e_3) \cr
+                              & 1      & 3      & -1 \cr
+                              & 0      & 1      & 2 \cr} =
+                \begin{pmatrix}
+                    1 & 3 & -1 \\
+                    0 & 1 & 2 
+                \end{pmatrix}$
+                
+                Si on vérifie dans l'autre sens en utilisant la définition d'au-dessus,
+                $u(\lambda_1, \lambda_2, \lambda_3) = \displaystyle \sum_{i=1}^3 \displaystyle \sum_{j=1}^2 \lambda_i \ a_{j,i}\ e'_j $.
+                
+                Si on décompose:
+                \renewcommand{\labelitemi}{$\bullet$}
+    
+                \begin{itemize}
+                    \item $i =1$
+                          \begin{itemize}
+                              \item $j = 1: \lambda_1 a_{1,1} e'_1 = \lambda_1 1 (1, 0) = (\lambda_1, 0)$
+                              \item $j = 2: \lambda_1 a_{2,1} e'_2 = \lambda_1 0 (0, 1) = 0$
+                          \end{itemize}
+                    \item $i =2$
+                          \begin{itemize}
+                              \item $j = 1: \lambda_2 a_{1,2} e'_1 = \lambda_2 3 (1, 0) = (3\lambda_2, 0)$
+                              \item $j = 2: \lambda_2 a_{2,2} e'_2 = \lambda_2 1 (0, 1) = (0, \lambda_2)$
+                          \end{itemize}
+                    \item $i=3$
+                          \begin{itemize}
+                              \item $j = 1: \lambda_3 a_{1,3} e'_1 = \lambda_2 (-1) (1, 0) = (-\lambda_3, 0)$
+                              \item $j = 2: \lambda_3 a_{2,3} e'_2 = \lambda_2 2 (0, 1) = (0, 2\lambda_3)$
+                          \end{itemize}
+                \end{itemize}
+                
+                La somme des 6 lignes donne: $(\lambda_1 + 3\lambda_2 - \lambda_3, \lambda_2 + 2\lambda_3)$. \\
+                $u(\lambda_1, \lambda_2, \lambda_3) = (\lambda_1 + 3 \lambda_2 - \lambda_3, \lambda_2 + 2\lambda_3)$
+                Ce qui est bien se qu'on avait au départ (en remplaçant les $\lambda$ par $x$, $y$ et $z$)
+            \end{mdframed}
+    
+            \begin{mdframed}[linecolor=magenta]
+                \textcolor{magenta}{\textbf{Notation:}}\\
+                Les matrices sont aussi notée $\Mat_{\mathbb K}(m, n)$ avec : $m$,
+                le nombre de colonnes, $n$, le nombre de lignes.
+            \end{mdframed}
+    
+            \begin{mdframed}[linecolor=red]
+                \textcolor{red}{\textbf{Théorème :}}\\
+                Les matrices $\Mat_{\mathbb K}(m, n)$ sont des $\mathbb K$-e.v.
+                Chaque matrice à sa \textit{propre} application linéaire qui lui est associée.
+            \end{mdframed}
 
-            $u(\phi(\lambda_1, \ldots, \lambda_n)) = \displaystyle \sum_{i, j=1}^{n,m} \lambda_i\ a_{j, i}\ e'_j$ (voir théorème précédent)
-
-            On définit $M = [a_{j,i}]_{\substack{1 \leq i \leq m \\ 1 \leq j \leq n}} = 
-            \begin{pmatrix}
-              a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
-              a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
-              \vdots  & \vdots  & \ddots & \vdots  \\
-              a_{m,1} & a_{m,2} & \cdots & a_{m,n}
-             \end{pmatrix}$
-             
-             $M$ est la matrice associée à $u$ dans les bases $B$ et $B'$.
-        \end{mdframed}
-
-        \begin{mdframed}[linecolor=green]
-            \textcolor{green}{\textbf{Exemple:}}\\
-            Soit $u: \R^3 \to \R^2 : u(x,y,z) = (x+3y-z,y+2z)$
-            
-            Trouver la matrice associée à $u$ dans les bases canoniques.
-            
-            La base canonique de $\R^3$ est \{$e_1, e_2, e_3$\} = \{(1, 0, 0), (0, 1, 0), (0, 0, 1)\}
-            
-            La base canonique de $\R^2$ est \{$e'_1, e'_2$\} = \{(1, 0), (0, 1)\}
-            
-            Trouvons les images associées aux vecteurs de la base canonique de départ.
-            \[
-                \begin{aligned}
-                    u(e_1) = u(1, 0, 0) &= (1 + 3 \times 0, 0 + 2 \times 0) = (1, 0) = e'_1 \\
-                    u(e_2) = u(0, 1, 0) &= (3, 1) = 3 \times e'_1 + e'_2 \\
-                    u(e_3) = u(0, 0, 1) &= (-1, 2) = -e'_1 + 2 \times e'_2
-                \end{aligned}
-            \]
-            
-            La matrice associée à $u$ est l'ensemble des résultats précédents mis en colonnes :
-            
-            $M_u = 
-            \bordermatrix{& u(e_1) & u(e_2) & u(e_3) \cr
-                          & 1      & 3      & -1 \cr
-                          & 0      & 1      & 2 \cr} =
-            \begin{pmatrix}
-                1 & 3 & -1 \\
-                0 & 1 & 2 
-            \end{pmatrix}$
-            
-            Si on vérifie dans l'autre sens en utilisant la définition d'au-dessus,
-            $u(\lambda_1, \lambda_2, \lambda_3) = \displaystyle \sum_{i=1}^3 \displaystyle \sum_{j=1}^2 \lambda_i \ a_{j,i}\ e'_j $.
-            
-            Si on décompose:
-            \renewcommand{\labelitemi}{$\bullet$}
-
-            \begin{itemize}
-                \item $i =1$
-                      \begin{itemize}
-                          \item $j = 1: \lambda_1 a_{1,1} e'_1 = \lambda_1 1 (1, 0) = (\lambda_1, 0)$
-                          \item $j = 2: \lambda_1 a_{2,1} e'_2 = \lambda_1 0 (0, 1) = 0$
-                      \end{itemize}
-                \item $i =2$
-                      \begin{itemize}
-                          \item $j = 1: \lambda_2 a_{1,2} e'_1 = \lambda_2 3 (1, 0) = (3\lambda_2, 0)$
-                          \item $j = 2: \lambda_2 a_{2,2} e'_2 = \lambda_2 1 (0, 1) = (0, \lambda_2)$
-                      \end{itemize}
-                \item $i=3$
-                      \begin{itemize}
-                          \item $j = 1: \lambda_3 a_{1,3} e'_1 = \lambda_2 (-1) (1, 0) = (-\lambda_3, 0)$
-                          \item $j = 2: \lambda_3 a_{2,3} e'_2 = \lambda_2 2 (0, 1) = (0, 2\lambda_3)$
-                      \end{itemize}
-            \end{itemize}
-            
-            La somme des 6 lignes donne: $(\lambda_1 + 3\lambda_2 - \lambda_3, \lambda_2 + 2\lambda_3)$. \\
-            $u(\lambda_1, \lambda_2, \lambda_3) = (\lambda_1 + 3 \lambda_2 - \lambda_3, \lambda_2 + 2\lambda_3)$
-            Ce qui est bien se qu'on avait au départ (en remplaçant les $\lambda$ par $x$, $y$ et $z$)
-        \end{mdframed}
-
-        \begin{mdframed}[linecolor=magenta]
-            \textcolor{magenta}{\textbf{Notation:}}\\
-            Les matrices sont aussi notée $\Mat_{\mathbb K}(m, n)$ avec : $m$,
-            le nombre de colonnes, $n$, le nombre de lignes.
-        \end{mdframed}
-
-        \begin{mdframed}[linecolor=red]
-            \textcolor{red}{\textbf{Théorème :}}\\
-            Les matrices $\Mat_{\mathbb K}(m, n)$ sont des $\mathbb K$-e.v.
-            Chaque matrice à sa \textit{propre} application linéaire qui lui est associée.
-        \end{mdframed}
-
-        \bigskip
+        \subsection{Produit matriciel}
         
-        \begin{mdframed}[linecolor=red]
-            \textcolor{red}{\textbf{Théorème :}}\\
-            Soient $u: E \rightarrow E'$ et $u': E' \rightarrow E''$ avec E, E' et E'' des $\mathbb K$-e.v.
+            \begin{mdframed}[linecolor=red]
+                \textcolor{red}{\textbf{Théorème :}}\\
+                Soient $u: E \rightarrow E'$ et $u': E' \rightarrow E''$ avec E, E' et E'' des $\mathbb K$-e.v.
+                
+                $(u \in L(E, E')) \land (u' \in L(E', E'')) \Rightarrow u' \circ u \in L(E,E'')$
+                
+                Soient $B = \{e_1, \ldots, e_n\}$, une base de E, $B' = \{e'_1, \ldots, e'_m\}$, une base de E',
+                $B'' = \{e''_1, \ldots, e''_p\}$, une base de E''.
+    
+                $[a_{i, j}]$ est la matrice de $u$, $[b_{j, k}]$ est la matrice de $u'$, et
+                $[c_{i, k}]$ est la matrice de $u' \circ u$.
+                
+                $(u' \circ u)(e_i) = ... = \displaystyle \sum_{k=1}^p \Bigg(\underbrace{\displaystyle \sum_{j=1}^m a_{i,j}\cdot b_{j,k}}_{c_{i,k}}\Bigg)e''_k$
+            \end{mdframed}
             
-            $(u \in L(E, E')) \land (u' \in L(E', E'')) \Rightarrow u' \circ u \in L(E,E'')$
-            
-            Soient $B = \{e_1, \ldots, e_n\}$, une base de E, $B' = \{e'_1, \ldots, e'_m\}$, une base de E',
-            $B'' = \{e''_1, \ldots, e''_p\}$, une base de E''.
+		\begin{mdframed}[linecolor=blue]
+		\textcolor{blue}{{\bf Définition:}}\\
+		On définit donc le {\bf produit matriciel} comme l'opération suivante:\\
+		$\Mat_{\mathbb K}(m, n) \times \Mat_{\mathbb K}(p, m) \to \Mat_{\mathbb K}(p, n)$ (donc $p$ colonnes et $n$ lignes)\\
+		Soit $[a_{i,j}]_{\substack{1 \leq i \leq n \\ 1 \leq j \leq m}}$ et $ [b_{j,k}]_{\substack{1 \leq j \leq m \\ 1 \leq k \leq p}}$\\
+		$[a_{i,j}] \times [b_{j,k}]= \Bigg[ \displaystyle \sum_{j=1}^m a_{i,j}\cdot b_{j,k} \Bigg]$
+		\end{mdframed}
+		
+		\begin{mdframed}[linecolor=green]
+    		\textcolor{green}{{\bf Exemples:}}\\
+    		 $\begin{pmatrix}
+                        1 & 3 & -1 \\
+                        0 & 1 & 2 
+                    \end{pmatrix} \times
+                    \begin{pmatrix}
+                        0 & 2 \\
+                        2 & -1 \\
+                        1 & 4
+                    \end{pmatrix}=
+                     \begin{pmatrix}
+                        0 \cdot 1 + 2 \cdot 3 + 1 \cdot (-1) & 2 \cdot 1 + (-1) \cdot 3 + 4 \cdot (-1) \\
+                        0 \cdot 0 + 2 \cdot 1 + 1 \cdot 2 & 2 \cdot 0 + (-1) \cdot 1 + 4 \cdot 2 \\
+                    \end{pmatrix} = 
+                    \begin{pmatrix}
+                        5 & -5 \\
+                        4 & 3 \\
+                    \end{pmatrix} \\
+                    \begin{pmatrix}
+                        a & b \\
+                        c & d 
+                    \end{pmatrix} \times
+                    \begin{pmatrix}
+                        e & f \\
+                        g & h 
+                    \end{pmatrix} = 
+                    \begin{pmatrix}
+                        a \cdot e + b \cdot g & a \cdot f + b \cdot h \\
+                        c \cdot e + d \cdot g & c \cdot f + d \cdot h 
+                    \end{pmatrix}$
+		\end{mdframed}
+		
+		\subsubsection{Propriétés du produit matriciel}
+		Soit $A : \Mat(m,n)\quad B:\Mat(p,m)\quad C:\Mat(r,p)$ \\
+		Le produit matriciel est : 
+		\begin{itemize}
+			\item PAS commutatif : $A \times B \neq B \times A$ (mais parfois c'est le cas)
+			\item associatif : $(A \cdot B)\cdot C = A \cdot (B \cdot C)$
+			\item distributif : $(A_1 + A_2) \cdot B = A_1 \cdot B + A_2 \cdot B$
+			\item commutatif par rapport a l'addition :  $B \cdot (A_1 + A_2) = A_1 \cdot B + A_2 \cdot B$ % DEMANDER CONFIRMATION, si c'est pas $B \cdot A_1 +B \cdot  A_2$
+		\end{itemize}
+		
+		\subsubsection{Produit matriciel et composition ($\circ$)}
+		
+		\begin{mdframed}[linecolor=red]
+            		\textcolor{red}{{\bf Théorème:}}\\
+            		$\Phi_{B,B'} ([a_{i,j}]\times[b_{j,k}]) = \Phi_{B,B'}([b_{j,k}]) \circ \Phi_{B,B'}([a_{i,j}])$\\
+            		Faire la composé de 2 applications de matrice revient au meme que faire le produit des 2 matrices.
+		\end{mdframed}
+		
+		\begin{mdframed}[linecolor=green]
+			\textcolor{green}{\textbf{Exemple:}}\\
+			Soit $u: \R^3 \to \R^3$ avec $u(x,y,z)=(y,z,0)$ calculez $\Mat_{(u\ \circ\ u)}$ et $(\Mat_u \times \Mat_u)$\\
+			
+			$\Mat_{(u\ \circ\ u)} :\\
+			u \circ u\ (x,y,z) = u(u(x,y,z)) = u(y,z,0) = (z,0,0)\\
+			u \circ u\ (e1) = u \circ u\ (1,0,0) = (0,0,0) \to$ 1ere colonne de $\Mat_{(u\ \circ\ u)} \\
+			u \circ u\ (e2) = u \circ u\ (0,1,0) = (0,0,0) \to$ 2eme colonne de $\Mat_{(u\ \circ\ u)} \\
+			u \circ u\ (e3) = u \circ u\ (0,0,1) =(1,0,0) \to$ 3eme colonne de $\Mat_{(u\ \circ\ u)} \\ 
+			\Mat_{(u\ \circ\ u)} =
+			\begin{pmatrix}
+                        	0 & 0 & 1 \\
+                        	0 & 0 & 0 \\
+			0 & 0 & 0
+                    	\end{pmatrix}$
+			
+			\bigskip
+			$(\Mat_u \times \Mat_u) :\\
+			(x,y,z) = x \cdot e_1 + y \cdot e_2 + z \cdot e_3 \\
+			(y,z,0) = y \cdot e_1 + z \cdot e_2\\ 
+			u(e_1) = u(1,0,0) = 0 \cdot e_1 + 0 \cdot e_2 = 0 = (0, 0, 0) \to$ 1ere colonne de $\Mat_u \\
+			u(e_2) = u(0,1,0) = 1 \cdot e_1 + 0 \cdot e_2 = e_1 = (1, 0, 0) \to$ 2eme colonne de $\Mat_u\\
+			u(e_3) = u(0,0,1) = 0 \cdot e_1 + 1 \cdot e_2 = e_2 = (0, 1, 0) \to$ 3eme colonne de $\Mat_u$\\
+			$\Mat_u =
+			\begin{pmatrix}
+                        	0 & 1 & 0 \\
+                        	0 & 0 & 1 \\
+			0 & 0 & 0
+                    	\end{pmatrix}\\
+			\Mat_u \times \Mat_u = 
+			\begin{pmatrix}
+                        	0 & 1 & 0 \\
+                        	0 & 0 & 1 \\
+			0 & 0 & 0
+                    	\end{pmatrix} \times
+			\begin{pmatrix}
+                        	0 & 1 & 0 \\
+                        	0 & 0 & 1 \\
+			0 & 0 & 0
+                    	\end{pmatrix} =
+			\begin{pmatrix}
+                        	0 & 0 & 1 \\
+                        	0 & 0 & 0 \\
+			0 & 0 & 0
+                    	\end{pmatrix}$
+		\end{mdframed}
+			
+		\begin{mdframed}[linecolor=cyan]
+			\textcolor{cyan}{{\bf Remarque:}}\\
+			$\Mat_{\underbrace{u \circ u \circ ... \circ u}_{n\ \textrm{fois}}} = (\Mat_u)^n $\\
+			La matrice définie par $n$ composés de son application, revient au même que calculer la matrice de l'application à l'exposant $n$
+		\end{mdframed}
+		
+	\subsection{Matrice identité}
+		\begin{mdframed}[linecolor=blue]
+			\textcolor{blue}{\textbf{Définition:}}\\
+		On définit la \textbf{matrice identité} de $\Mat_\mathbb K (m,n)$, notée $I$ ou $I_n$ (avec $n$ la dimension) ou$Id$, comme:\\
+		\begin{center}
+		$\begin{pmatrix}
+                        	1 & 0 & \hdots & 0 \\
+                        	0 & 1 & \vdots & \vdots \\
+			\vdots & \hdots &\ddots & 0  \\
+			0 & \hdots & 0 &1
+                    \end{pmatrix}$
+                    \end{center}
+                    
+                 La matrice identité est carrée (meme nombre de lignes que de colonnes) et à une diagonale de 1, avec tout le reste des 0.\\
+                 
+                 Elle à comme particularité que toute matrice $M$ de même dimension multiplié par l'identité, redonne la matrice $M$.\\ 
+                 $M \times Id = M$ 
+		\end{mdframed}
+		
+		\begin{mdframed}[linecolor=green]
+			\textcolor{green}{\textbf{Exemple:}}\\
+		$I_3 = 
+		\begin{pmatrix}
+                        	1 & 0 & 0 \\
+                        	0 & 1 & 0 \\
+			0 & 0 &1
+                 \end{pmatrix} 
+		\quad I_4 = 
+		\begin{pmatrix}
+                        	1 & 0 & 0 & 0 \\
+                        	0 & 1 & 0 & 0 \\
+			0 & 0 &1 & 0  \\
+			0 & 0 & 0 &1
+                 \end{pmatrix} 
+                \quad  I_5 = 
+                 \begin{pmatrix}
+                    	1 & 0 & 0 & 0 & 0 \\
+                        	0 & 1 & 0 & 0 & 0 \\
+			0 & 0 & 1 & 0 & 0  \\
+			0 & 0 & 0 & 1 & 0 \\
+			0 & 0 & 0 & 0 & 1
+		\end{pmatrix} $
+		\end{mdframed}
+		
+		\begin{mdframed}[linecolor=cyan]
+			\textcolor{cyan}{{\bf Remarque:}}\\
+			$Id^n = Id \quad \forall n \in \mathbb N^+$
+		\end{mdframed}
 
-            $[a_{i, j}]$ est la matrice de $u$, $[b_{j, k}]$ est la matrice de $u'$, et
-            $[c_{i, k}]$ est la matrice de $u' \circ u$.
+	\subsection{Matrice inversible}
+            	\begin{mdframed}[linecolor=blue]
+            		\textcolor{blue}{{\bf Définition:}}\\
+            		On dira que la matrice $M$ est {\bf inversible} s'il existe une matrice notée $M^{-1}$ telle que:
+            		 $M \times M^{-1} = Id$ et $M^{-1} \times M = Id$
+            	\end{mdframed}
             
-            $(u' \circ u)(e_i) = ... = \displaystyle \sum_{k=1}^p (\underbrace{\displaystyle \sum_{j=1}^m a_{i,j}\cdot b_{j,k}}_{c_{i,k}})e''_k$
-        \end{mdframed}
+            	\begin{mdframed}[linecolor=red]
+            		\textcolor{red}{{\bf Théorème:}}\\
+            	Si une matrice $M$ est {\bf omnipotente} (que si pour une puissance $n$, $M^n$ = 0), $M$ n'est pas inversible.
+            	\end{mdframed}
+	
+		\subsubsection{Calcul de puissance de matrice}
+			En utilisant les propriétés des l'inversibilité des matrices et le binôme de Newton, on peut calculer plus facilement des grandes puissance de matrices.
+			\begin{mdframed}[linecolor=green]
+				\textcolor{green}{\textbf{Exemple:}}\\
+				Avec $M = 
+				\begin{pmatrix}
+                        		1 & 1 & 0 \\
+                        		0 & 1 & 1 \\
+				0 & 0 & 1
+                 		\end{pmatrix} $ et son inverse $N =
+				\begin{pmatrix}
+                        		0 & 1 & 0 \\
+                        		0 & 0 & 1 \\
+				0 & 0 & 0
+				\end{pmatrix} \quad (M \times N = Id)$\\
+				$N^3 = Id$\\
+				Calculer $M^{2015}$\\
+				
+				$M = Id + N \\ % POURQUOIIIIIII ?
+				N^{3k} = Id \quad N^{3k+1} = N \quad N^{3k+2} = N^2\\
+				M^n = (Id+N)^n = \displaystyle \sum^n_{k=0} C_n^k \cdot N^k \cdot Id^{(n-k)} = \displaystyle \sum^n_{k=0} C_n^k \cdot N^k\\
+				M^{2015} = \displaystyle \sum^{2015/3}_{p=0}\bigg(C_{2015}^{3p} \cdot Id + C_{2015}^{3p+1} \cdot N + C_{2015}^{3p+2} \cdot N^2 \bigg) =
+				\begin{pmatrix}
+                        		a & c & b \\
+                        		b & a & c \\
+				c & b & a
+                 		\end{pmatrix}$ \\
+				avec $a= \displaystyle \sum^{671}_{p=0} C_{2015}^{3p} \quad b=\displaystyle \sum^{671}_{p=0} C_{2015}^{3p+1} \quad c=\displaystyle \sum^{671}_{p=0} C_{2015}^{3p+2}$
+			\end{mdframed}
+	
+	\subsection{Retour sur les e.v.}
+	\begin{mdframed}[linecolor=blue]
+		\textcolor{blue}{\textbf{Définition:}}\\
+		\indent Soit $E$ un e.v. de dimension finie avec $B=\{e_1, ... ,e_n\}$ famille de $E$.\\
+		$\Phi_B : \mathbb K^n \to E \\
+		(\lambda_1, ... , \lambda_n) \mapsto \displaystyle\sum^n_{i=1} \lambda_i \cdot e_i \\
+		\Psi_B = \Phi_B^{-1}$ (inverse de $\Phi_B$) \\
+		$\Psi_B: E \to \mathbb K^n \approx \Mat_{\mathbb K} (n, 1) \\
+		v \mapsto 
+		\begin{pmatrix}
+                 \lambda_1 \\
+                 \vdots \\
+		\lambda_n 
+		\end{pmatrix} (\lambda_1, ... , \lambda_n)$ sont les coefficients de $v$ dans la base $B$\\ \\
 
+		Soit $E'$ un autre e.v. sur $\mathbb K$ avec $B'=\{e'_1, ... ,e'_n\}$ base de $E'$.\\
+		$\Phi_{B'} : \mathbb K^m \to E' \quad \Psi_{B'}: E' \to \mathbb K^m $\\
+		
+		Soit $u \in L(E, E') \\
+		\forall i, 1 \leq i \leq n\\
+		u(e_i) = \displaystyle\sum^m_{j=1} a_{j,i} \cdot e'_j = 
+		\begin{pmatrix}
+                 a_{1,i} \\
+                 \vdots \\
+		a_{m,i} % ami :')
+		\end{pmatrix} =
+		\Psi_{B'}(u(e_i))$\\
+		
+		$v = \displaystyle\sum^n_{i=1} \lambda_i \cdot e_i \in E \quad \Phi_B(v) = 
+		\begin{pmatrix}
+                 \lambda_1 \\
+                 \vdots \\
+		\lambda_n 
+		\end{pmatrix}\\
+		v' = u(v) = u\bigg(\displaystyle\sum^n_{i=1} \lambda_i \cdot e_i \bigg) = \displaystyle\sum^n_{i=1} \lambda_i \cdot u(e_i) = \displaystyle\sum^n_{i=1} \lambda_i \displaystyle\sum^n_{j=1} a_{j,i} \cdot e_j = \displaystyle\sum^n_{j=1} \bigg( \displaystyle\sum^n_{i=1} a_{j,i} \cdot \lambda_i \bigg)e'_j\\
+		\Rightarrow \lambda'_j = \displaystyle\sum^n_{i=1} a_{j,i} \cdot \lambda_i \\
+		\Phi_{B'}(v')= 
+		\begin{pmatrix}
+                 \displaystyle\sum^n_{i=1} a_{1,i} \cdot \lambda_i \\
+                 \vdots \\
+		\displaystyle\sum^n_{i=1} a_{m,i} \cdot \lambda_i 
+		\end{pmatrix} = (a_{j,i}) \times (\lambda_i) = 
+		\begin{pmatrix}
+                 \lambda_1 \\
+                 \vdots \\
+		\lambda_m 
+		\end{pmatrix}=
+		\begin{pmatrix}
+                 a_{1,1} & \ldots & a_{1,n}  \\
+                 \vdots & \ddots & \vdots\\
+		a_{m,1} & \ldots & a_{m,n}
+		\end{pmatrix} \times 
+		\begin{pmatrix}
+                 \lambda_1 \\
+                 \vdots \\
+		\lambda_n 
+		\end{pmatrix}$
+	% Faire une petite conclusion/résumé en francais pour cette définition
+	\end{mdframed}
+	
+	\begin{mdframed}[linecolor=green]
+		\textcolor{green}{\textbf{Exemple:}}\\
+		Soit $u: \R^3 \to \R^2\\
+		u(x,y,z) = (3x-2y+z, x+y-z)$\\
+		Posons $B$ base canonique de $\R^2$ et $B'$ base canonique de $\R^3\\
+		u(e_1) = u(1,0,0) = (3,1)\\
+		u(e_2) = u(0,1,0) = (-2,1)\\
+		u(e_3) = u(0,0,1) = (1,-1)\\
+		\Mat_u = 
+		\begin{pmatrix}
+                 3 & -2 & 1 \\
+		1 & 1 & -1 
+		\end{pmatrix}\\
+		u \times 
+		\begin{pmatrix}
+                 x \\
+                 y \\
+		z 
+		\end{pmatrix} = 
+		\begin{pmatrix}
+                 3x-2y+z \\
+		x+y-z 
+		\end{pmatrix}$
+	\end{mdframed}
+	
+	% Pas compris le sens de la page 28... on va passer ^^
+
+	\begin{mdframed}[linecolor=red]
+		\textcolor{red}{\textbf{Théorème:}}\\
+		$\Phi_{B,B'} ([a_{j,i}])$ est l'application linéaire définie par:
+		$u(e_i) = \displaystyle\sum^n_{j=1} a_{j,i}e'_j \quad \forall i, 1 \leq i \leq n$\\
+		$\Phi_{B,B'}$ est un isomorphisme\\
+		\bigskip 
+		
+		Si $M$ est inversibles $\Leftrightarrow$ $u=\Phi_{BB'}(M)$ est un isomorphisme\\
+		de façon équivalente : \\
+		$u \in L(E,E')$ telle que $u$ bijective $\Leftrightarrow M = \Psi_{BB'}(u^{-1})=M^{-1}$
+	\end{mdframed}
+	
+	\subsection{Matrice de passage}
+	\begin{mdframed}[linecolor=blue]
+		\textcolor{blue}{\textbf{Définition:}}\\
+		$P = \Psi_{BB'}(Id_E)$ est appelée la {\bf matrice de passage} de $B$ à $B$'
+		% Petite conclusion en francais ?
+	\end{mdframed}
+	
+	\begin{mdframed}[linecolor=red]
+		\textcolor{red}{{\bf Théorème:}}\\
+		Soit $v \in E \\
+		\begin{pmatrix}
+                 \lambda_1 \\
+                 \vdots \\
+		\lambda_n 
+		\end{pmatrix} 
+		= \Psi_B(v) \times 
+		\begin{pmatrix}
+                 \lambda_1 \\
+                 \vdots \\
+		\lambda_n 
+		\end{pmatrix} 
+		= \Psi_{B'}(v) \\
+		\begin{pmatrix}
+                 \lambda'_1 \\
+                 \vdots \\
+		\lambda'_n  
+		\end{pmatrix}
+		= (a_{j,i})\times
+		\begin{pmatrix}
+                 \lambda_1 \\
+                 \vdots \\
+		\lambda_n 
+		\end{pmatrix} 
+		\Leftrightarrow
+		\Psi_{B'} = \Psi{BB'}(Id) \times \Psi_B$ 
+	\end{mdframed}
+	
+	\begin{mdframed}[linecolor=red]
+		\textcolor{red}{\textbf{Corrolaire:}}\\
+		Si $P$ st la matrice de passage de $B$ à $B' : P = \Psi_{BB'}(Id)$,\\
+		alors la matrice de passage de $B'$ à $B$ est $P^{-1}:\Psi_{B'B}(Id) = (\Psi_{BB'}(Id))^{-1}$
+	\end{mdframed}
+	
+	\begin{mdframed}[linecolor=green]
+		\textcolor{green}{\textbf{Exemple:}}\\
+		Soit $B_0$ base canonique de $\R^2 : \{e_1,e_2\}$ et $B' = \{(1,1),(-1,1)\} = \{ e'_1,e'_2 \} \\
+		\Psi_{B_0B'} = $
+		\[ \left \{
+  		  \begin{aligned}
+        		  e_1=a_{1,1}\cdot e'_1 +a_{2,1}\cdot e'_2\\
+		  e_2=a_{1,2}\cdot e'_1 +a_{2,2}\cdot e'_2
+		  \end{aligned}
+		  \right .
+		\Leftrightarrow 
+		 \left \{
+  		  \begin{aligned}
+        		  (1,0)=a_{1,1}(1,1) +a_{2,1} (-1,1) \Leftrightarrow 
+		  	\left \{
+  		  	\begin{aligned}
+        		 	 a_{1,1}-a_{2,1}=1\\
+		 	 a_{1,1}+a_{2,1}=0
+		 	 \end{aligned}
+		 	 \right .
+			\Leftrightarrow
+			\left \{
+  		  	\begin{aligned}
+        		 	 a_{1,1}=\frac{1}{2}\\
+		 	 a_{2,1}=\frac{-1}{2}
+		 	 \end{aligned}
+		 	 \right .\\
+		  (0,1)=a_{1,2} (1,1) +a_{2,2} (-1,1)\Leftrightarrow
+		  	\left \{
+  		  	\begin{aligned}
+        		 	 a_{1,2}-a_{2,2}=0\\
+		 	 a_{1,2}+a_{2,2}=1
+		 	 \end{aligned}
+		 	 \right .
+			 \Leftrightarrow
+			\left \{
+  		  	\begin{aligned}
+        		 	 a_{1,2}=\frac{1}{2}\\
+		 	 a_{2,2}=\frac{1}{2}
+		 	 \end{aligned}
+		 	 \right .\\
+		  \end{aligned}
+		  \right .
+		\] 
+		La matrice de passage, $Mat_{B_0B'} = 
+		\begin{pmatrix}
+       		\frac{1}{2} & \frac{1}{2} \\
+		-\frac{1}{2} & \frac{1}{2}  
+		\end{pmatrix}$ \\
+		
+		Les coordonnées de $(x,y)$ dans la base $B' :
+		\begin{pmatrix}
+       		\frac{1}{2} & \frac{1}{2} \\
+		-\frac{1}{2} & \frac{1}{2}  
+		\end{pmatrix} \times
+		\begin{pmatrix}
+		x \\		
+		y 
+		\end{pmatrix} = 
+		\begin{pmatrix}
+       		\frac{x+y}{2} \\
+		\frac{-x+y}{2}
+		\end{pmatrix}$\\
+		
+		$\frac{x+y}{2}e'_1+\frac{-x+y}{2}e'_2 = \frac{x+y}{2}(1,1)+\frac{-x+y}{2}(-1,1) = (\frac{x+y}{2}-\frac{-x+y}{2},\frac{x+y}{2}+\frac{-x+y}{2}) = (x,y)$\\
+		
+		$e'_1 = (1,1) = (1,0)+(0,1) = e_1+e_2 \\
+		  e'_2 = (-1,1) = -1\cdot(1,0)+(0,1) = -e_1+e_2 \\
+		  Mat_{B'B_0} = 
+		\begin{pmatrix}
+                 1 & -1 \\
+		1 & 1 
+		\end{pmatrix} $ \\
+		
+		Vérifions si $Mat_{B'B_0} \times Mat_{B_0B'} \stackrel{?}{=} Id \\ 
+		\begin{pmatrix}
+       		\frac{1}{2} & \frac{1}{2} \\
+		-\frac{1}{2} & \frac{1}{2}  
+		\end{pmatrix} \times 
+		\begin{pmatrix}
+                 1 & -1 \\
+		1 & 1 
+		\end{pmatrix} = 
+		\begin{pmatrix}
+                 1 & 0 \\
+		0 & 1 
+		\end{pmatrix} = Id$
+	% Il faudrait ecrire un peu plus clairement se qu'on fait, cet exercice semble être divisé en plusieurs étapes qu'il faudrait résumé (\begin{enumerate} ??) pour expliquer leur but
+	\end{mdframed}
+	
+	\begin{mdframed}[linecolor=red]
+		\textcolor{red}{\textbf{Théorème:}}\\
+		$u \in L(E,E)\\
+		M = \Psi_{BB}(u) \quad P=\Psi_{BB'}(Id)\\
+		M' = \Psi_{B'B'}(u) \quad P^{-1} = \Psi_{B'B}(Id)\\
+		M' : P^{-1} \cdot M \cdot P \\
+		(M')^n=P^{-1} \cdot M^n \cdot P$
+	\end{mdframed}
+	
+	\subsection{Déterminant de matrice}
+	\subsubsection{Calculs de déterminants}
+	
+	\begin{mdframed}[linecolor=blue]
+		\textcolor{blue}{\textbf{Définition:}}\\
+		Le \textbf{déterminant} d'une matrice $2\times2, M = 
+		\begin{pmatrix}
+                 a & b \\
+		c & d 
+		\end{pmatrix} = ad- bc$.\\
+		Le déterminant se note entre $|M|$ ou $det(M)$.\\
+	\end{mdframed}
+	
+	\begin{mdframed}[linecolor=cyan]
+		\textcolor{cyan}{\textbf{Remarque:}}\\
+		Seul les matrices carrées ont un déterminant (unique).
+	\end{mdframed}
+	
+	\begin{mdframed}[linecolor=blue]
+		\textcolor{blue}{\textbf{Définition:}}\\
+		L'on peut calculer le déterminant d'une matrice $3 \times 3$ en utilisant la règle de Sarrus.\\
+		Soit $M : 
+		\begin{pmatrix}
+                 a_{1,1} & a_{1,2} & a_{1,3} \\
+		a_{2,1} & a_{2,2} & a_{2,3} \\
+		a_{3,1} & a_{3,2} & a_{3,3}
+		\end{pmatrix}$
+		On va "recopié" en faisant une translation de la matrice à sa droite tracé ses diagonales, d'abord du coin supérieur gauche, en multipliant tout les termes. Puis on additionne avec les 2 diagonales à droite. Puis on part du coin inférieur gauche, on multiplie les diagonales montantes (en pointillés sur le schéma) et on soustraie avec les 2 diagonales à sa droite.\\
+		\begin{tikzpicture}[>=stealth]
+                    \matrix [%
+                      matrix of math nodes,
+                      column sep=1em,
+                      row sep=1em
+                    ] (sarrus) {%
+                      a_{1,1} & a_{1,2} & a_{1,3} & a_{1,1} & a_{1,2} \\
+                      a_{2,1} & a_{2,2} & a_{2,3} & a_{2,1} & a_{2,2} \\
+                      a_{3,1} & a_{3,2} & a_{3,3} & a_{3,1} & a_{3,2} \\
+                    };
+                
+                    \path ($(sarrus-1-1.north west)-(0.5em,0)$) edge ($(sarrus-3-1.south west)-(0.5em,0)$)
+                          ($(sarrus-1-3.north east)+(0.5em,0)$) edge ($(sarrus-3-3.south east)+(0.5em,0)$)
+                          (sarrus-1-1)                          edge            (sarrus-2-2)
+                          (sarrus-2-2)                          edge[->]        (sarrus-3-3)
+                          (sarrus-1-2)                          edge            (sarrus-2-3)
+                          (sarrus-2-3)                          edge[->]        (sarrus-3-4)
+                          (sarrus-1-3)                          edge            (sarrus-2-4)
+                          (sarrus-2-4)                          edge[->]        (sarrus-3-5)
+                          (sarrus-3-1)                          edge[dashed]    (sarrus-2-2)
+                          (sarrus-2-2)                          edge[->,dashed] (sarrus-1-3)
+                          (sarrus-3-2)                          edge[dashed]    (sarrus-2-3)
+                          (sarrus-2-3)                          edge[->,dashed] (sarrus-1-4)
+                          (sarrus-3-3)                          edge[dashed]    (sarrus-2-4)
+                          (sarrus-2-4)                          edge[->,dashed] (sarrus-1-5);
+                
+                    \foreach \c in {1,2,3} {\node[anchor=south] at (sarrus-1-\c.north) {$+$};};
+                    \foreach \c in {1,2,3} {\node[anchor=north] at (sarrus-3-\c.south) {$-$};};
+                  \end{tikzpicture} \\
+		% Source : http://tex.stackexchange.com/questions/32978/typesetting-a-matrix-with-crossing-arrows-on-it
+		$= a_{1,1} \cdot a_{2,2} \cdot a_{3,3} + a_{1,2} \cdot a_{2,3} \cdot a_{3,1} + a_{1,3} \cdot a_{2,1} \cdot a_{3,2} - a_{3,1} \cdot a_{2,2} \cdot a_{1,3} - a_{3,2} \cdot a_{2,3} \cdot a_{1,1} - a_{3,3} \cdot a_{2,1} \cdot a_{1,2} $\\
+		
+	D'autres manières existe pour calculer des determinants $3 \times 3$.
+	\end{mdframed}
+	
+	\subsubsection{Groupe de permutation}
+		\begin{mdframed}[linecolor=blue]
+			\textcolor{blue}{\textbf{Définition:}}\\
+			% on va noté \delta pour les permutations et \sigma pour les groupe
+			Soit $\sigma_n$, groupe des permutations de $n$ éléments, c'est-a-dire : l'ensemble des bijections de $\{1, ..., n\}$ dans lui-même. Chaque permutation seras noté $\delta$.\\
+			$\#\sigma_n = n!$ (factoriel)
+		\end{mdframed}
+		
+		\begin{mdframed}[linecolor=green]
+			\textcolor{green}{\textbf{Exemple:}}\\
+				$\sigma_1 = \{(1)\} \\ 
+				\sigma_2 = \{(1,2),(2,1)\}\\
+				\sigma_3 = \{(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)\}$
+		\end{mdframed}
+		
+		\begin{mdframed}[linecolor=blue]
+			\textcolor{blue}{\textbf{Définition:}}\\
+			Les permurtations les plus simples sont les transpositions.Noté $\tau$. Définis comme: \\
+			\[
+			\left \{
+    			\begin{aligned}
+        			\tau(i) &= j \\
+			\tau(j) &= i \\
+			\tau(k) &= k \quad \text{ si } k \neq i \text{ et } k \neq j
+    			\end{aligned}
+			\right .
+			\]
+	Ce qui revient à échanger 2 éléments de places (donc sans toucher aux autres)		
+		\end{mdframed}
+
+		\begin{mdframed}[linecolor=green]
+			\textcolor{green}{\textbf{Exemple:}}\\
+			Avec (1,2,3) comme élément de départ.:
+			\begin{itemize}
+				\item $(1,3,2) = \tau_{2,3}$ on a juste échangé de position le l'élément en 2eme position avec celui en 3eme positions
+				\item $(2,3,1) = \tau_{1,2} \circ \tau_{2,3}$ d'abord on échange la position 1 avec le 2 se qui donne (2,1,3), puis on échange celui de 2eme position avec celui en 3eme ($\tau_{2,3}$) ce qui donne (2,3,1). \\Plus mathématiquement : \\
+				\[
+				\left .
+    				\begin{aligned}
+        				( \tau_{1,2} \circ \tau_{2,3}) (1) = \tau_{1,2}(\tau_{2,3}(1)) =\tau_{1,2}(1) &= 2\\
+				( \tau_{1,2} \circ \tau_{2,3}) (2) = \tau_{1,2}(\tau_{2,3}(2)) =\tau_{1,2}(3) &= 3\\
+				( \tau_{1,2} \circ \tau_{2,3}) (3) = \tau_{1,2}(\tau_{2,3}(3)) =\tau_{1,2}(2) &= 1
+    				\end{aligned}
+				\right \} (2,3,1) 
+				\]
+			\end{itemize}
+		\end{mdframed}
+
+		\begin{mdframed}[linecolor=red]
+			\textcolor{red}{\textbf{Théorème:}}\\
+			$\forall \delta \in \sigma_n, \exists k$ transpositions $\tau_1, ..., \tau_k$ telles que $\delta = \tau_k \circ \tau_{k-1} \circ ... \circ \tau_1$\\
+			De plus si on à $k'$ autres transpositions avec $\tau_k \circ \tau_{k-1} \circ ... \circ \tau_1 = \delta$ alors $k \equiv k'[z]$ c'est à dire que $k$ et $k'$ sont tout les 2 soit paires, soit impaires, ou encore $(-1)^k = (-1)^{k'}$
+		\end{mdframed}
+	
+		\begin{mdframed}[linecolor=green]
+			\textcolor{green}{\textbf{Exemple:}}\\
+			Pour passer de (1,2,3) à (1,3,2)
+			\begin{itemize}
+				\item $\tau_{2,3}(\to (1,3,2))$
+				\item $\tau_{1,2}(\to (2,1,3)) \circ \tau_{1,3}(\to (3,1,2)) \circ \tau_{1,2}(\to (1,3,2))$
+				\item etc... quoi qu'il arrive on auras ici toujours un nombre impairs de transpositions à faire pour atteindre le résultat final
+			\end{itemize}
+		\end{mdframed}
+		
+		\begin{mdframed}[linecolor=blue]
+			\textcolor{blue}{\textbf{Définition:}}\\
+			Le nombre $(-1)^k$ est noté $sign(\delta)$ et est appellée la \textbf{signature} de $\delta$. L'on peut s'en servir pour calculer le déterminant d'une matrice $n \times n$.
+		\end{mdframed}
+	
+	
+	\subsection{Calcul de déterminant de matrice $n\times n$}
+		\begin{mdframed}[linecolor=blue]
+			\textcolor{blue}{\textbf{Définition:}}\\
+			Soit $M =
+			 \begin{pmatrix}
+                	  	a_{1,1} & \cdots & a_{1,n} \\
+                  	\vdots   & \ddots & \vdots  \\
+                  	a_{n,1} & \cdots & a_{n,n}
+                 	\end{pmatrix} \\
+			det(M) = \displaystyle\sum_{\delta \in \sigma_n} \cdot sign(\delta) \cdot \displaystyle\prod^n_{i=1}a_{\sigma(i),i}$
+		\end{mdframed}
+		
+		\begin{mdframed}[linecolor=green]
+			\textcolor{green}{\textbf{Exemple:}}\\
+			Prenons la formule pour $n=3:\\
+			\sigma_3 = \{(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)\}$
+			\begin{itemize} 
+				\item $(1,2,3) \to sign = 1 \to \prod = a_{1,1} \cdot a_{2,2} \cdot a_{3,3}$
+				\item $(1,3,2) \to sign = -1 \to \prod = a_{1,1} \cdot a_{3,2} \cdot a_{2,3}$
+				\item $(2,1,3) \to sign = -1 \to \prod = a_{2,1} \cdot a_{1,2} \cdot a_{3,3}$
+				\item $(2,3,1) \to sign = 1 \to \prod = a_{2,1} \cdot a_{3,2} \cdot a_{1,3}$
+				\item $(3,1,2) \to sign = 1 \to \prod = a_{3,1} \cdot a_{1,2} \cdot a_{2,3}$
+				\item $(3,2,1) \to sign = -1 \to \prod = a_{3,1} \cdot a_{2,2} \cdot a_{1,3}$
+			\end{itemize}
+			% repenser la structure ?
+			Maintenant on utilise la formule complétement:\\
+			$Mat(M) =  a_{1,1} \cdot a_{2,2} \cdot a_{3,3} - a_{1,1} \cdot a_{3,2} \cdot a_{2,3} - a_{2,1} \cdot a_{1,2} \cdot a_{3,3} + a_{2,1} \cdot a_{3,2} \cdot a_{1,3} + a_{3,1} \cdot a_{1,2} \cdot a_{2,3} - a_{3,1} \cdot a_{2,2} \cdot a_{1,3} $\\ se qui redonne la formule de Sarrus !
+		\end{mdframed}
+	
+	\subsection{Propriétés du determinant}
+	% Verso page 33
+	
 \end{document}
