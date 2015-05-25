@@ -1864,7 +1864,7 @@
                     a_{2,1} & a_{2,2} & a_{2,3} \\
                     a_{3,1} & a_{3,2} & a_{3,3}
                 \end{pmatrix}$
-                
+
                 \begin{itemize}
                     \item $M_{1,1} =
                           \begin{pmatrix}
@@ -1910,7 +1910,7 @@
 
             \begin{mdframed}[linecolor=red]
                 \textcolor{red}{\textbf{Théorème :}}
-                
+
                 Soit $M$ une matrice carrée. $\det(M) = \displaystyle \sum^n_{j=1}a_{j,i} \cdot (-1)^{i+j}\cdot \underbrace{\det(M_{j,i})}_{\text{"mineur"}}\quad \forall 0 \leq i \leq n $ fixé
             \end{mdframed}
 
@@ -1923,10 +1923,10 @@
                     2 & 0 & 1 & 3 \\
                     1 & 1 & -2 & 2
                 \end{vmatrix}$
-                
+
                 Choisissons la 2eme colonne ($i = 2$)  car elle contient le plus de zéros.
                 On applique la formule (la somme) pour :
-                
+
                 \begin{itemize}
                     \item $j = 1 : a_{1, 2} \cdot (-1)^{1 + 2} \det(M_{1, 2}) = (-1) \cdot (-1) \cdot
                           \begin{vmatrix}
@@ -1989,32 +1989,32 @@
                             2 & 1 & 3
                           \end{vmatrix} = -27$.
                 \end{itemize}
-                
+
                 La somme de tous les résultats intermédiaires donne $\det(M) = 15 + 0 + 0 -27 = -12$.
             \end{mdframed}
 
             \begin{mdframed}[linecolor=cyan]
                 \textcolor{cyan}{\textbf{Remarque :}}
-                
+
                 Afin de gagner du temps on peux aussi utiliser la 2eme propriété de
                 multi-linéarité qui nous permet de changer les valeurs de notre colonne
                 pour faire apparaitre plus de $0$, simplifiant ainsi les calculs.
             \end{mdframed}
-            
+
             \newpage
 
             \begin{mdframed}[linecolor=green]
                 \textcolor{green}{\textbf{Exemple :}}
-                
+
                 (En reprenant l'exemple ci-dessus)
-                
+
                 $\begin{vmatrix}
                     -1 & -1 & 4 & 3  \\
                     2 & 0 & 1 & 0 \\
                     2 & 0 & 1 & 3 \\
                     1 & 1 & -2 & 2
                 \end{vmatrix}$
-                
+
                 On va additionner à la dernière ligne la première ligne: \\
                 $\begin{vmatrix}
                     -1 & -1 & 4 & 3  \\
@@ -2027,9 +2027,9 @@
                     2 & 0 & 1 & 3 \\
                     0 & 0 & 2 & 5
                 \end{vmatrix}$
-                
+
                 On reprend la même colonne de départ (la seconde), et donc :
-                
+
                 $\begin{vmatrix}
                     \MyTikzmark{leftH}{-1} & \MyTikzmark{topH}{-1} & 4 & \MyTikzmark{rightH}{3}  \\
                     2 & 0 & 1 & 0 \\
@@ -2043,7 +2043,7 @@
                     2 & 1 & 3 \\
                     0 & 2 & 5
                 \end{vmatrix} = -12$
-                
+
                 Et on a pas besoin d'aller plus loin car tous les autres éléments
                 de la colonne valent $0$.
             \end{mdframed}
@@ -2052,8 +2052,8 @@
 
             \begin{mdframed}[linecolor=red]
                 \textcolor{red}{\textbf{Théorème du rang:}}
-                
-                Soit $u : E \to E'$ avec $u$, une application linéaire, 
+
+                Soit $u : E \to E'$ avec $u$, une application linéaire,
                 $\dim(\Ker u) + \dim(\ImAppli u) = \dim(E)\\
                 \Ker u = \{ v \in E\ |\ u(v)=0 \} \subset E \\
                 \ImAppli u = \{ w \in E\ |\ \exists v \in E, u(v) = w \} = u(E)$
