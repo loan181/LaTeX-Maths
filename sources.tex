@@ -48,7 +48,7 @@
 \DeclareMathOperator{\sing}{sign}
 
 \title{Résumé cours de Maths - Module SI\\ \textbf{Algèbre Linéaire}}
-\date{version du 25 mai (18h15)}
+\date{version du 25 mai (19h15)}
 
 \pagestyle{plain}
 
@@ -456,6 +456,7 @@
                           est sous-e.v de E$_1$
                 \end{itemize}
             \end{mdframed}
+
             \subsubsection{Noyau et Image}
                 \begin{mdframed}[linecolor=blue]
                 \textcolor{blue}{\textbf{Définition :}}
@@ -1477,546 +1478,536 @@
                 $\Psi_{B'B}(u^{-1}) = M^{-1}$ ou encore $u^{-1} = \Phi_{B'B}(M)$.
             \end{mdframed}
 
-	\subsection{Matrice de passage}
-	\begin{mdframed}[linecolor=blue]
-		\textcolor{blue}{\textbf{Définition :}}\\
-		$P = \Psi_{BB'}(Id_E)$ est appelée la \textbf{matrice de passage} de $B$ à $B$'
-		% Petite conclusion en francais ?
-	\end{mdframed}
+        \subsection{Matrice de passage}
+            \begin{mdframed}[linecolor=blue]
+                \textcolor{blue}{\textbf{Définition :}}
+                
+                $P = \Psi_{BB'}(Id_E)$ est appelée la \textbf{matrice de passage} de $B$ à $B'$
+                avec $Id_E : E \to E : v \mapsto v$.
+                
+                Autrement dit, la matrice associée à l'application qui envoie tout vecteur $v$ sur lui-même
+                mais exprimé de la base $B$ vers la base $B'$ est appelée matrice de passage.
+            \end{mdframed}
 
-	\begin{mdframed}[linecolor=red]
-		\textcolor{red}{\textbf{Théorème :}}\\
-		Soit $v \in E \\
-		\begin{pmatrix}
-                 \lambda_1 \\
-                 \vdots \\
-		\lambda_n
-		\end{pmatrix}
-		= \Psi_B(v) \times
-		\begin{pmatrix}
-                 \lambda_1 \\
-                 \vdots \\
-		\lambda_n
-		\end{pmatrix}
-		= \Psi_{B'}(v) \\
-		\begin{pmatrix}
-                 \lambda'_1 \\
-                 \vdots \\
-		\lambda'_n
-		\end{pmatrix}
-		= (a_{j,i})\times
-		\begin{pmatrix}
-                 \lambda_1 \\
-                 \vdots \\
-		\lambda_n
-		\end{pmatrix}
-		\Leftrightarrow
-		\Psi_{B'} = \Psi{BB'}(Id) \times \Psi_B$
-	\end{mdframed}
+            \begin{mdframed}[linecolor=red]
+                \textcolor{red}{\textbf{Théorème :}}
+                
+                Soient $u = Id_E$, $v \in E$ et deux bases de $E$, $B = \{e_1, \ldots, e_n\}, B' = \{e'_1, \ldots, e'_n\}$.
+                $u(v) = \displaystyle \sum_{i=1}^n \lambda_i u(e_i) = \displaystyle \sum_{i=1}^n \lambda_i \sum_{j=1}^n a_{ji} e'_j$.
+                Ou encore $u(v) = \displaystyle \sum_{j=1}^n\lambda'_j e'_j$ avec
+                $\lambda'_j = \displaystyle \sum_{i=1}^n \lambda_i a_{ji}$.
+                
+                On a donc $\begin{pmatrix}\lambda'_1 \\ \vdots \\ \lambda'_n\end{pmatrix} = \Psi_{B'}(v) = \Psi_{BB'}(Id_E) \cdot \Psi_{B}(v)$.
+            \end{mdframed}
 
-	\begin{mdframed}[linecolor=red]
-		\textcolor{red}{\textbf{Corrolaire:}}\\
-		Si $P$ st la matrice de passage de $B$ à $B' : P = \Psi_{BB'}(Id)$,\\
-		alors la matrice de passage de $B'$ à $B$ est $P^{-1}:\Psi_{B'B}(Id) = (\Psi_{BB'}(Id))^{-1}$
-	\end{mdframed}
+            \begin{mdframed}[linecolor=red]
+                \textcolor{red}{\textbf{Corrolaire :}}
+                
+                Si $P = \Psi_{BB'}(Id)$ est la matrice de passage de $B$ à $B'$,
+                alors la matrice de passage de $B'$ à $B$ est
+                $P^{-1} = \Psi_{B'B}(Id) = (\Psi_{BB'}(Id))^{-1}$.
+            \end{mdframed}
 
-	\begin{mdframed}[linecolor=green]
-		\textcolor{green}{\textbf{Exemple :}}\\
-		Soit $B_0$ base canonique de $\R^2 : \{e_1,e_2\}$ et $B' = \{(1,1),(-1,1)\} = \{ e'_1,e'_2 \} \\
-		\Psi_{B_0B'} = $
-		\[ \left \{
-  		  \begin{aligned}
-        		  e_1=a_{1,1}\cdot e'_1 +a_{2,1}\cdot e'_2\\
-		  e_2=a_{1,2}\cdot e'_1 +a_{2,2}\cdot e'_2
-		  \end{aligned}
-		  \right .
-		\Leftrightarrow
-		 \left \{
-  		  \begin{aligned}
-        		  (1,0)=a_{1,1}(1,1) +a_{2,1} (-1,1) \Leftrightarrow
-		  	\left \{
-  		  	\begin{aligned}
-        		 	 a_{1,1}-a_{2,1}=1\\
-		 	 a_{1,1}+a_{2,1}=0
-		 	 \end{aligned}
-		 	 \right .
-			\Leftrightarrow
-			\left \{
-  		  	\begin{aligned}
-        		 	 a_{1,1}=\frac{1}{2}\\
-		 	 a_{2,1}=\frac{-1}{2}
-		 	 \end{aligned}
-		 	 \right .\\
-		  (0,1)=a_{1,2} (1,1) +a_{2,2} (-1,1)\Leftrightarrow
-		  	\left \{
-  		  	\begin{aligned}
-        		 	 a_{1,2}-a_{2,2}=0\\
-		 	 a_{1,2}+a_{2,2}=1
-		 	 \end{aligned}
-		 	 \right .
-			 \Leftrightarrow
-			\left \{
-  		  	\begin{aligned}
-        		 	 a_{1,2}=\frac{1}{2}\\
-		 	 a_{2,2}=\frac{1}{2}
-		 	 \end{aligned}
-		 	 \right .\\
-		  \end{aligned}
-		  \right .
-		\]
-		La matrice de passage, $Mat_{B_0B'} =
-		\begin{pmatrix}
-       		\frac{1}{2} & \frac{1}{2} \\
-		-\frac{1}{2} & \frac{1}{2}
-		\end{pmatrix}$ \\
+            \begin{mdframed}[linecolor=green]
+                \textcolor{green}{\textbf{Exemple :}}
+                
+                Soit $B_0 = \{e_1, e_2\}$, base canonique de $\R^2$ et $B' = \{(1,1), (-1,1)\} = \{e'_1, e'_2\}$.
+                
+                Commençons par déterminer ce que vaut $P$, la matrice de passage de la base $B_0$ à la base $B'$.
+                
+                \[
+                    \left \{
+                        \begin{aligned}
+                        e_1=a_{1, 1}e'_1 +a_{2, 1}e'_2\\
+                        e_2=a_{1, 2}e'_1 +a_{2, 2}e'_2
+                        \end{aligned}
+                    \right .
+                    \Leftrightarrow
+                    \left \{
+                        \begin{aligned}
+                            (1, 0) &= a_{1, 1}(1, 1) + a_{2, 1} (-1, 1) \Leftrightarrow
+                            \left \{
+                                \begin{aligned}
+                                    a_{1,1} - a_{2,1} &= 1\\
+                                    a_{1,1} + a_{2,1} &= 0
+                                \end{aligned}
+                            \right .
+                            \Leftrightarrow
+                            \left \{
+                                \begin{aligned}
+                                    a_{1, 1} &= \frac{1}{2}\\
+                                    a_{2, 1} &= \frac{-1}{2}
+                                \end{aligned}
+                            \right .\\
+                            (0, 1) &= a_{1, 2} (1, 1) + a_{2, 2} (-1, 1) \Leftrightarrow
+                            \left \{
+                                \begin{aligned}
+                                    a_{1, 2} - a_{2, 2} &= 0\\
+                                    a_{1, 2} + a_{2, 2} &= 1
+                                \end{aligned}
+                            \right .
+                            \Leftrightarrow
+                            \left \{
+                                \begin{aligned}
+                                    a_{1, 2} &= \frac{1}{2}\\
+                                    a_{2, 2} &= \frac{1}{2}
+                                \end{aligned}
+                             \right .\\
+                        \end{aligned}
+                    \right .
+                \]
+        
+                La matrice de passage, $M_{B_0B'} = \begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ -\frac{1}{2} & \frac{1}{2} \end{pmatrix}$
 
-		Les coordonnées de $(x,y)$ dans la base $B' :
-		\begin{pmatrix}
-       		\frac{1}{2} & \frac{1}{2} \\
-		-\frac{1}{2} & \frac{1}{2}
-		\end{pmatrix} \times
-		\begin{pmatrix}
-		x \\
-		y
-		\end{pmatrix} =
-		\begin{pmatrix}
-       		\frac{x+y}{2} \\
-		\frac{-x+y}{2}
-		\end{pmatrix}$\\
+                Voyons ce que cela donne.
+                
+                Les coordonnées de $(x, y)$ dans la base $B'$ sont les suivantes :
+                $\begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ -\frac{1}{2} & \frac{1}{2} \end{pmatrix} \cdot
+                \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} \frac{x + y}{2} \\ \frac{-x + y}{2} \end{pmatrix}$.
+                
+                Autrement dit, tout point exprimé par les coordonnées $(x, y)$
+                dans la base canonique sera exprimés $(\frac {x+y}2, \frac{y-x}2)$
+                dans la base $B'$ choisie ici arbitrairement.
+                
+                Vérifions les calculs :
+                
+                $\frac{x + y}{2}e'_1 + \frac{-x + y}{2}e'_2 = \frac{x + y}{2}(1, 1) + \frac{-x + y}{2}(-1, 1) =
+                (\frac{x + y}{2} - \frac{-x + y}{2}, \frac{x + y}{2} + \frac{-x + y}{2}) = (x, y)$
+                
+                En développant les calculs avec expression de la base, on voit bien qu'un point de coordonnée
+                $(\frac {x+y}2, \frac{y-x}2)$ est identique à un point de coordonnée $(x, y)$ dans la base canonique.
+                
+                Essayons maintenant de déterminer ce que vaut la matrice de passage
+                de la base $B'$ vers la base canonique $B_0$.
+                
+                $e'_1 = (1, 1) = (1, 0) + (0, 1) = e_1 + e_2 \\
+                e'_2 = (-1, 1) = -1(1, 0) + (0, 1) = -e_1 + e_2 \\
+                M_{B'B_0} = \begin{pmatrix}  1 & -1 \\ 1 & 1 \end{pmatrix}$
 
-		$\frac{x+y}{2}e'_1+\frac{-x+y}{2}e'_2 = \frac{x+y}{2}(1,1)+\frac{-x+y}{2}(-1,1) = (\frac{x+y}{2}-\frac{-x+y}{2},\frac{x+y}{2}+\frac{-x+y}{2}) = (x,y)$\\
+                Vérifions si $M_{B'B_0} \cdot M_{B_0B'} \stackrel{?}{=} I$ :
+                
+                $\begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ -\frac{1}{2} & \frac{1}{2} \end{pmatrix} \cdot
+                \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I$
+                
+                Nous avons bien le produit des matrices qui vaut l'identité, ce qui veut dire que
+                les matrices sont bien associées à des applications réciproques.
+                Et par calcul, nous avons montré que ces applications sont les applications unités.
+            \end{mdframed}
 
-		$e'_1 = (1,1) = (1,0)+(0,1) = e_1+e_2 \\
-		  e'_2 = (-1,1) = -1\cdot(1,0)+(0,1) = -e_1+e_2 \\
-		  Mat_{B'B_0} =
-		\begin{pmatrix}
-                 1 & -1 \\
-		1 & 1
-		\end{pmatrix} $ \\
+            \begin{mdframed}[linecolor=red]
+                \textcolor{red}{\textbf{Théorème :}}\\
+                $u \in L(E,E)\\
+                M = \Psi_{BB}(u) \quad P=\Psi_{BB'}(Id)\\
+                M' = \Psi_{B'B'}(u) \quad P^{-1} = \Psi_{B'B}(Id)\\
+                M' : P^{-1} \cdot M \cdot P \\
+                (M')^n=P^{-1} \cdot M^n \cdot P$
+            \end{mdframed}
 
-		Vérifions si $Mat_{B'B_0} \times Mat_{B_0B'} \stackrel{?}{=} Id \\
-		\begin{pmatrix}
-       		\frac{1}{2} & \frac{1}{2} \\
-		-\frac{1}{2} & \frac{1}{2}
-		\end{pmatrix} \times
-		\begin{pmatrix}
-                 1 & -1 \\
-		1 & 1
-		\end{pmatrix} =
-		\begin{pmatrix}
-                 1 & 0 \\
-		0 & 1
-		\end{pmatrix} = Id$
-	% Il faudrait ecrire un peu plus clairement se qu'on fait, cet exercice semble être divisé en plusieurs étapes qu'il faudrait résumé (\begin{enumerate} ??) pour expliquer leur but
-	\end{mdframed}
+        \subsection{Déterminant de matrice}
+            \subsubsection{Calculs de déterminants}
 
-	\begin{mdframed}[linecolor=red]
-		\textcolor{red}{\textbf{Théorème :}}\\
-		$u \in L(E,E)\\
-		M = \Psi_{BB}(u) \quad P=\Psi_{BB'}(Id)\\
-		M' = \Psi_{B'B'}(u) \quad P^{-1} = \Psi_{B'B}(Id)\\
-		M' : P^{-1} \cdot M \cdot P \\
-		(M')^n=P^{-1} \cdot M^n \cdot P$
-	\end{mdframed}
+                \begin{mdframed}[linecolor=blue]
+                    \textcolor{blue}{\textbf{Définition :}}
+                    
+                    Le \textbf{déterminant} d'une matrice $2\times2$ :
+                    $M = \begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad- bc$.
+                    
+                    Le déterminant se note entre $|M|$ ou $\det(M)$.
+                \end{mdframed}
 
-	\subsection{Déterminant de matrice}
-	\subsubsection{Calculs de déterminants}
+                \begin{mdframed}[linecolor=cyan]
+                    \textcolor{cyan}{\textbf{Remarque :}}
+                    
+                    Seules les matrices carrées ont un déterminant (unique).
+                \end{mdframed}
 
-	\begin{mdframed}[linecolor=blue]
-		\textcolor{blue}{\textbf{Définition :}}\\
-		Le \textbf{déterminant} d'une matrice $2\times2, M =
-		\begin{pmatrix}
-                 a & b \\
-		c & d
-		\end{pmatrix} = ad- bc$.\\
-		Le déterminant se note entre $|M|$ ou $det(M)$.\\
-	\end{mdframed}
+                \begin{mdframed}[linecolor=blue]
+                    \textcolor{blue}{\textbf{Définition :}}
+                    
+                    On peut calculer le déterminant d'une matrice
+                    $3 \times 3$ en utilisant la règle de Sarrus :
+                    Soit $M = \begin{pmatrix}
+                        a_{1,1} & a_{1,2} & a_{1,3} \\
+                        a_{2,1} & a_{2,2} & a_{2,3} \\
+                        a_{3,1} & a_{3,2} & a_{3,3}
+                    \end{pmatrix} \in \MatK(3, 3)$
+                    
+                    %Ne veut rien dire, à corriger Lolo...
+                    On va "recopier" en faisant une translation de la matrice
+                    à sa droite tracé ses diagonales, d'abord du coin supérieur gauche,
+                    en multipliant tout les termes. Puis on additionne avec les 2 diagonales à droite.
+                    Puis on part du coin inférieur gauche, on multiplie les diagonales montantes
+                    (en pointillés sur le schéma) et on soustraie avec les 2 diagonales à sa droite.\\
+                    \begin{tikzpicture}[>=stealth]
+                        \matrix [%
+                          matrix of math nodes,
+                          column sep=1em,
+                          row sep=1em
+                        ] (sarrus) {%
+                          a_{1,1} & a_{1,2} & a_{1,3} & a_{1,1} & a_{1,2} \\
+                          a_{2,1} & a_{2,2} & a_{2,3} & a_{2,1} & a_{2,2} \\
+                          a_{3,1} & a_{3,2} & a_{3,3} & a_{3,1} & a_{3,2} \\
+                        };
 
-	\begin{mdframed}[linecolor=cyan]
-		\textcolor{cyan}{\textbf{Remarque :}}\\
-		Seul les matrices carrées ont un déterminant (unique).
-	\end{mdframed}
+                        \path ($(sarrus-1-1.north west)-(0.5em,0)$) edge ($(sarrus-3-1.south west)-(0.5em,0)$)
+                              ($(sarrus-1-3.north east)+(0.5em,0)$) edge ($(sarrus-3-3.south east)+(0.5em,0)$)
+                              (sarrus-1-1)                          edge            (sarrus-2-2)
+                              (sarrus-2-2)                          edge[->]        (sarrus-3-3)
+                              (sarrus-1-2)                          edge            (sarrus-2-3)
+                              (sarrus-2-3)                          edge[->]        (sarrus-3-4)
+                              (sarrus-1-3)                          edge            (sarrus-2-4)
+                              (sarrus-2-4)                          edge[->]        (sarrus-3-5)
+                              (sarrus-3-1)                          edge[dashed]    (sarrus-2-2)
+                              (sarrus-2-2)                          edge[->,dashed] (sarrus-1-3)
+                              (sarrus-3-2)                          edge[dashed]    (sarrus-2-3)
+                              (sarrus-2-3)                          edge[->,dashed] (sarrus-1-4)
+                              (sarrus-3-3)                          edge[dashed]    (sarrus-2-4)
+                              (sarrus-2-4)                          edge[->,dashed] (sarrus-1-5);
 
-	\begin{mdframed}[linecolor=blue]
-		\textcolor{blue}{\textbf{Définition :}}\\
-		L'on peut calculer le déterminant d'une matrice $3 \times 3$ en utilisant la règle de Sarrus.\\
-		Soit $M :
-		\begin{pmatrix}
-                 a_{1,1} & a_{1,2} & a_{1,3} \\
-		a_{2,1} & a_{2,2} & a_{2,3} \\
-		a_{3,1} & a_{3,2} & a_{3,3}
-		\end{pmatrix}$
-		On va "recopié" en faisant une translation de la matrice à sa droite tracé ses diagonales, d'abord du coin supérieur gauche, en multipliant tout les termes. Puis on additionne avec les 2 diagonales à droite. Puis on part du coin inférieur gauche, on multiplie les diagonales montantes (en pointillés sur le schéma) et on soustraie avec les 2 diagonales à sa droite.\\
-		\begin{tikzpicture}[>=stealth]
-                    \matrix [%
-                      matrix of math nodes,
-                      column sep=1em,
-                      row sep=1em
-                    ] (sarrus) {%
-                      a_{1,1} & a_{1,2} & a_{1,3} & a_{1,1} & a_{1,2} \\
-                      a_{2,1} & a_{2,2} & a_{2,3} & a_{2,1} & a_{2,2} \\
-                      a_{3,1} & a_{3,2} & a_{3,3} & a_{3,1} & a_{3,2} \\
-                    };
+                        \foreach \c in {1,2,3} {\node[anchor=south] at (sarrus-1-\c.north) {$+$};};
+                        \foreach \c in {1,2,3} {\node[anchor=north] at (sarrus-3-\c.south) {$-$};};
+                    \end{tikzpicture} \\
+                    % Source : http://tex.stackexchange.com/questions/32978/typesetting-a-matrix-with-crossing-arrows-on-it
+                    
+                    $= a_{1,1} a_{2,2} a_{3,3} + a_{1,2} a_{2,3} a_{3,1} + a_{1,3} a_{2,1} a_{3,2} - a_{3,1} a_{2,2} a_{1,3} - a_{3,2} a_{2,3} a_{1,1} - a_{3,3} a_{2,1} a_{1,2} $\\
 
-                    \path ($(sarrus-1-1.north west)-(0.5em,0)$) edge ($(sarrus-3-1.south west)-(0.5em,0)$)
-                          ($(sarrus-1-3.north east)+(0.5em,0)$) edge ($(sarrus-3-3.south east)+(0.5em,0)$)
-                          (sarrus-1-1)                          edge            (sarrus-2-2)
-                          (sarrus-2-2)                          edge[->]        (sarrus-3-3)
-                          (sarrus-1-2)                          edge            (sarrus-2-3)
-                          (sarrus-2-3)                          edge[->]        (sarrus-3-4)
-                          (sarrus-1-3)                          edge            (sarrus-2-4)
-                          (sarrus-2-4)                          edge[->]        (sarrus-3-5)
-                          (sarrus-3-1)                          edge[dashed]    (sarrus-2-2)
-                          (sarrus-2-2)                          edge[->,dashed] (sarrus-1-3)
-                          (sarrus-3-2)                          edge[dashed]    (sarrus-2-3)
-                          (sarrus-2-3)                          edge[->,dashed] (sarrus-1-4)
-                          (sarrus-3-3)                          edge[dashed]    (sarrus-2-4)
-                          (sarrus-2-4)                          edge[->,dashed] (sarrus-1-5);
+                D'autres manières existent pour calculer des déterminants de matrices $3 \times 3$.
+                \end{mdframed}
 
-                    \foreach \c in {1,2,3} {\node[anchor=south] at (sarrus-1-\c.north) {$+$};};
-                    \foreach \c in {1,2,3} {\node[anchor=north] at (sarrus-3-\c.south) {$-$};};
-                  \end{tikzpicture} \\
-		% Source : http://tex.stackexchange.com/questions/32978/typesetting-a-matrix-with-crossing-arrows-on-it
-		$= a_{1,1} \cdot a_{2,2} \cdot a_{3,3} + a_{1,2} \cdot a_{2,3} \cdot a_{3,1} + a_{1,3} \cdot a_{2,1} \cdot a_{3,2} - a_{3,1} \cdot a_{2,2} \cdot a_{1,3} - a_{3,2} \cdot a_{2,3} \cdot a_{1,1} - a_{3,3} \cdot a_{2,1} \cdot a_{1,2} $\\
+        \subsubsection{Groupe de permutation}
+            \begin{mdframed}[linecolor=blue]
+                \textcolor{blue}{\textbf{Définition :}}\\
+                % on va noté \delta pour les permutations et \sigma pour les groupe
+                Soit $\sigma_n$, groupe des permutations de $n$ éléments, c'est-a-dire : l'ensemble des bijections de $\{1, ..., n\}$ dans lui-même. Chaque permutation seras noté $\delta$.\\
+                $\#\sigma_n = n!$ (factoriel)
+            \end{mdframed}
 
-	D'autres manières existe pour calculer des determinants $3 \times 3$.
-	\end{mdframed}
+            \begin{mdframed}[linecolor=green]
+                \textcolor{green}{\textbf{Exemple :}}\\
+                    $\sigma_1 = \{(1)\} \\
+                    \sigma_2 = \{(1,2),(2,1)\}\\
+                    \sigma_3 = \{(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)\}$
+            \end{mdframed}
 
-	\subsubsection{Groupe de permutation}
-		\begin{mdframed}[linecolor=blue]
-			\textcolor{blue}{\textbf{Définition :}}\\
-			% on va noté \delta pour les permutations et \sigma pour les groupe
-			Soit $\sigma_n$, groupe des permutations de $n$ éléments, c'est-a-dire : l'ensemble des bijections de $\{1, ..., n\}$ dans lui-même. Chaque permutation seras noté $\delta$.\\
-			$\#\sigma_n = n!$ (factoriel)
-		\end{mdframed}
+            \begin{mdframed}[linecolor=blue]
+                \textcolor{blue}{\textbf{Définition :}}\\
+                Les permurtations les plus simples sont les transpositions.Noté $\tau$. Définis comme: \\
+                \[
+                \left \{
+                    \begin{aligned}
+                        \tau(i) &= j \\
+                \tau(j) &= i \\
+                \tau(k) &= k \quad \text{ si } k \neq i \text{ et } k \neq j
+                    \end{aligned}
+                \right .
+                \]
+        Ce qui revient à échanger 2 éléments de places (donc sans toucher aux autres)
+            \end{mdframed}
 
-		\begin{mdframed}[linecolor=green]
-			\textcolor{green}{\textbf{Exemple :}}\\
-				$\sigma_1 = \{(1)\} \\
-				\sigma_2 = \{(1,2),(2,1)\}\\
-				\sigma_3 = \{(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)\}$
-		\end{mdframed}
+            \begin{mdframed}[linecolor=green]
+                \textcolor{green}{\textbf{Exemple :}}\\
+                Avec (1,2,3) comme élément de départ.:
+                \begin{itemize}
+                    \item $(1,3,2) = \tau_{2,3}$ on a juste échangé de position le l'élément en 2eme position avec celui en 3eme positions
+                    \item $(2,3,1) = \tau_{1,2} \circ \tau_{2,3}$ d'abord on échange la position 1 avec le 2 se qui donne (2,1,3), puis on échange celui de 2eme position avec celui en 3eme ($\tau_{2,3}$) ce qui donne (2,3,1). \\Plus mathématiquement : \\
+                    \[
+                    \left .
+                        \begin{aligned}
+                            ( \tau_{1,2} \circ \tau_{2,3}) (1) = \tau_{1,2}(\tau_{2,3}(1)) =\tau_{1,2}(1) &= 2\\
+                    ( \tau_{1,2} \circ \tau_{2,3}) (2) = \tau_{1,2}(\tau_{2,3}(2)) =\tau_{1,2}(3) &= 3\\
+                    ( \tau_{1,2} \circ \tau_{2,3}) (3) = \tau_{1,2}(\tau_{2,3}(3)) =\tau_{1,2}(2) &= 1
+                        \end{aligned}
+                    \right \} (2,3,1)
+                    \]
+                \end{itemize}
+            \end{mdframed}
 
-		\begin{mdframed}[linecolor=blue]
-			\textcolor{blue}{\textbf{Définition :}}\\
-			Les permurtations les plus simples sont les transpositions.Noté $\tau$. Définis comme: \\
-			\[
-			\left \{
-    			\begin{aligned}
-        			\tau(i) &= j \\
-			\tau(j) &= i \\
-			\tau(k) &= k \quad \text{ si } k \neq i \text{ et } k \neq j
-    			\end{aligned}
-			\right .
-			\]
-	Ce qui revient à échanger 2 éléments de places (donc sans toucher aux autres)
-		\end{mdframed}
+            \begin{mdframed}[linecolor=red]
+                \textcolor{red}{\textbf{Théorème :}}\\
+                $\forall \delta \in \sigma_n, \exists k$ transpositions $\tau_1, ..., \tau_k$ telles que $\delta = \tau_k \circ \tau_{k-1} \circ ... \circ \tau_1$\\
+                De plus si on à $k'$ autres transpositions avec $\tau_k \circ \tau_{k-1} \circ ... \circ \tau_1 = \delta$ alors $k \equiv k'[z]$ c'est à dire que $k$ et $k'$ sont tout les 2 soit paires, soit impaires, ou encore $(-1)^k = (-1)^{k'}$
+            \end{mdframed}
 
-		\begin{mdframed}[linecolor=green]
-			\textcolor{green}{\textbf{Exemple :}}\\
-			Avec (1,2,3) comme élément de départ.:
-			\begin{itemize}
-				\item $(1,3,2) = \tau_{2,3}$ on a juste échangé de position le l'élément en 2eme position avec celui en 3eme positions
-				\item $(2,3,1) = \tau_{1,2} \circ \tau_{2,3}$ d'abord on échange la position 1 avec le 2 se qui donne (2,1,3), puis on échange celui de 2eme position avec celui en 3eme ($\tau_{2,3}$) ce qui donne (2,3,1). \\Plus mathématiquement : \\
-				\[
-				\left .
-    				\begin{aligned}
-        				( \tau_{1,2} \circ \tau_{2,3}) (1) = \tau_{1,2}(\tau_{2,3}(1)) =\tau_{1,2}(1) &= 2\\
-				( \tau_{1,2} \circ \tau_{2,3}) (2) = \tau_{1,2}(\tau_{2,3}(2)) =\tau_{1,2}(3) &= 3\\
-				( \tau_{1,2} \circ \tau_{2,3}) (3) = \tau_{1,2}(\tau_{2,3}(3)) =\tau_{1,2}(2) &= 1
-    				\end{aligned}
-				\right \} (2,3,1)
-				\]
-			\end{itemize}
-		\end{mdframed}
+            \begin{mdframed}[linecolor=green]
+                \textcolor{green}{\textbf{Exemple :}}\\
+                Pour passer de (1,2,3) à (1,3,2)
+                \begin{itemize}
+                    \item $\tau_{2,3}(\to (1,3,2))$
+                    \item $\tau_{1,2}(\to (2,1,3)) \circ \tau_{1,3}(\to (3,1,2)) \circ \tau_{1,2}(\to (1,3,2))$
+                    \item etc... quoi qu'il arrive on auras ici toujours un nombre impairs de transpositions à faire pour atteindre le résultat final
+                \end{itemize}
+            \end{mdframed}
 
-		\begin{mdframed}[linecolor=red]
-			\textcolor{red}{\textbf{Théorème :}}\\
-			$\forall \delta \in \sigma_n, \exists k$ transpositions $\tau_1, ..., \tau_k$ telles que $\delta = \tau_k \circ \tau_{k-1} \circ ... \circ \tau_1$\\
-			De plus si on à $k'$ autres transpositions avec $\tau_k \circ \tau_{k-1} \circ ... \circ \tau_1 = \delta$ alors $k \equiv k'[z]$ c'est à dire que $k$ et $k'$ sont tout les 2 soit paires, soit impaires, ou encore $(-1)^k = (-1)^{k'}$
-		\end{mdframed}
-
-		\begin{mdframed}[linecolor=green]
-			\textcolor{green}{\textbf{Exemple :}}\\
-			Pour passer de (1,2,3) à (1,3,2)
-			\begin{itemize}
-				\item $\tau_{2,3}(\to (1,3,2))$
-				\item $\tau_{1,2}(\to (2,1,3)) \circ \tau_{1,3}(\to (3,1,2)) \circ \tau_{1,2}(\to (1,3,2))$
-				\item etc... quoi qu'il arrive on auras ici toujours un nombre impairs de transpositions à faire pour atteindre le résultat final
-			\end{itemize}
-		\end{mdframed}
-
-		\begin{mdframed}[linecolor=blue]
-			\textcolor{blue}{\textbf{Définition :}}\\
-			Le nombre $(-1)^k$ est noté $sign(\delta)$ et est appellée la \textbf{signature} de $\delta$. L'on peut s'en servir pour calculer le déterminant d'une matrice $n \times n$.
-		\end{mdframed}
+            \begin{mdframed}[linecolor=blue]
+                \textcolor{blue}{\textbf{Définition :}}\\
+                Le nombre $(-1)^k$ est noté $sign(\delta)$ et est appellée la \textbf{signature} de $\delta$. L'on peut s'en servir pour calculer le déterminant d'une matrice $n \times n$.
+            \end{mdframed}
 
 
-	\subsection{Calcul de déterminant de matrice $n\times n$}
-		\begin{mdframed}[linecolor=blue]
-			\textcolor{blue}{\textbf{Définition :}}\\
-			Soit $M =
-			 \begin{pmatrix}
-                	  	a_{1,1} & \cdots & a_{1,n} \\
-                  	\vdots   & \ddots & \vdots  \\
-                  	a_{n,1} & \cdots & a_{n,n}
-                 	\end{pmatrix} \\
-			det(M) = \displaystyle \sum_{\delta \in \sigma_n} \cdot sign(\delta) \cdot \displaystyle\prod^n_{i=1}a_{\sigma(i),i}$
-		\end{mdframed}
+        \subsection{Calcul de déterminant de matrice $n\times n$}
+            \begin{mdframed}[linecolor=blue]
+                \textcolor{blue}{\textbf{Définition :}}\\
+                Soit $M =
+                 \begin{pmatrix}
+                            a_{1,1} & \cdots & a_{1,n} \\
+                        \vdots   & \ddots & \vdots  \\
+                        a_{n,1} & \cdots & a_{n,n}
+                        \end{pmatrix} \\
+                det(M) = \displaystyle \sum_{\delta \in \sigma_n} \cdot sign(\delta) \cdot \displaystyle\prod^n_{i=1}a_{\sigma(i),i}$
+            \end{mdframed}
 
-		\begin{mdframed}[linecolor=green]
-			\textcolor{green}{\textbf{Exemple :}}\\
-			Prenons la formule pour $n=3:\\
-			\sigma_3 = \{(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)\}$
-			\begin{itemize}
-				\item $(1,2,3) \to sign = 1 \to \prod = a_{1,1} \cdot a_{2,2} \cdot a_{3,3}$
-				\item $(1,3,2) \to sign = -1 \to \prod = a_{1,1} \cdot a_{3,2} \cdot a_{2,3}$
-				\item $(2,1,3) \to sign = -1 \to \prod = a_{2,1} \cdot a_{1,2} \cdot a_{3,3}$
-				\item $(2,3,1) \to sign = 1 \to \prod = a_{2,1} \cdot a_{3,2} \cdot a_{1,3}$
-				\item $(3,1,2) \to sign = 1 \to \prod = a_{3,1} \cdot a_{1,2} \cdot a_{2,3}$
-				\item $(3,2,1) \to sign = -1 \to \prod = a_{3,1} \cdot a_{2,2} \cdot a_{1,3}$
-			\end{itemize}
-			% repenser la structure ?
-			Maintenant on utilise la formule complétement:\\
-			$Mat(M) =  a_{1,1} \cdot a_{2,2} \cdot a_{3,3} - a_{1,1} \cdot a_{3,2} \cdot a_{2,3} - a_{2,1} \cdot a_{1,2} \cdot a_{3,3} + a_{2,1} \cdot a_{3,2} \cdot a_{1,3} + a_{3,1} \cdot a_{1,2} \cdot a_{2,3} - a_{3,1} \cdot a_{2,2} \cdot a_{1,3} $\\ se qui redonne la formule de Sarrus !
-		\end{mdframed}
+            \begin{mdframed}[linecolor=green]
+                \textcolor{green}{\textbf{Exemple :}}\\
+                Prenons la formule pour $n=3:\\
+                \sigma_3 = \{(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)\}$
+                \begin{itemize}
+                    \item $(1,2,3) \to sign = 1 \to \prod = a_{1,1} \cdot a_{2,2} \cdot a_{3,3}$
+                    \item $(1,3,2) \to sign = -1 \to \prod = a_{1,1} \cdot a_{3,2} \cdot a_{2,3}$
+                    \item $(2,1,3) \to sign = -1 \to \prod = a_{2,1} \cdot a_{1,2} \cdot a_{3,3}$
+                    \item $(2,3,1) \to sign = 1 \to \prod = a_{2,1} \cdot a_{3,2} \cdot a_{1,3}$
+                    \item $(3,1,2) \to sign = 1 \to \prod = a_{3,1} \cdot a_{1,2} \cdot a_{2,3}$
+                    \item $(3,2,1) \to sign = -1 \to \prod = a_{3,1} \cdot a_{2,2} \cdot a_{1,3}$
+                \end{itemize}
+                % repenser la structure ?
+                Maintenant on utilise la formule complétement:\\
+                $Mat(M) =  a_{1,1} \cdot a_{2,2} \cdot a_{3,3} - a_{1,1} \cdot a_{3,2} \cdot a_{2,3} - a_{2,1} \cdot a_{1,2} \cdot a_{3,3} + a_{2,1} \cdot a_{3,2} \cdot a_{1,3} + a_{3,1} \cdot a_{1,2} \cdot a_{2,3} - a_{3,1} \cdot a_{2,2} \cdot a_{1,3} $\\ se qui redonne la formule de Sarrus !
+            \end{mdframed}
 
-	\subsection{Propriétés du determinant}
-		\begin{mdframed}[linecolor=blue]
-			\textcolor{blue}{\textbf{Propriétés algébrique:}}\\
-			Soit $M$ et $N$ 2 matrices de mêmes dimension $n$ et $\lambda$ un scalaire. $M^t$ est la transposée de $M$.
-			\begin{itemize}
-				\item $det(M^t) = det(M)$
-				\item $det(M+N) \neq det(M) + det(N)$
-				\item $det(\lambda \cdot M) = \lambda^n \cdot det(M)$
-				\item $det(M \cdot N) = det(M) \cdot det(N)$
-			\end{itemize}
-			De plus le déterminant n'est pas linéaire (car la somme n'est pas respecté), en revanche il est multi-linéaire, impliquant:
-			\begin{itemize}
-				\item $det(c_1 | \cdots | \lambda \cdot c_i | \cdots | c_n) = \lambda \cdot det(c_1 | \cdots | c_i | \cdots | c_n)$
-				\item $det(c_1 | \cdots |  c_i + c_i | \cdots | c_n) = det(c_1 | \cdots | c_i | \cdots | c_n) + det(c_1 | \cdots | c_i | \cdots | c_n)$
-				\item Si 2 colonnes de $M$ forment une famille liée (2 colonnes identiques, ou multiple l'une de l'autre, ou somme/soustraction avec une/des autres donne 0) : $det(M)=0$
-			\end{itemize}
-		\end{mdframed}
+        \subsection{Propriétés du determinant}
+            \begin{mdframed}[linecolor=blue]
+                \textcolor{blue}{\textbf{Propriétés algébrique:}}\\
+                Soit $M$ et $N$ 2 matrices de mêmes dimension $n$ et $\lambda$ un scalaire. $M^t$ est la transposée de $M$.
+                \begin{itemize}
+                    \item $det(M^t) = det(M)$
+                    \item $det(M+N) \neq det(M) + det(N)$
+                    \item $det(\lambda \cdot M) = \lambda^n \cdot det(M)$
+                    \item $det(M \cdot N) = det(M) \cdot det(N)$
+                \end{itemize}
+                De plus le déterminant n'est pas linéaire (car la somme n'est pas respecté), en revanche il est multi-linéaire, impliquant:
+                \begin{itemize}
+                    \item $det(c_1 | \cdots | \lambda \cdot c_i | \cdots | c_n) = \lambda \cdot det(c_1 | \cdots | c_i | \cdots | c_n)$
+                    \item $det(c_1 | \cdots |  c_i + c_i | \cdots | c_n) = det(c_1 | \cdots | c_i | \cdots | c_n) + det(c_1 | \cdots | c_i | \cdots | c_n)$
+                    \item Si 2 colonnes de $M$ forment une famille liée (2 colonnes identiques, ou multiple l'une de l'autre, ou somme/soustraction avec une/des autres donne 0) : $det(M)=0$
+                \end{itemize}
+            \end{mdframed}
 
-		\begin{mdframed}[linecolor=cyan]
-			\textcolor{cyan}{\textbf{Remarque :}}\\
-			Comme le déterminant de la matrice est égale à celui de sa transposée, toutes les propriétés énoncé ci-dessus, mentionnant les colonnes, sont également valable pour les lignes.
-		\end{mdframed}
+            \begin{mdframed}[linecolor=cyan]
+                \textcolor{cyan}{\textbf{Remarque :}}\\
+                Comme le déterminant de la matrice est égale à celui de sa transposée, toutes les propriétés énoncé ci-dessus, mentionnant les colonnes, sont également valable pour les lignes.
+            \end{mdframed}
 
-		\bigskip
+            \bigskip
 
-		\begin{mdframed}[linecolor=blue]
-			\textcolor{blue}{\textbf{Définition :}}\\
-			Soit une matrice $M : Mat(m,n)$ avec $a_{j,i}$ l'élément de $M$ à en $j$-eme ligne et $i$-eme colonne.\\
-			$M_{j,i} =
-			\begin{pmatrix}
-                	  	a_{1,1} & \cdots & a_{1,i-1} & a_{1,i+1} & \cdots & a_{1,n} \\
-                  	\vdots   & & & & & \vdots  \\
-                  	a_{j-1,1} & \cdots & a_{j-1,i-1} & a_{j-1,i+1} & \cdots & a_{j-1,n} \\
-			a_{j+1,1} & \cdots & a_{j+1,i-1} & a_{j+1,i+1} & \cdots & a_{j+1,n} \\
-			\vdots   & & & & & \vdots  \\
-			a_{n,1} & \cdots & a_{n,i-1} & a_{n,i+1} & \cdots & a_{n,n}
-                 	\end{pmatrix} $\\
-		On à donc enlever la ligne et colonne à l'emplacement $M_{j,i}$ et rattaché ensemble les morceaux de matrice.
-		\end{mdframed}
+            \begin{mdframed}[linecolor=blue]
+                \textcolor{blue}{\textbf{Définition :}}\\
+                Soit une matrice $M : Mat(m,n)$ avec $a_{j,i}$ l'élément de $M$ à en $j$-eme ligne et $i$-eme colonne.\\
+                $M_{j,i} =
+                \begin{pmatrix}
+                            a_{1,1} & \cdots & a_{1,i-1} & a_{1,i+1} & \cdots & a_{1,n} \\
+                        \vdots   & & & & & \vdots  \\
+                        a_{j-1,1} & \cdots & a_{j-1,i-1} & a_{j-1,i+1} & \cdots & a_{j-1,n} \\
+                a_{j+1,1} & \cdots & a_{j+1,i-1} & a_{j+1,i+1} & \cdots & a_{j+1,n} \\
+                \vdots   & & & & & \vdots  \\
+                a_{n,1} & \cdots & a_{n,i-1} & a_{n,i+1} & \cdots & a_{n,n}
+                        \end{pmatrix} $\\
+            On à donc enlever la ligne et colonne à l'emplacement $M_{j,i}$ et rattaché ensemble les morceaux de matrice.
+            \end{mdframed}
 
-		\begin{mdframed}[linecolor=green]
-			\textcolor{green}{\textbf{Exemple :}}\\
-			$M =
-			\begin{pmatrix}
-                	  	a_{1,1} & a_{1,2} & a_{1,3} \\
-                  	a_{2,1} & a_{2,2} & a_{2,3} \\
-                  	a_{3,1} & a_{3,2} & a_{3,3}
-                 	\end{pmatrix} $
-			\begin{itemize}
-				\item $M_{1,1} =
-				\begin{pmatrix}
-                	  		\MyTikzmark{leftA}{a_{1,1}} & a_{1,2} & \MyTikzmark{rightA}{a_{1,3}} \\
-                  		a_{2,1} & a_{2,2} & a_{2,3} \\
-                  		\MyTikzmark{bottomA}{a_{3,1}} & a_{3,2} & a_{3,3}
-                 		\end{pmatrix}
-				\DrawVLine[black,   thick, opacity=0.5]{leftA}{bottomA}
-				\DrawHLine[black,   thick, opacity=0.5]{leftA}{rightA}
-				=
-				\begin{pmatrix}
-                  		a_{2,2} & a_{2,3} \\
-                  		a_{3,2} & a_{3,3}
-                 		\end{pmatrix}$
+            \begin{mdframed}[linecolor=green]
+                \textcolor{green}{\textbf{Exemple :}}\\
+                $M =
+                \begin{pmatrix}
+                            a_{1,1} & a_{1,2} & a_{1,3} \\
+                        a_{2,1} & a_{2,2} & a_{2,3} \\
+                        a_{3,1} & a_{3,2} & a_{3,3}
+                        \end{pmatrix} $
+                \begin{itemize}
+                    \item $M_{1,1} =
+                    \begin{pmatrix}
+                                \MyTikzmark{leftA}{a_{1,1}} & a_{1,2} & \MyTikzmark{rightA}{a_{1,3}} \\
+                            a_{2,1} & a_{2,2} & a_{2,3} \\
+                            \MyTikzmark{bottomA}{a_{3,1}} & a_{3,2} & a_{3,3}
+                            \end{pmatrix}
+                    \DrawVLine[black,   thick, opacity=0.5]{leftA}{bottomA}
+                    \DrawHLine[black,   thick, opacity=0.5]{leftA}{rightA}
+                    =
+                    \begin{pmatrix}
+                            a_{2,2} & a_{2,3} \\
+                            a_{3,2} & a_{3,3}
+                            \end{pmatrix}$
 
-				\item $M_{2,2} =
-				\begin{pmatrix}
-                	  		a_{1,1} & \MyTikzmark{topB}{a_{1,2}} & a_{1,3}\\
-                  		\MyTikzmark{leftB}{a_{2,1}}  & a_{2,2} & \MyTikzmark{rightB}{a_{2,3}} \\
-                  		a_{3,1} & \MyTikzmark{bottomB}{a_{3,2}} & a_{3,3}
-                 		\end{pmatrix}
-				\DrawVLine[black,   thick, opacity=0.5]{topB}{bottomB}
-				\DrawHLine[black,   thick, opacity=0.5]{leftB}{rightB}
-				=
-				\begin{pmatrix}
-                  		a_{1,1} & a_{1,3} \\
-                  		a_{3,1} & a_{3,3}
-                 		\end{pmatrix}$
+                    \item $M_{2,2} =
+                    \begin{pmatrix}
+                                a_{1,1} & \MyTikzmark{topB}{a_{1,2}} & a_{1,3}\\
+                            \MyTikzmark{leftB}{a_{2,1}}  & a_{2,2} & \MyTikzmark{rightB}{a_{2,3}} \\
+                            a_{3,1} & \MyTikzmark{bottomB}{a_{3,2}} & a_{3,3}
+                            \end{pmatrix}
+                    \DrawVLine[black,   thick, opacity=0.5]{topB}{bottomB}
+                    \DrawHLine[black,   thick, opacity=0.5]{leftB}{rightB}
+                    =
+                    \begin{pmatrix}
+                            a_{1,1} & a_{1,3} \\
+                            a_{3,1} & a_{3,3}
+                            \end{pmatrix}$
 
-				\item $M_{2,3} =
-				\begin{pmatrix}
-                	  		a_{1,1} & a_{1,2} & \MyTikzmark{topC}{a_{1,3}}\\
-                  		\MyTikzmark{leftC}{a_{2,1}}  & a_{2,2} & \MyTikzmark{rightC}{a_{2,3}} \\
-                  		a_{3,1} & a_{3,2} & \MyTikzmark{bottomC}{a_{3,3}}
-                 		\end{pmatrix}
-				\DrawVLine[black,   thick, opacity=0.5]{topC}{bottomC}
-				\DrawHLine[black,   thick, opacity=0.5]{leftC}{rightC}
-				=
-				\begin{pmatrix}
-                  		a_{1,1} & a_{1,2} \\
-                  		a_{3,1} & a_{3,2}
-                 		\end{pmatrix}$
+                    \item $M_{2,3} =
+                    \begin{pmatrix}
+                                a_{1,1} & a_{1,2} & \MyTikzmark{topC}{a_{1,3}}\\
+                            \MyTikzmark{leftC}{a_{2,1}}  & a_{2,2} & \MyTikzmark{rightC}{a_{2,3}} \\
+                            a_{3,1} & a_{3,2} & \MyTikzmark{bottomC}{a_{3,3}}
+                            \end{pmatrix}
+                    \DrawVLine[black,   thick, opacity=0.5]{topC}{bottomC}
+                    \DrawHLine[black,   thick, opacity=0.5]{leftC}{rightC}
+                    =
+                    \begin{pmatrix}
+                            a_{1,1} & a_{1,2} \\
+                            a_{3,1} & a_{3,2}
+                            \end{pmatrix}$
 
-			\end{itemize}
-		\end{mdframed}
+                \end{itemize}
+            \end{mdframed}
 
-		\begin{mdframed}[linecolor=red]
-			\textcolor{red}{\textbf{Théorème :}}\\
-			Soit $M$ une matrice carrée.\\
-			$det(M) = \displaystyle \sum^n_{j=1}a_{j,i} \cdot (-1)^{i+j}\cdot \underbrace{det(M_{j,i})}_{"mineur"}\quad \forall 0 \leq i \leq n $ fixé
-		\end{mdframed}
+            \begin{mdframed}[linecolor=red]
+                \textcolor{red}{\textbf{Théorème :}}\\
+                Soit $M$ une matrice carrée.\\
+                $det(M) = \displaystyle \sum^n_{j=1}a_{j,i} \cdot (-1)^{i+j}\cdot \underbrace{det(M_{j,i})}_{"mineur"}\quad \forall 0 \leq i \leq n $ fixé
+            \end{mdframed}
 
-		\begin{mdframed}[linecolor=green]
-			\textcolor{green}{\textbf{Exemple :}}\\
+            \begin{mdframed}[linecolor=green]
+                \textcolor{green}{\textbf{Exemple :}}\\
 
-			$\begin{vmatrix}
-                  	-1 & -1 & 4 & 3  \\
-                  	2 & 0 & 1 & 0 \\
-			2 & 0 & 1 & 3 \\
-			1 & 1 & -2 & 2
-                 	\end{vmatrix}$ choisissons la 2ere colonne ($i=2$)  car elle contient le plus de zéros.\\
-			On applique la formule (la somme) pour :
-			\begin{itemize}
-				\item $j=1 : a_{1,2} \cdot (-1)^{1+2} \cdot det(M_{1,2}) = -1 \cdot -1 \cdot
-				\begin{vmatrix}
-                  		\MyTikzmark{leftD}{-1} & \MyTikzmark{topD}{-1} & 4 & \MyTikzmark{rightD}{3}  \\
-                  		2 & 0 & 1 & 0 \\
-				2 & 0 & 1 & 3 \\
-				1 & \MyTikzmark{botD}{1} & -2 & 2
-                 		\end{vmatrix}
-				\DrawVLine[black,   thick, opacity=0.5]{topD}{botD}
-				\DrawHLine[black,   thick, opacity=0.5]{leftD}{rightD}
-				= 1 \cdot
-				\begin{vmatrix}
-                  		2 & 1 & 0 \\
-				2 & 1 & 3 \\
-				1 & -2 & 2
-                 		\end{vmatrix} = 15$
+                $\begin{vmatrix}
+                        -1 & -1 & 4 & 3  \\
+                        2 & 0 & 1 & 0 \\
+                2 & 0 & 1 & 3 \\
+                1 & 1 & -2 & 2
+                        \end{vmatrix}$ choisissons la 2ere colonne ($i=2$)  car elle contient le plus de zéros.\\
+                On applique la formule (la somme) pour :
+                \begin{itemize}
+                    \item $j=1 : a_{1,2} \cdot (-1)^{1+2} \cdot det(M_{1,2}) = -1 \cdot -1 \cdot
+                    \begin{vmatrix}
+                            \MyTikzmark{leftD}{-1} & \MyTikzmark{topD}{-1} & 4 & \MyTikzmark{rightD}{3}  \\
+                            2 & 0 & 1 & 0 \\
+                    2 & 0 & 1 & 3 \\
+                    1 & \MyTikzmark{botD}{1} & -2 & 2
+                            \end{vmatrix}
+                    \DrawVLine[black,   thick, opacity=0.5]{topD}{botD}
+                    \DrawHLine[black,   thick, opacity=0.5]{leftD}{rightD}
+                    = 1 \cdot
+                    \begin{vmatrix}
+                            2 & 1 & 0 \\
+                    2 & 1 & 3 \\
+                    1 & -2 & 2
+                            \end{vmatrix} = 15$
 
-				\item $j=2 : a_{2,2} \cdot (-1)^{2+2} \cdot det(M_{2,2}) = 0 \cdot 1 \cdot
-				\begin{vmatrix}
-                  		-1 & \MyTikzmark{topE}{-1} & 4 & 3  \\
-                  		\MyTikzmark{leftE}{2} & 0 & 1 & \MyTikzmark{rightE}{0} \\
-				2 & 0 & 1 & 3 \\
-				1 & \MyTikzmark{botE}{1} & -2 & 2
-                 		\end{vmatrix}
-				\DrawVLine[black,   thick, opacity=0.5]{topE}{botE}
-				\DrawHLine[black,   thick, opacity=0.5]{leftE}{rightE}
-				= 0 \cdot
-				\begin{vmatrix}
-                  		-1 & 4 & 3 \\
-				2 & 1 & 3 \\
-				1 & -2 & 2
-                 		\end{vmatrix} = 0$
+                    \item $j=2 : a_{2,2} \cdot (-1)^{2+2} \cdot det(M_{2,2}) = 0 \cdot 1 \cdot
+                    \begin{vmatrix}
+                            -1 & \MyTikzmark{topE}{-1} & 4 & 3  \\
+                            \MyTikzmark{leftE}{2} & 0 & 1 & \MyTikzmark{rightE}{0} \\
+                    2 & 0 & 1 & 3 \\
+                    1 & \MyTikzmark{botE}{1} & -2 & 2
+                            \end{vmatrix}
+                    \DrawVLine[black,   thick, opacity=0.5]{topE}{botE}
+                    \DrawHLine[black,   thick, opacity=0.5]{leftE}{rightE}
+                    = 0 \cdot
+                    \begin{vmatrix}
+                            -1 & 4 & 3 \\
+                    2 & 1 & 3 \\
+                    1 & -2 & 2
+                            \end{vmatrix} = 0$
 
-				\item $j=3 : a_{3,2} \cdot (-1)^{3+2} \cdot det(M_{3,2}) = 0 \cdot -1 \cdot
-				\begin{vmatrix}
-                  		-1 & \MyTikzmark{topF}{-1} & 4 & 3  \\
-                  		2 & 0 & 1 & 0 \\
-				\MyTikzmark{leftF}{2} & 0 & 1 & \MyTikzmark{rightF}{3} \\
-				1 & \MyTikzmark{botF}{1} & -2 & 2
-                 		\end{vmatrix}
-				\DrawVLine[black,   thick, opacity=0.5]{topF}{botF}
-				\DrawHLine[black,   thick, opacity=0.5]{leftF}{rightF}
-				= 0 \cdot
-				\begin{vmatrix}
-                  		-1 & 4 & 3 \\
-				2 & 1 & 0 \\
-				1 & -2 & 2
-                 		\end{vmatrix} = 0$
+                    \item $j=3 : a_{3,2} \cdot (-1)^{3+2} \cdot det(M_{3,2}) = 0 \cdot -1 \cdot
+                    \begin{vmatrix}
+                            -1 & \MyTikzmark{topF}{-1} & 4 & 3  \\
+                            2 & 0 & 1 & 0 \\
+                    \MyTikzmark{leftF}{2} & 0 & 1 & \MyTikzmark{rightF}{3} \\
+                    1 & \MyTikzmark{botF}{1} & -2 & 2
+                            \end{vmatrix}
+                    \DrawVLine[black,   thick, opacity=0.5]{topF}{botF}
+                    \DrawHLine[black,   thick, opacity=0.5]{leftF}{rightF}
+                    = 0 \cdot
+                    \begin{vmatrix}
+                            -1 & 4 & 3 \\
+                    2 & 1 & 0 \\
+                    1 & -2 & 2
+                            \end{vmatrix} = 0$
 
-				\item $j=4 : a_{4,2} \cdot (-1)^{4+2} \cdot det(M_{4,2}) = 1 \cdot 1 \cdot
-				\begin{vmatrix}
-                  		-1 & \MyTikzmark{topG}{-1} & 4 & 3  \\
-                  		2 & 0 & 1 & 0 \\
-				2 & 0 & 1 & 3 \\
-				\MyTikzmark{leftG}{1} & \MyTikzmark{botG}{1} & -2 & \MyTikzmark{rightG}{2}
-                 		\end{vmatrix}
-				\DrawVLine[black,   thick, opacity=0.5]{topG}{botG}
-				\DrawHLine[black,   thick, opacity=0.5]{leftG}{rightG}
-				= 1 \cdot
-				\begin{vmatrix}
-                  		-1 & 4 & 3 \\
-				2 & 1 & 0 \\
-				2 & 1 & 3
-                 		\end{vmatrix} = -27$
-			\end{itemize}
-			La somme de tout les résultats intermédiaires donne : $det(M)$ = 15 + 0 + 0 -27 = -12
-		\end{mdframed}
+                    \item $j=4 : a_{4,2} \cdot (-1)^{4+2} \cdot det(M_{4,2}) = 1 \cdot 1 \cdot
+                    \begin{vmatrix}
+                            -1 & \MyTikzmark{topG}{-1} & 4 & 3  \\
+                            2 & 0 & 1 & 0 \\
+                    2 & 0 & 1 & 3 \\
+                    \MyTikzmark{leftG}{1} & \MyTikzmark{botG}{1} & -2 & \MyTikzmark{rightG}{2}
+                            \end{vmatrix}
+                    \DrawVLine[black,   thick, opacity=0.5]{topG}{botG}
+                    \DrawHLine[black,   thick, opacity=0.5]{leftG}{rightG}
+                    = 1 \cdot
+                    \begin{vmatrix}
+                            -1 & 4 & 3 \\
+                    2 & 1 & 0 \\
+                    2 & 1 & 3
+                            \end{vmatrix} = -27$
+                \end{itemize}
+                La somme de tout les résultats intermédiaires donne : $det(M)$ = 15 + 0 + 0 -27 = -12
+            \end{mdframed}
 
-		\begin{mdframed}[linecolor=cyan]
-			\textcolor{cyan}{\textbf{Remarque :}}\\
-			Afin de gagner du temps on peux aussi utiliser la 2eme propriété de multi-linéarité qui nous permet de changer les valeurs de notre colonne pour faire apparaitre plus de 0, simplifiant ainsi les calculs.
-		\end{mdframed}
+            \begin{mdframed}[linecolor=cyan]
+                \textcolor{cyan}{\textbf{Remarque :}}\\
+                Afin de gagner du temps on peux aussi utiliser la 2eme propriété de multi-linéarité qui nous permet de changer les valeurs de notre colonne pour faire apparaitre plus de 0, simplifiant ainsi les calculs.
+            \end{mdframed}
 
-		\begin{mdframed}[linecolor=green]
-			\textcolor{green}{\textbf{Exemple :}}\\
-			(En reprenant l'exemple ci dessus)\\
-			$\begin{vmatrix}
-                  	-1 & -1 & 4 & 3  \\
-                  	2 & 0 & 1 & 0 \\
-			2 & 0 & 1 & 3 \\
-			1 & 1 & -2 & 2
-                 	\end{vmatrix}$ \\
-			On va additionner à la dernière ligne la premiere ligne: \\
-			$\begin{vmatrix}
-                  	-1 & -1 & 4 & 3  \\
-                  	2 & 0 & 1 & 0 \\
-			2 & 0 & 1 & 3 \\
-			1-1 & 1-1 & -2+4 & 2+3
-                 	\end{vmatrix} =
-			\begin{vmatrix}
-                  	-1 & -1 & 4 & 3  \\
-                  	2 & 0 & 1 & 0 \\
-			2 & 0 & 1 & 3 \\
-			0 & 0 & 2 & 5
-                 	\end{vmatrix}$\\
-			On reprend la même colonne de départ, et donc :\\
-			$\begin{vmatrix}
-                  	\MyTikzmark{leftH}{-1} & \MyTikzmark{topH}{-1} & 4 & \MyTikzmark{rightH}{3}  \\
-                  	2 & 0 & 1 & 0 \\
-			2 & 0 & 1 & 3 \\
-			0 & \MyTikzmark{botH}{0} & 2 & 5
-                		\end{vmatrix}
-			\DrawVLine[black,   thick, opacity=0.5]{topH}{botH}
-			\DrawHLine[black,   thick, opacity=0.5]{leftH}{rightH}
-			= 1 \cdot
-			\begin{vmatrix}
-                  	2 & 1 & 0 \\
-			2 & 1 & 3 \\
-			0 & 2 & 5
-                 	\end{vmatrix} = -12$\\
-			Et on a pas besoin d'allé plus loin car tout les autres éléments de la colonne valent 0.
-		\end{mdframed}
+            \begin{mdframed}[linecolor=green]
+                \textcolor{green}{\textbf{Exemple :}}\\
+                (En reprenant l'exemple ci dessus)\\
+                $\begin{vmatrix}
+                        -1 & -1 & 4 & 3  \\
+                        2 & 0 & 1 & 0 \\
+                2 & 0 & 1 & 3 \\
+                1 & 1 & -2 & 2
+                        \end{vmatrix}$ \\
+                On va additionner à la dernière ligne la premiere ligne: \\
+                $\begin{vmatrix}
+                        -1 & -1 & 4 & 3  \\
+                        2 & 0 & 1 & 0 \\
+                2 & 0 & 1 & 3 \\
+                1-1 & 1-1 & -2+4 & 2+3
+                        \end{vmatrix} =
+                \begin{vmatrix}
+                        -1 & -1 & 4 & 3  \\
+                        2 & 0 & 1 & 0 \\
+                2 & 0 & 1 & 3 \\
+                0 & 0 & 2 & 5
+                        \end{vmatrix}$\\
+                On reprend la même colonne de départ, et donc :\\
+                $\begin{vmatrix}
+                        \MyTikzmark{leftH}{-1} & \MyTikzmark{topH}{-1} & 4 & \MyTikzmark{rightH}{3}  \\
+                        2 & 0 & 1 & 0 \\
+                2 & 0 & 1 & 3 \\
+                0 & \MyTikzmark{botH}{0} & 2 & 5
+                            \end{vmatrix}
+                \DrawVLine[black,   thick, opacity=0.5]{topH}{botH}
+                \DrawHLine[black,   thick, opacity=0.5]{leftH}{rightH}
+                = 1 \cdot
+                \begin{vmatrix}
+                        2 & 1 & 0 \\
+                2 & 1 & 3 \\
+                0 & 2 & 5
+                        \end{vmatrix} = -12$\\
+                Et on a pas besoin d'allé plus loin car tout les autres éléments de la colonne valent 0.
+            \end{mdframed}
 
-		\bigskip
+            \bigskip
 
-		\begin{mdframed}[linecolor=red]
-			\textcolor{red}{\textbf{Théorème du rang:}}\\
-			Soit $u : E \to E'$ avec $u$ application linéaire.\\
-			$dim(\Ker u) + dim(\ImAppli u) = dim(E)\\
-			\Ker u = \{ v \in E\ |\ u(v)=0 \} \subset E \\
-			\ImAppli u = \{ w \in E\ |\ \exists v \in E, u(v) = w \} = u(E)$ \\
-			% conclusion ?
+            \begin{mdframed}[linecolor=red]
+                \textcolor{red}{\textbf{Théorème du rang:}}\\
+                Soit $u : E \to E'$ avec $u$ application linéaire.\\
+                $dim(\Ker u) + dim(\ImAppli u) = dim(E)\\
+                \Ker u = \{ v \in E\ |\ u(v)=0 \} \subset E \\
+                \ImAppli u = \{ w \in E\ |\ \exists v \in E, u(v) = w \} = u(E)$ \\
+                % conclusion ?
 
-			$u$ est un isomorphisme $\Leftrightarrow \Ker u = \{ 0 \} \Leftrightarrow \ImAppli u = E$\\
-			Si $M$ est la matrice associée à $u$ :\\
-			$u$ est un isomorphisme $\Leftrightarrow M$ est inversible $ \Leftrightarrow det(M) \neq 0$
-		\end{mdframed}
-% Finité :'(
+                $u$ est un isomorphisme $\Leftrightarrow \Ker u = \{ 0 \} \Leftrightarrow \ImAppli u = E$\\
+                Si $M$ est la matrice associée à $u$ :\\
+                $u$ est un isomorphisme $\Leftrightarrow M$ est inversible $ \Leftrightarrow det(M) \neq 0$
+            \end{mdframed}
 \end{document}
