@@ -45,8 +45,8 @@
 \DeclareMathOperator{\R}{\mathbb R}
 \DeclareMathOperator{\Mat}{Mat}
 
-\title{Résumé cours de Maths - 2eme Session\\ \textbf{Algèbre Linéaire}}
-\date{version du 25 mai (15h30)}
+\title{Résumé cours de Maths - Module SI\\ \textbf{Algèbre Linéaire}}
+\date{version du 25 mai (18h15)}
 
 \pagestyle{plain}
 
@@ -862,7 +862,7 @@
         \end{mdframed}
 
         \begin{mdframed}[linecolor=green]
-            \textcolor{green}{\textbf{Exemple:}}
+            \textcolor{green}{\textbf{Exemple :}}
 
             La relation \textit{être parallèle} $\parallel$ est une relation d'équivalence pour
             l'ensemble des droites du plans.
@@ -903,7 +903,7 @@
         \end{mdframed}
 
         \begin{mdframed}[linecolor=blue]
-            \textcolor{blue}{\textbf{Définition:}}
+            \textcolor{blue}{\textbf{Définition :}}
 
             Soit $A$ muni d'une \textbf{relation d'équivalence} $\sim$.
             La classe d'un élément $x \in A$ est le sous-ensemble de $A$ défini par
@@ -966,7 +966,7 @@
         \end{mdframed}
 
         \begin{mdframed}[linecolor=red]
-            \textcolor{red}{\textbf{Théorème:}}
+            \textcolor{red}{\textbf{Théorème :}}
 
             $E/F = E/\sim_F$, l'ensemble des classes d'équivalences, a une structure
             vectorielle canonique $\mathbb K$.
@@ -1041,7 +1041,7 @@
             \end{mdframed}
 
             \begin{mdframed}[linecolor=green]
-                \textcolor{green}{\textbf{Exemple:}}
+                \textcolor{green}{\textbf{Exemple :}}
 
                 Soit $u: \R^3 \to \R^2 : u(x,y,z) = (x+3y-z,y+2z)$
 
@@ -1101,7 +1101,7 @@
             \end{mdframed}
 
             \begin{mdframed}[linecolor=magenta]
-                \textcolor{magenta}{\textbf{Notation:}}
+                \textcolor{magenta}{\textbf{Notation :}}
 
                 Les matrices sont aussi notée $\Mat_{\mathbb K}(m, n)$ avec : $m$,
                 le nombre de colonnes, $n$, le nombre de lignes.
@@ -1133,7 +1133,7 @@
             \end{mdframed}
 
             \begin{mdframed}[linecolor=blue]
-                \textcolor{blue}{\textbf{Définition:}}
+                \textcolor{blue}{\textbf{Définition :}}
 
                 On définit donc le \textbf{produit matriciel} comme l'opération suivante:
                 $\Mat_{\mathbb K}(m, n) \times \Mat_{\mathbb K}(p, m) \to \Mat_{\mathbb K}(p, n)$ (donc $p$ colonnes et $n$ lignes)
@@ -1191,28 +1191,28 @@
                     \item distributif à gauche : $B (A_1 + A_2) = B A_1 + B A_2$.
                 \end{itemize}
 
-            \subsubsection{Produit matriciel et composition ($\circ$)}
+            \subsubsection{Produit matriciel et composition}
 
                 \begin{mdframed}
                     \textcolor{blue}{Définition :}
-                    
+
                     Soient $E_1$ et sa base $B_1$ et $E_2$ et sa base $B_2$.
-                    On définit $\Phi_{B_1, B_2} : \Mat(\dim E_1, \dim E_2) \to L(E_1, E_2)$,
+                    On définit $\Phi_{B_1B_2} : \Mat(\dim E_1, \dim E_2) \to L(E_1, E_2)$,
                     une application qui envoie une matrice sur l'application linéaire qui lui est associée.
                 \end{mdframed}
-            
+
                 \begin{mdframed}[linecolor=red]
-                    \textcolor{red}{\textbf{Théorème:}}
-                    
-                    $\Phi_{B, B'} ([a_{j, i}] [b_{i, k}]) = \Phi_{B', B''}([b_{i, k}]) \circ \Phi_{B, B'}([a_{j, i}])$
-                    
+                    \textcolor{red}{\textbf{Théorème :}}
+
+                    $\Phi_{BB'} ([a_{j, i}] [b_{i, k}]) = \Phi_{B'B''}([b_{i, k}]) \circ \Phi_{BB'}([a_{j, i}])$
+
                     Faire la matrice associée à la composée de deux applications linéaires
                     revient à faire le produit des matrices des deux applications.
                 \end{mdframed}
 
                 \begin{mdframed}[linecolor=green]
-                    \textcolor{green}{\textbf{Exemple:}}
-                    
+                    \textcolor{green}{\textbf{Exemple :}}
+
                     Soit $u: \R^3 \to \R^3 : (x,y,z) \mapsto (y, z, 0)$.
                     Calculez $M_{(u\ \circ\ u)}$ et $(M_u M_u)$
 
@@ -1260,18 +1260,19 @@
                 \end{mdframed}
 
                 \begin{mdframed}[linecolor=cyan]
-                    \textcolor{cyan}{\textbf{Remarque:}}
-                    
+                    \textcolor{cyan}{\textbf{Remarque :}}
+
                     $\Mat_{\underbrace{u \circ u \circ ... \circ u}_{n\ \textrm{fois}}} = (\Mat_u)^n $
-                    
+
                     Calculer ma matrice définie par $n$ composées d'une application revient à calculer la matrice de l'application à la puissance $n$.
                 \end{mdframed}
 
         \subsection{Matrice identité}
             \begin{mdframed}[linecolor=blue]
-                \textcolor{blue}{\textbf{Définition:}}
-                
-                On définit la \textbf{matrice identité} de $\Mat_\mathbb K (m,n)$, notée $I$ ou $I_n$ (avec $n$ la dimension) ou$Id$, comme:\\
+                \textcolor{blue}{\textbf{Définition :}}
+
+                On définit la \textbf{matrice identité} de $\Mat_\mathbb K (m,n)$, notée $I$ ou $I_n$ (avec $n$ la dimension) ou$Id$, comme:
+
                 \begin{center} $\begin{pmatrix}
                     1 & 0 & \hdots & 0 \\
                     0 & 1 & \vdots & \vdots \\
@@ -1287,8 +1288,8 @@
             \end{mdframed}
 
             \begin{mdframed}[linecolor=green]
-                \textcolor{green}{\textbf{Exemple:}}
-                
+                \textcolor{green}{\textbf{Exemple :}}
+
                 $I_{3 \times 3} =
                 \begin{pmatrix}
                     1 & 0 & 0 \\
@@ -1311,21 +1312,21 @@
             \end{mdframed}
 
             \begin{mdframed}[linecolor=cyan]
-                \textcolor{cyan}{\textbf{Remarque:}}
-                
+                \textcolor{cyan}{\textbf{Remarque :}}
+
                 $I^n = I \quad \forall n \in \mathbb N^+$
             \end{mdframed}
 
         \subsection{Matrice inversible}
             \begin{mdframed}[linecolor=blue]
-                \textcolor{blue}{\textbf{Définition:}}
-                
+                \textcolor{blue}{\textbf{Définition :}}
+
                 $M$ est inversible $\Leftrightarrow \exists M^{-1} \ t.q.\ M M^{-1} = M^{-1} = I$
             \end{mdframed}
 
             \begin{mdframed}[linecolor=red]
-                \textcolor{red}{\textbf{Théorème:}}
-                
+                \textcolor{red}{\textbf{Théorème :}}
+
                 Si une matrice $M$ est \textbf{nilpotente} ($\exists n \ t.q.\ M^n = 0$),
                 $M$ n'est pas inversible.
             \end{mdframed}
@@ -1334,34 +1335,34 @@
                 En utilisant les propriétés des l'inversibilité des matrices,
                 celles des matrices nilpotentes et le binôme de Newton, on
                 peut calculer plus facilement des grandes puissance de matrices.
-                
+
                 \begin{mdframed}[linecolor=green]
-                    \textcolor{green}{\textbf{Exemple:}}
-                    
+                    \textcolor{green}{\textbf{Exemple :}}
+
                     Soit $M = \begin{pmatrix}
                         1 & 1 & 0 \\
                         0 & 1 & 1 \\
                         1 & 0 & 1
                     \end{pmatrix}$.
-                    
+
                     On définit $N$ tel que $M + I = N$. Donc $N = \begin{pmatrix}
                         0 & 1 & 0 \\
                         0 & 0 & 1 \\
                         1 & 0 & 0
                     \end{pmatrix}$
-                    
+
                     $N$ est nilpotent tel que $N^3 = I$. Calculer $M^{2015}$.
 
                     Si $N$ est nilpotent, alors :
-                    
+
                     \begin{itemize}
                         \item $N^{3k} (N^3)^k = I^k = I$ ;
                         \item $N^{3k+1} = (N^3)^k N = I N = N$ ;
                         \item $N^{3k+2} = (N^3)^k N = I N^2 = N^2$.
                     \end{itemize}
-                    
+
                     $M^n = (I + N)^n = \displaystyle \sum^n_{k=0} C_n^k \cdot N^k \cdot Id^{(n-k)} = \displaystyle \sum^n_{k=0} C_n^k \cdot N^k$
-                    
+
                     $M^{2015} = \displaystyle \sum^{2015 \div 3}_{p=0}\left(C_{2015}^{3p} \cdot Id + C_{2015}^{3p+1} \cdot N + C_{2015}^{3p+2} \cdot N^2 \right) =
                     \begin{pmatrix}
                         a & c & b \\
@@ -1371,114 +1372,118 @@
                     $b = \displaystyle \sum^{671}_{p=0} C_{2015}^{3p+1}$, $c = \displaystyle \sum^{671}_{p=0} C_{2015}^{3p+2}$.
                 \end{mdframed}
 
-	\subsection{Retour sur les e.v.}
-	\begin{mdframed}[linecolor=blue]
-		\textcolor{blue}{\textbf{Définition:}}\\
-		\indent Soit $E$ un e.v. de dimension finie avec $B=\{e_1, ... ,e_n\}$ famille de $E$.\\
-		$\Phi_B : \mathbb K^n \to E \\
-		(\lambda_1, ... , \lambda_n) \mapsto \displaystyle\sum^n_{i=1} \lambda_i \cdot e_i \\
-		\Psi_B = \Phi_B^{-1}$ (inverse de $\Phi_B$) \\
-		$\Psi_B: E \to \mathbb K^n \approx \Mat_{\mathbb K} (n, 1) \\
-		v \mapsto
-		\begin{pmatrix}
-                 \lambda_1 \\
-                 \vdots \\
-		\lambda_n
-		\end{pmatrix} (\lambda_1, ... , \lambda_n)$ sont les coefficients de $v$ dans la base $B$\\ \\
+        \subsection{Retour sur les e.v.}
 
-		Soit $E'$ un autre e.v. sur $\mathbb K$ avec $B'=\{e'_1, ... ,e'_n\}$ base de $E'$.\\
-		$\Phi_{B'} : \mathbb K^m \to E' \quad \Psi_{B'}: E' \to \mathbb K^m $\\
+            \begin{mdframed}[linecolor=blue]
+                \textcolor{blue}{\textbf{Définition :}}
 
-		Soit $u \in L(E, E') \\
-		\forall i, 1 \leq i \leq n\\
-		u(e_i) = \displaystyle\sum^m_{j=1} a_{j,i} \cdot e'_j =
-		\begin{pmatrix}
-                 a_{1,i} \\
-                 \vdots \\
-		a_{m,i} % ami :')
-		\end{pmatrix} =
-		\Psi_{B'}(u(e_i))$\\
+                Soit $E$ un e.v. de dimension finie avec $B = \{e_1, \ldots, e_n\}$, famille de $E$.
+                On définit $\Phi_B : \mathbb K^n \to E : (\lambda_1, \ldots ,\lambda_n) \mapsto \displaystyle \sum^n_{i=1} \lambda_i e_i$.
 
-		$v = \displaystyle\sum^n_{i=1} \lambda_i \cdot e_i \in E \quad \Phi_B(v) =
-		\begin{pmatrix}
-                 \lambda_1 \\
-                 \vdots \\
-		\lambda_n
-		\end{pmatrix}\\
-		v' = u(v) = u\bigg(\displaystyle\sum^n_{i=1} \lambda_i \cdot e_i \bigg) = \displaystyle\sum^n_{i=1} \lambda_i \cdot u(e_i) = \displaystyle\sum^n_{i=1} \lambda_i \displaystyle\sum^n_{j=1} a_{j,i} \cdot e_j = \displaystyle\sum^n_{j=1} \bigg( \displaystyle\sum^n_{i=1} a_{j,i} \cdot \lambda_i \bigg)e'_j\\
-		\Rightarrow \lambda'_j = \displaystyle\sum^n_{i=1} a_{j,i} \cdot \lambda_i \\
-		\Phi_{B'}(v')=
-		\begin{pmatrix}
-                 \displaystyle\sum^n_{i=1} a_{1,i} \cdot \lambda_i \\
-                 \vdots \\
-		\displaystyle\sum^n_{i=1} a_{m,i} \cdot \lambda_i
-		\end{pmatrix} = (a_{j,i}) \times (\lambda_i) =
-		\begin{pmatrix}
-                 \lambda_1 \\
-                 \vdots \\
-		\lambda_m
-		\end{pmatrix}=
-		\begin{pmatrix}
-                 a_{1,1} & \ldots & a_{1,n}  \\
-                 \vdots & \ddots & \vdots\\
-		a_{m,1} & \ldots & a_{m,n}
-		\end{pmatrix} \times
-		\begin{pmatrix}
-                 \lambda_1 \\
-                 \vdots \\
-		\lambda_n
-		\end{pmatrix}$
-	% Faire une petite conclusion/résumé en francais pour cette définition
-	\end{mdframed}
+                On définit également $\Psi_B = \Phi_B^{-1}$, l'inverse de $\Phi_B$ tel que
+                $\Psi_B : E \to \mathbb K^n$, or
+                $\mathbb K^n \approx \Mat_{\mathbb K}(n, 1) \approx \Mat_{\mathbb K}(1, n)$.
+                Effectivement, $\mathbb K^n$ est un vecteur de $n$ éléments de $\mathbb K$.
+                Un vecteur n'est autre qu'un vecteur ligne ou un vecteur colonne.
 
-	\begin{mdframed}[linecolor=green]
-		\textcolor{green}{\textbf{Exemple:}}\\
-		Soit $u: \R^3 \to \R^2\\
-		u(x,y,z) = (3x-2y+z, x+y-z)$\\
-		Posons $B$ base canonique de $\R^2$ et $B'$ base canonique de $\R^3\\
-		u(e_1) = u(1,0,0) = (3,1)\\
-		u(e_2) = u(0,1,0) = (-2,1)\\
-		u(e_3) = u(0,0,1) = (1,-1)\\
-		\Mat_u =
-		\begin{pmatrix}
-                 3 & -2 & 1 \\
-		1 & 1 & -1
-		\end{pmatrix}\\
-		u \times
-		\begin{pmatrix}
-                 x \\
-                 y \\
-		z
-		\end{pmatrix} =
-		\begin{pmatrix}
-                 3x-2y+z \\
-		x+y-z
-		\end{pmatrix}$
-	\end{mdframed}
+                $v \mapsto \begin{pmatrix}\lambda_1 \\ \vdots \\ \lambda_n\end{pmatrix}$
+                où $(\lambda_1, ... , \lambda_n)$ sont les coefficients de $v$ dans la base $B$
 
-	% Pas compris le sens de la page 28... on va passer ^^
+                Soit $E'$ un autre e.v. sur $\mathbb K$ avec $B' = \{e'_1, \ldots, e'_n\}$,
+                une base de $E'$. $\Phi_{B'} : \mathbb K^m \to E'$ et $\Psi_{B'} : E' \to \mathbb K^m $
 
-	\begin{mdframed}[linecolor=red]
-		\textcolor{red}{\textbf{Théorème:}}\\
-		$\Phi_{B,B'} ([a_{j,i}])$ est l'application linéaire définie par:
-		$u(e_i) = \displaystyle\sum^n_{j=1} a_{j,i}e'_j \quad \forall i, 1 \leq i \leq n$\\
-		$\Phi_{B,B'}$ est un isomorphisme\\
-		\bigskip 
+                Soit $u \in L(E, E')$. $\forall i, 1 \leq i \leq n, u(e_i) = \displaystyle \sum^m_{j=1} a_{j,i} e'_j =
+                \begin{pmatrix} a_{1,i} \\ \vdots \\ a_{m,i} \end{pmatrix} = \Psi_{B'}(u(e_i)).$ \\
+                $\forall v \in E = \displaystyle \sum^n_{i=1} \lambda_i e_i, \Phi_B(v) = \begin{pmatrix} \lambda_1 \\ \vdots \\ \lambda_n \end{pmatrix}$. \\
+                $v' \in E' = u(v) = u \left(\displaystyle \sum^n_{i=1} \lambda_i e_i \right) =
+                \displaystyle \sum^n_{i=1} \lambda_i u(e_i) =
+                \displaystyle \sum^n_{i=1} \lambda_i \displaystyle \sum^n_{j=1} a_{j,i} e_j =
+                \displaystyle \sum^n_{j=1} \left( \displaystyle \sum^n_{i=1} a_{j,i} \lambda_i \right)e'_j$
 
-		Si $M$ est inversibles $\Leftrightarrow$ $u=\Phi_{BB'}(M)$ est un isomorphisme\\
-		de façon équivalente : \\
-		$u \in L(E,E')$ telle que $u$ bijective $\Leftrightarrow M = \Psi_{BB'}(u^{-1})=M^{-1}$
-	\end{mdframed}
+                $\Rightarrow \lambda'_j = \displaystyle \sum^n_{i=1} a_{j,i} \lambda_i,
+                \Phi_{B'}(v')=
+                \begin{pmatrix}
+                    \displaystyle \sum^n_{i=1} a_{1,i} \lambda_i \\
+                    \vdots \\
+                    \displaystyle \sum^n_{i=1} a_{m,i} \lambda_i
+                \end{pmatrix} = [a_{j,i}] [\lambda_i] =
+                \begin{pmatrix}
+                    \lambda'_1 \\
+                    \vdots \\
+                    \lambda'_m
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    a_{1,1} & \ldots & a_{1,n}  \\
+                    \vdots & \ddots & \vdots\\
+                    a_{m,1} & \ldots & a_{m,n}
+                \end{pmatrix}
+                \begin{pmatrix}
+                    \lambda_1 \\
+                    \vdots \\
+                    \lambda_n
+                \end{pmatrix}$
+
+                Cette démonstration permet de relier les notions vues précédemment :
+                nous pouvons donc appliquer une application linéaire quelconque à
+                un vecteur uniquement à l'aide du produit vectoriel.
+
+                Lorsque nous avons deux $\mathbb K$-e.v. $E$ et $E'$ avec
+                leurs bases respectives $B$ et $B'$ ainsi qu'une application linéaire
+                $u \in L(E, E')$ et $M_u$, $\forall v \in E, M_u \cdot \Psi_B(v)$
+                nous donne les coefficients $\lambda'_i$ pour exprimer $u(v)$ dans la
+                base $B'$. Pour refaire un vecteur $\in E'$, il faut appliquer $\Phi_{B'}$
+                sur cet élément de $\mathbb K^n$.
+
+                Donc $\forall v \in E, u(v) = \Phi_{B'}(M_u \cdot \Psi_B(v))$.
+            \end{mdframed}
+
+            \begin{mdframed}[linecolor=green]
+                \textcolor{green}{\textbf{Exemple :}}
+
+                Soit $u : \R^3 \to \R^2 : (x, y, z) \mapsto (3x-2y+z, x+y-z)$.
+                Posons $B$, base canonique de $\R^2$ et $B'$ base canonique de $\R^3$. \\
+                $\left.\begin{aligned}
+                    u(e_1) &= u(1,0,0) = (3,1)\\
+                    u(e_2) &= u(0,1,0) = (-2,1)\\
+                    u(e_3) &= u(0,0,1) = (1,-1)
+                \end{aligned}\right\}$
+                $M_u = \begin{pmatrix} 3 & -2 & 1 \\  1 & 1 & -1 \end{pmatrix}$
+
+                $M_u \cdot \begin{pmatrix} x \\ y \\ z \end{pmatrix} =
+                \begin{pmatrix} 3x-2y+z \\ x+y-z \end{pmatrix}$.
+            \end{mdframed}
+
+            \begin{mdframed}
+                \textcolor{blue}{Définition (rappel) :}
+
+                Nous définissons $\Phi_{BB'} : \Mat_{\mathbb K}(m, n) \to L(E, E') : [a_{ji}] \mapsto u$
+                telle que $u(e_i) = \displaystyle \sum^n_{j=1} a_{j,i}e'_j \quad \forall i, 1 \leq i \leq n$,
+                une application qui relie chaque matrice à son application linéaire.
+
+                À nouveau, nous définissons également sa réciproque :
+                $\Psi_{BB'} = \Phi_{BB'}^{-1} : L(E, E') \to \Mat_{\mathbb K}(m, n) : u \mapsto [a_{ji}]$.
+            \end{mdframed}
+
+            \begin{mdframed}[linecolor=red]
+                \textcolor{red}{\textbf{Théorème :}}
+
+                $\Phi_{BB'}([a_{j,i}])$ est un isomorphisme.
+
+                $M$ est inversibles $\Leftrightarrow u = \Phi_{BB'}(M)$ est un isomorphisme.
+                Ou de façon équivalente, $u \in L(E,E')$ est bijective
+                $\Leftrightarrow M = \Psi_{BB'}(u)$ est inversible. En quel cas
+                $\Psi_{B'B}(u^{-1}) = M^{-1}$ ou encore $u^{-1} = \Phi_{B'B}(M)$.
+            \end{mdframed}
 
 	\subsection{Matrice de passage}
 	\begin{mdframed}[linecolor=blue]
-		\textcolor{blue}{\textbf{Définition:}}\\
+		\textcolor{blue}{\textbf{Définition :}}\\
 		$P = \Psi_{BB'}(Id_E)$ est appelée la \textbf{matrice de passage} de $B$ à $B$'
 		% Petite conclusion en francais ?
 	\end{mdframed}
 
 	\begin{mdframed}[linecolor=red]
-		\textcolor{red}{\textbf{Théorème:}}\\
+		\textcolor{red}{\textbf{Théorème :}}\\
 		Soit $v \in E \\
 		\begin{pmatrix}
                  \lambda_1 \\
@@ -1514,7 +1519,7 @@
 	\end{mdframed}
 
 	\begin{mdframed}[linecolor=green]
-		\textcolor{green}{\textbf{Exemple:}}\\
+		\textcolor{green}{\textbf{Exemple :}}\\
 		Soit $B_0$ base canonique de $\R^2 : \{e_1,e_2\}$ et $B' = \{(1,1),(-1,1)\} = \{ e'_1,e'_2 \} \\
 		\Psi_{B_0B'} = $
 		\[ \left \{
@@ -1604,7 +1609,7 @@
 	\end{mdframed}
 
 	\begin{mdframed}[linecolor=red]
-		\textcolor{red}{\textbf{Théorème:}}\\
+		\textcolor{red}{\textbf{Théorème :}}\\
 		$u \in L(E,E)\\
 		M = \Psi_{BB}(u) \quad P=\Psi_{BB'}(Id)\\
 		M' = \Psi_{B'B'}(u) \quad P^{-1} = \Psi_{B'B}(Id)\\
@@ -1616,7 +1621,7 @@
 	\subsubsection{Calculs de déterminants}
 
 	\begin{mdframed}[linecolor=blue]
-		\textcolor{blue}{\textbf{Définition:}}\\
+		\textcolor{blue}{\textbf{Définition :}}\\
 		Le \textbf{déterminant} d'une matrice $2\times2, M =
 		\begin{pmatrix}
                  a & b \\
@@ -1626,12 +1631,12 @@
 	\end{mdframed}
 
 	\begin{mdframed}[linecolor=cyan]
-		\textcolor{cyan}{\textbf{Remarque:}}\\
+		\textcolor{cyan}{\textbf{Remarque :}}\\
 		Seul les matrices carrées ont un déterminant (unique).
 	\end{mdframed}
 
 	\begin{mdframed}[linecolor=blue]
-		\textcolor{blue}{\textbf{Définition:}}\\
+		\textcolor{blue}{\textbf{Définition :}}\\
 		L'on peut calculer le déterminant d'une matrice $3 \times 3$ en utilisant la règle de Sarrus.\\
 		Soit $M :
 		\begin{pmatrix}
@@ -1677,21 +1682,21 @@
 
 	\subsubsection{Groupe de permutation}
 		\begin{mdframed}[linecolor=blue]
-			\textcolor{blue}{\textbf{Définition:}}\\
+			\textcolor{blue}{\textbf{Définition :}}\\
 			% on va noté \delta pour les permutations et \sigma pour les groupe
 			Soit $\sigma_n$, groupe des permutations de $n$ éléments, c'est-a-dire : l'ensemble des bijections de $\{1, ..., n\}$ dans lui-même. Chaque permutation seras noté $\delta$.\\
 			$\#\sigma_n = n!$ (factoriel)
 		\end{mdframed}
 
 		\begin{mdframed}[linecolor=green]
-			\textcolor{green}{\textbf{Exemple:}}\\
+			\textcolor{green}{\textbf{Exemple :}}\\
 				$\sigma_1 = \{(1)\} \\
 				\sigma_2 = \{(1,2),(2,1)\}\\
 				\sigma_3 = \{(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)\}$
 		\end{mdframed}
 
 		\begin{mdframed}[linecolor=blue]
-			\textcolor{blue}{\textbf{Définition:}}\\
+			\textcolor{blue}{\textbf{Définition :}}\\
 			Les permurtations les plus simples sont les transpositions.Noté $\tau$. Définis comme: \\
 			\[
 			\left \{
@@ -1706,7 +1711,7 @@
 		\end{mdframed}
 
 		\begin{mdframed}[linecolor=green]
-			\textcolor{green}{\textbf{Exemple:}}\\
+			\textcolor{green}{\textbf{Exemple :}}\\
 			Avec (1,2,3) comme élément de départ.:
 			\begin{itemize}
 				\item $(1,3,2) = \tau_{2,3}$ on a juste échangé de position le l'élément en 2eme position avec celui en 3eme positions
@@ -1724,13 +1729,13 @@
 		\end{mdframed}
 
 		\begin{mdframed}[linecolor=red]
-			\textcolor{red}{\textbf{Théorème:}}\\
+			\textcolor{red}{\textbf{Théorème :}}\\
 			$\forall \delta \in \sigma_n, \exists k$ transpositions $\tau_1, ..., \tau_k$ telles que $\delta = \tau_k \circ \tau_{k-1} \circ ... \circ \tau_1$\\
 			De plus si on à $k'$ autres transpositions avec $\tau_k \circ \tau_{k-1} \circ ... \circ \tau_1 = \delta$ alors $k \equiv k'[z]$ c'est à dire que $k$ et $k'$ sont tout les 2 soit paires, soit impaires, ou encore $(-1)^k = (-1)^{k'}$
 		\end{mdframed}
 
 		\begin{mdframed}[linecolor=green]
-			\textcolor{green}{\textbf{Exemple:}}\\
+			\textcolor{green}{\textbf{Exemple :}}\\
 			Pour passer de (1,2,3) à (1,3,2)
 			\begin{itemize}
 				\item $\tau_{2,3}(\to (1,3,2))$
@@ -1740,25 +1745,25 @@
 		\end{mdframed}
 
 		\begin{mdframed}[linecolor=blue]
-			\textcolor{blue}{\textbf{Définition:}}\\
+			\textcolor{blue}{\textbf{Définition :}}\\
 			Le nombre $(-1)^k$ est noté $sign(\delta)$ et est appellée la \textbf{signature} de $\delta$. L'on peut s'en servir pour calculer le déterminant d'une matrice $n \times n$.
 		\end{mdframed}
 
 
 	\subsection{Calcul de déterminant de matrice $n\times n$}
 		\begin{mdframed}[linecolor=blue]
-			\textcolor{blue}{\textbf{Définition:}}\\
+			\textcolor{blue}{\textbf{Définition :}}\\
 			Soit $M =
 			 \begin{pmatrix}
                 	  	a_{1,1} & \cdots & a_{1,n} \\
                   	\vdots   & \ddots & \vdots  \\
                   	a_{n,1} & \cdots & a_{n,n}
                  	\end{pmatrix} \\
-			det(M) = \displaystyle\sum_{\delta \in \sigma_n} \cdot sign(\delta) \cdot \displaystyle\prod^n_{i=1}a_{\sigma(i),i}$
+			det(M) = \displaystyle \sum_{\delta \in \sigma_n} \cdot sign(\delta) \cdot \displaystyle\prod^n_{i=1}a_{\sigma(i),i}$
 		\end{mdframed}
 
 		\begin{mdframed}[linecolor=green]
-			\textcolor{green}{\textbf{Exemple:}}\\
+			\textcolor{green}{\textbf{Exemple :}}\\
 			Prenons la formule pour $n=3:\\
 			\sigma_3 = \{(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)\}$
 			\begin{itemize}
@@ -1793,14 +1798,14 @@
 		\end{mdframed}
 
 		\begin{mdframed}[linecolor=cyan]
-			\textcolor{cyan}{\textbf{Remarque:}}\\
+			\textcolor{cyan}{\textbf{Remarque :}}\\
 			Comme le déterminant de la matrice est égale à celui de sa transposée, toutes les propriétés énoncé ci-dessus, mentionnant les colonnes, sont également valable pour les lignes.
 		\end{mdframed}
 
 		\bigskip
 
 		\begin{mdframed}[linecolor=blue]
-			\textcolor{blue}{\textbf{Définition:}}\\
+			\textcolor{blue}{\textbf{Définition :}}\\
 			Soit une matrice $M : Mat(m,n)$ avec $a_{j,i}$ l'élément de $M$ à en $j$-eme ligne et $i$-eme colonne.\\
 			$M_{j,i} =
 			\begin{pmatrix}
@@ -1815,7 +1820,7 @@
 		\end{mdframed}
 
 		\begin{mdframed}[linecolor=green]
-			\textcolor{green}{\textbf{Exemple:}}\\
+			\textcolor{green}{\textbf{Exemple :}}\\
 			$M =
 			\begin{pmatrix}
                 	  	a_{1,1} & a_{1,2} & a_{1,3} \\
@@ -1869,13 +1874,13 @@
 		\end{mdframed}
 
 		\begin{mdframed}[linecolor=red]
-			\textcolor{red}{\textbf{Théorème:}}\\
+			\textcolor{red}{\textbf{Théorème :}}\\
 			Soit $M$ une matrice carrée.\\
-			$det(M) = \displaystyle\sum^n_{j=1}a_{j,i} \cdot (-1)^{i+j}\cdot \underbrace{det(M_{j,i})}_{"mineur"}\quad \forall 0 \leq i \leq n $ fixé
+			$det(M) = \displaystyle \sum^n_{j=1}a_{j,i} \cdot (-1)^{i+j}\cdot \underbrace{det(M_{j,i})}_{"mineur"}\quad \forall 0 \leq i \leq n $ fixé
 		\end{mdframed}
 
 		\begin{mdframed}[linecolor=green]
-			\textcolor{green}{\textbf{Exemple:}}\\
+			\textcolor{green}{\textbf{Exemple :}}\\
 
 			$\begin{vmatrix}
                   	-1 & -1 & 4 & 3  \\
@@ -1953,12 +1958,12 @@
 		\end{mdframed}
 
 		\begin{mdframed}[linecolor=cyan]
-			\textcolor{cyan}{\textbf{Remarque:}}\\
+			\textcolor{cyan}{\textbf{Remarque :}}\\
 			Afin de gagner du temps on peux aussi utiliser la 2eme propriété de multi-linéarité qui nous permet de changer les valeurs de notre colonne pour faire apparaitre plus de 0, simplifiant ainsi les calculs.
 		\end{mdframed}
 
 		\begin{mdframed}[linecolor=green]
-			\textcolor{green}{\textbf{Exemple:}}\\
+			\textcolor{green}{\textbf{Exemple :}}\\
 			(En reprenant l'exemple ci dessus)\\
 			$\begin{vmatrix}
                   	-1 & -1 & 4 & 3  \\
