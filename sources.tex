@@ -45,10 +45,10 @@
 \DeclareMathOperator{\R}{\mathbb R}
 \DeclareMathOperator{\Mat}{Mat}
 \DeclareMathOperator{\MatK}{\Mat_{\mathbb K}}
-\DeclareMathOperator{\sing}{sign}
+\DeclareMathOperator{\sign}{sign}
 
 \title{Résumé cours de Maths - Module SI\\ \textbf{Algèbre Linéaire}}
-\date{version du 25 mai (19h15)}
+\date{version du 25 mai (20h00)}
 
 \pagestyle{plain}
 
@@ -267,7 +267,7 @@
 
             \bigskip
 
-            \subsection{Applications linéaires}
+        \subsection{Applications linéaires}
 
             \begin{mdframed}[linecolor=blue]
                 \textcolor{blue}{\textbf{Définition :}}
@@ -1769,15 +1769,16 @@
             \end{mdframed}
 
         \subsection{Calcul de déterminant de matrice $n\times n$}
+        
             \begin{mdframed}[linecolor=blue]
-                \textcolor{blue}{\textbf{Définition :}}\\
-                Soit $M =
-                 \begin{pmatrix}
-                            a_{1,1} & \cdots & a_{1,n} \\
-                        \vdots   & \ddots & \vdots  \\
-                        a_{n,1} & \cdots & a_{n,n}
-                        \end{pmatrix} \\
-                det(M) = \displaystyle \sum_{\delta \in \mathfrak{S}_n} \cdot sign(\delta) \cdot \displaystyle\prod^n_{i=1}a_{\mathfrak{S}(i),i}$
+                \textcolor{blue}{\textbf{Définition :}}
+                
+                Soit $M = \begin{pmatrix}
+                    a_{1,1} & \cdots & a_{1,n} \\
+                    \vdots   & \ddots & \vdots  \\
+                    a_{n,1} & \cdots & a_{n,n}
+                \end{pmatrix},
+                \det(M) = \displaystyle \sum_{\sigma \in \mathfrak{S}_n} \cdot \sign(\sigma) \cdot \displaystyle \prod^n_{i=1}a_{\sigma(i), i}$
             \end{mdframed}
 
             \begin{mdframed}[linecolor=green]
