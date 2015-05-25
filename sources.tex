@@ -267,7 +267,7 @@
 
             \bigskip
 
-            \subsection{Applications linéaires}  % Applications linéaires
+            \subsection{Applications linéaires}
 
             \begin{mdframed}[linecolor=blue]
                 \textcolor{blue}{\textbf{Définition :}}
@@ -459,7 +459,7 @@
 
             \subsubsection{Noyau et Image}
                 \begin{mdframed}[linecolor=blue]
-                \textcolor{blue}{\textbf{Définition :}}
+                    \textcolor{blue}{\textbf{Définition :}}
 
                     Pour toute application linéaire $u : E_1 \rightarrow E_2$,
                     on définit $\Ker u$ et $\ImAppli u$, tels que \\
@@ -774,7 +774,7 @@
                 \end{mdframed}
 
                 \begin{mdframed}[linecolor=green]
-                \textcolor{green}{\textbf{Exemple :}}
+                    \textcolor{green}{\textbf{Exemple :}}
 
                     $A = \{(1, 0, 0)\}$ est libre mais pas génératrice. Donc on va essayer
                     de rajouter des vecteurs dans $A$ pour la rendre génératrice, en restant libre.
@@ -1481,28 +1481,28 @@
         \subsection{Matrice de passage}
             \begin{mdframed}[linecolor=blue]
                 \textcolor{blue}{\textbf{Définition :}}
-                
+
                 $P = \Psi_{BB'}(Id_E)$ est appelée la \textbf{matrice de passage} de $B$ à $B'$
                 avec $Id_E : E \to E : v \mapsto v$.
-                
+
                 Autrement dit, la matrice associée à l'application qui envoie tout vecteur $v$ sur lui-même
                 mais exprimé de la base $B$ vers la base $B'$ est appelée matrice de passage.
             \end{mdframed}
 
             \begin{mdframed}[linecolor=red]
                 \textcolor{red}{\textbf{Théorème :}}
-                
+
                 Soient $u = Id_E$, $v \in E$ et deux bases de $E$, $B = \{e_1, \ldots, e_n\}, B' = \{e'_1, \ldots, e'_n\}$.
                 $u(v) = \displaystyle \sum_{i=1}^n \lambda_i u(e_i) = \displaystyle \sum_{i=1}^n \lambda_i \sum_{j=1}^n a_{ji} e'_j$.
                 Ou encore $u(v) = \displaystyle \sum_{j=1}^n\lambda'_j e'_j$ avec
                 $\lambda'_j = \displaystyle \sum_{i=1}^n \lambda_i a_{ji}$.
-                
+
                 On a donc $\begin{pmatrix}\lambda'_1 \\ \vdots \\ \lambda'_n\end{pmatrix} = \Psi_{B'}(v) = \Psi_{BB'}(Id_E) \cdot \Psi_{B}(v)$.
             \end{mdframed}
 
             \begin{mdframed}[linecolor=red]
                 \textcolor{red}{\textbf{Corrolaire :}}
-                
+
                 Si $P = \Psi_{BB'}(Id)$ est la matrice de passage de $B$ à $B'$,
                 alors la matrice de passage de $B'$ à $B$ est
                 $P^{-1} = \Psi_{B'B}(Id) = (\Psi_{BB'}(Id))^{-1}$.
@@ -1510,11 +1510,11 @@
 
             \begin{mdframed}[linecolor=green]
                 \textcolor{green}{\textbf{Exemple :}}
-                
+
                 Soit $B_0 = \{e_1, e_2\}$, base canonique de $\R^2$ et $B' = \{(1,1), (-1,1)\} = \{e'_1, e'_2\}$.
-                
+
                 Commençons par déterminer ce que vaut $P$, la matrice de passage de la base $B_0$ à la base $B'$.
-                
+
                 \[
                     \left \{
                         \begin{aligned}
@@ -1556,51 +1556,52 @@
                         \end{aligned}
                     \right .
                 \]
-        
+
                 La matrice de passage, $M_{B_0B'} = \begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ -\frac{1}{2} & \frac{1}{2} \end{pmatrix}$
 
                 Voyons ce que cela donne.
-                
+
                 Les coordonnées de $(x, y)$ dans la base $B'$ sont les suivantes :
                 $\begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ -\frac{1}{2} & \frac{1}{2} \end{pmatrix} \cdot
                 \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} \frac{x + y}{2} \\ \frac{-x + y}{2} \end{pmatrix}$.
-                
+
                 Autrement dit, tout point exprimé par les coordonnées $(x, y)$
                 dans la base canonique sera exprimés $(\frac {x+y}2, \frac{y-x}2)$
                 dans la base $B'$ choisie ici arbitrairement.
-                
+
                 Vérifions les calculs :
-                
+
                 $\frac{x + y}{2}e'_1 + \frac{-x + y}{2}e'_2 = \frac{x + y}{2}(1, 1) + \frac{-x + y}{2}(-1, 1) =
                 (\frac{x + y}{2} - \frac{-x + y}{2}, \frac{x + y}{2} + \frac{-x + y}{2}) = (x, y)$
-                
+
                 En développant les calculs avec expression de la base, on voit bien qu'un point de coordonnée
                 $(\frac {x+y}2, \frac{y-x}2)$ est identique à un point de coordonnée $(x, y)$ dans la base canonique.
-                
+
                 Essayons maintenant de déterminer ce que vaut la matrice de passage
                 de la base $B'$ vers la base canonique $B_0$.
-                
+
                 $e'_1 = (1, 1) = (1, 0) + (0, 1) = e_1 + e_2 \\
                 e'_2 = (-1, 1) = -1(1, 0) + (0, 1) = -e_1 + e_2 \\
                 M_{B'B_0} = \begin{pmatrix}  1 & -1 \\ 1 & 1 \end{pmatrix}$
 
                 Vérifions si $M_{B'B_0} \cdot M_{B_0B'} \stackrel{?}{=} I$ :
-                
+
                 $\begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ -\frac{1}{2} & \frac{1}{2} \end{pmatrix} \cdot
                 \begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I$
-                
+
                 Nous avons bien le produit des matrices qui vaut l'identité, ce qui veut dire que
                 les matrices sont bien associées à des applications réciproques.
                 Et par calcul, nous avons montré que ces applications sont les applications unités.
             \end{mdframed}
 
             \begin{mdframed}[linecolor=red]
-                \textcolor{red}{\textbf{Théorème :}}\\
-                $u \in L(E,E)\\
-                M = \Psi_{BB}(u) \quad P=\Psi_{BB'}(Id)\\
-                M' = \Psi_{B'B'}(u) \quad P^{-1} = \Psi_{B'B}(Id)\\
-                M' : P^{-1} \cdot M \cdot P \\
-                (M')^n=P^{-1} \cdot M^n \cdot P$
+                \textcolor{red}{\textbf{Théorème :}}
+                
+                $u \in L(E,E), M = \Psi_{BB}(u), P = \Psi_{BB'}(Id_E),
+                M' = \Psi_{B'B'}(u), P^{-1} = \Psi_{B'B}(Id_E)$
+                
+                $M' = P^{-1} \cdot M \cdot P \\
+                (M')^n = P^{-1} \cdot M^n \cdot P$
             \end{mdframed}
 
         \subsection{Déterminant de matrice}
@@ -1608,30 +1609,31 @@
 
                 \begin{mdframed}[linecolor=blue]
                     \textcolor{blue}{\textbf{Définition :}}
-                    
+
                     Le \textbf{déterminant} d'une matrice $2\times2$ :
                     $M = \begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad- bc$.
-                    
+
                     Le déterminant se note entre $|M|$ ou $\det(M)$.
                 \end{mdframed}
 
                 \begin{mdframed}[linecolor=cyan]
                     \textcolor{cyan}{\textbf{Remarque :}}
-                    
+
                     Seules les matrices carrées ont un déterminant (unique).
                 \end{mdframed}
 
                 \begin{mdframed}[linecolor=blue]
                     \textcolor{blue}{\textbf{Définition :}}
-                    
+
                     On peut calculer le déterminant d'une matrice
-                    $3 \times 3$ en utilisant la règle de Sarrus :
+                    $3 \times 3$ en utilisant la règle de Sarrus.
+
                     Soit $M = \begin{pmatrix}
                         a_{1,1} & a_{1,2} & a_{1,3} \\
                         a_{2,1} & a_{2,2} & a_{2,3} \\
                         a_{3,1} & a_{3,2} & a_{3,3}
                     \end{pmatrix} \in \MatK(3, 3)$
-                    
+
                     %Ne veut rien dire, à corriger Lolo...
                     On va "recopier" en faisant une translation de la matrice
                     à sa droite tracé ses diagonales, d'abord du coin supérieur gauche,
@@ -1668,7 +1670,7 @@
                         \foreach \c in {1,2,3} {\node[anchor=north] at (sarrus-3-\c.south) {$-$};};
                     \end{tikzpicture} \\
                     % Source : http://tex.stackexchange.com/questions/32978/typesetting-a-matrix-with-crossing-arrows-on-it
-                    
+
                     $= a_{1,1} a_{2,2} a_{3,3} + a_{1,2} a_{2,3} a_{3,1} + a_{1,3} a_{2,1} a_{3,2} - a_{3,1} a_{2,2} a_{1,3} - a_{3,2} a_{2,3} a_{1,1} - a_{3,3} a_{2,1} a_{1,2} $\\
 
                 D'autres manières existent pour calculer des déterminants de matrices $3 \times 3$.
@@ -1676,73 +1678,95 @@
 
         \subsubsection{Groupe de permutation}
             \begin{mdframed}[linecolor=blue]
-                \textcolor{blue}{\textbf{Définition :}}\\
-                % on va noté \delta pour les permutations et \sigma pour les groupe
-                Soit $\sigma_n$, groupe des permutations de $n$ éléments, c'est-a-dire : l'ensemble des bijections de $\{1, ..., n\}$ dans lui-même. Chaque permutation seras noté $\delta$.\\
-                $\#\sigma_n = n!$ (factoriel)
+                \textcolor{blue}{\textbf{Définition :}}
+
+                % on va noter \delta pour les permutations et \mathfrak{S} pour les groupe
+                Soit $\mathfrak{S}_n$, groupe des permutations de $n$ éléments, c'est-a-dire
+                l'ensemble des bijections de $\{1, ..., n\}$ dans lui-même. Chaque permutation est notée $\delta$.\\
+                $\#\mathfrak{S}_n = n!$ (factorielle)
             \end{mdframed}
 
             \begin{mdframed}[linecolor=green]
-                \textcolor{green}{\textbf{Exemple :}}\\
-                    $\sigma_1 = \{(1)\} \\
-                    \sigma_2 = \{(1,2),(2,1)\}\\
-                    \sigma_3 = \{(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)\}$
+                \textcolor{green}{\textbf{Exemple :}}
+
+                    \noindent $\mathfrak{S}_1 = \{(1)\} \\
+                    \mathfrak{S}_2 = \{(1, 2), (2, 1)\}\\
+                    \mathfrak{S}_3 = \{(1, 2, 3), (1, 3, 2), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)\}$
             \end{mdframed}
 
             \begin{mdframed}[linecolor=blue]
-                \textcolor{blue}{\textbf{Définition :}}\\
-                Les permurtations les plus simples sont les transpositions.Noté $\tau$. Définis comme: \\
+                \textcolor{blue}{\textbf{Définition :}}
+
+                Les permutations les plus simples sont les transpositions, notées $\tau_{ij}$.
+                Définies comme:
+
                 \[
-                \left \{
-                    \begin{aligned}
-                        \tau(i) &= j \\
-                \tau(j) &= i \\
-                \tau(k) &= k \quad \text{ si } k \neq i \text{ et } k \neq j
-                    \end{aligned}
-                \right .
+                    \left \{
+                        \begin{aligned}
+                            \tau_{ij}(i) &= j \\
+                            \tau_{ij}(j) &= i \\
+                            \tau_{ij}(k) &= k \quad \text{si } k \neq i \text{ et } k \neq j
+                        \end{aligned}
+                    \right .
                 \]
-        Ce qui revient à échanger 2 éléments de places (donc sans toucher aux autres)
+
+                Ce qui revient à échanger 2 éléments de places (donc sans toucher aux autres).
             \end{mdframed}
 
             \begin{mdframed}[linecolor=green]
-                \textcolor{green}{\textbf{Exemple :}}\\
-                Avec (1,2,3) comme élément de départ.:
+                \textcolor{green}{\textbf{Exemple :}}
+
+                Avec (1, 2, 3) comme élément de départ :
+
                 \begin{itemize}
-                    \item $(1,3,2) = \tau_{2,3}$ on a juste échangé de position le l'élément en 2eme position avec celui en 3eme positions
-                    \item $(2,3,1) = \tau_{1,2} \circ \tau_{2,3}$ d'abord on échange la position 1 avec le 2 se qui donne (2,1,3), puis on échange celui de 2eme position avec celui en 3eme ($\tau_{2,3}$) ce qui donne (2,3,1). \\Plus mathématiquement : \\
-                    \[
-                    \left .
-                        \begin{aligned}
-                            ( \tau_{1,2} \circ \tau_{2,3}) (1) = \tau_{1,2}(\tau_{2,3}(1)) =\tau_{1,2}(1) &= 2\\
-                    ( \tau_{1,2} \circ \tau_{2,3}) (2) = \tau_{1,2}(\tau_{2,3}(2)) =\tau_{1,2}(3) &= 3\\
-                    ( \tau_{1,2} \circ \tau_{2,3}) (3) = \tau_{1,2}(\tau_{2,3}(3)) =\tau_{1,2}(2) &= 1
-                        \end{aligned}
-                    \right \} (2,3,1)
-                    \]
+                    \item $(1, 3, 2) = \tau_{2, 3}$ on a juste changé de position
+                          l'élément en 2eme position avec celui en 3eme position ;
+                    \item $(2, 3, 1) = \tau_{1, 2} \circ \tau_{2, 3}$ d'abord
+                          on échange la position 1 avec le 2, ce qui donne
+                          (2, 1, 3), puis on change celui de 2eme position avec
+                          celui en 3eme ($\tau_{2, 3}$) ce qui donne (2, 3, 1). \\
+                          Plus mathématiquement :
+                          \[
+                            \left .
+                                \begin{aligned}
+                                    (\tau_{1, 2} \circ \tau_{2, 3}) (1) &= \tau_{1, 2}(\tau_{2, 3}(1)) &= \tau_{1, 2}(1) &= 2\\
+                                    (\tau_{1, 2} \circ \tau_{2, 3}) (2) &= \tau_{1, 2}(\tau_{2, 3}(2)) &= \tau_{1, 2}(3) &= 3\\
+                                    (\tau_{1, 2} \circ \tau_{2, 3}) (3) &= \tau_{1, 2}(\tau_{2, 3}(3)) &= \tau_{1, 2}(2) &= 1
+                                \end{aligned}
+                            \right \}
+                            \Rightarrow \tau_{1,2} \circ \tau_{2,3} = (2,3,1)
+                          \]
                 \end{itemize}
             \end{mdframed}
 
             \begin{mdframed}[linecolor=red]
-                \textcolor{red}{\textbf{Théorème :}}\\
-                $\forall \delta \in \sigma_n, \exists k$ transpositions $\tau_1, ..., \tau_k$ telles que $\delta = \tau_k \circ \tau_{k-1} \circ ... \circ \tau_1$\\
-                De plus si on à $k'$ autres transpositions avec $\tau_k \circ \tau_{k-1} \circ ... \circ \tau_1 = \delta$ alors $k \equiv k'[z]$ c'est à dire que $k$ et $k'$ sont tout les 2 soit paires, soit impaires, ou encore $(-1)^k = (-1)^{k'}$
+                \textcolor{red}{\textbf{Théorème :}}
+
+                $\forall \sigma \in \mathfrak{S}_n, \exists k$ transpositions $\tau_1, ..., \tau_k$ telles que $\sigma = \tau_k \circ \tau_{k-1} \circ ... \circ \tau_1$.
+                De plus si on a $k'$ autres transpositions avec $\tau_k' \circ \tau_{k'-1} \circ ... \circ \tau_1 = \sigma$ alors $k \equiv k'[2]$ c'est à dire que $k$ et $k'$ sont tous les deux soit paires, soit impaires,
+                ou encore $(-1)^k = (-1)^{k'}$.
             \end{mdframed}
 
             \begin{mdframed}[linecolor=green]
-                \textcolor{green}{\textbf{Exemple :}}\\
-                Pour passer de (1,2,3) à (1,3,2)
+                \textcolor{green}{\textbf{Exemple :}}
+
+                Pour passer de (1, 2, 3) à (1, 3, 2) :
+
                 \begin{itemize}
-                    \item $\tau_{2,3}(\to (1,3,2))$
-                    \item $\tau_{1,2}(\to (2,1,3)) \circ \tau_{1,3}(\to (3,1,2)) \circ \tau_{1,2}(\to (1,3,2))$
-                    \item etc... quoi qu'il arrive on auras ici toujours un nombre impairs de transpositions à faire pour atteindre le résultat final
+                    \item $\tau_{2, 3} ($ devient $(1, 3, 2))$ ;
+                    \item $\tau_{1, 2} ($ devient $(2, 1, 3)) \circ \tau_{1, 3} ($devient $(3, 1, 2)) \circ \tau_{1, 2} ($ devient $(1, 3, 2))$ ;
+                    \item etc... quoi qu'il arrive on aura ici toujours un nombre impair de transpositions
+                          à faire pour atteindre le résultat final.
                 \end{itemize}
             \end{mdframed}
 
             \begin{mdframed}[linecolor=blue]
-                \textcolor{blue}{\textbf{Définition :}}\\
-                Le nombre $(-1)^k$ est noté $sign(\delta)$ et est appellée la \textbf{signature} de $\delta$. L'on peut s'en servir pour calculer le déterminant d'une matrice $n \times n$.
-            \end{mdframed}
+                \textcolor{blue}{\textbf{Définition :}}
 
+                Le nombre $(-1)^k$ est noté $\sign(\sigma)$ et est appelé la
+                \textbf{signature} de $\sigma$. On peut s'en servir pour calculer
+                le déterminant d'une matrice $n \times n$.
+            \end{mdframed}
 
         \subsection{Calcul de déterminant de matrice $n\times n$}
             \begin{mdframed}[linecolor=blue]
@@ -1753,13 +1777,13 @@
                         \vdots   & \ddots & \vdots  \\
                         a_{n,1} & \cdots & a_{n,n}
                         \end{pmatrix} \\
-                det(M) = \displaystyle \sum_{\delta \in \sigma_n} \cdot sign(\delta) \cdot \displaystyle\prod^n_{i=1}a_{\sigma(i),i}$
+                det(M) = \displaystyle \sum_{\delta \in \mathfrak{S}_n} \cdot sign(\delta) \cdot \displaystyle\prod^n_{i=1}a_{\mathfrak{S}(i),i}$
             \end{mdframed}
 
             \begin{mdframed}[linecolor=green]
                 \textcolor{green}{\textbf{Exemple :}}\\
                 Prenons la formule pour $n=3:\\
-                \sigma_3 = \{(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)\}$
+                \mathfrak{S}_3 = \{(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)\}$
                 \begin{itemize}
                     \item $(1,2,3) \to sign = 1 \to \prod = a_{1,1} \cdot a_{2,2} \cdot a_{3,3}$
                     \item $(1,3,2) \to sign = -1 \to \prod = a_{1,1} \cdot a_{3,2} \cdot a_{2,3}$
